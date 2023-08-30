@@ -1,0 +1,39 @@
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+.rmdnote, .rmdtip, .rmdwarning {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: #f0f0f0 5px center/3em no-repeat;
+}
+
+.rmdnote {
+  background-image: url("images/note.png");
+}
+
+.rmdtip {
+  background-image: url("images/tip.png");
+}
+.rmdwarning {
+  background-image: url("images/warning.png");
+}
+
+.book .book-body .page-wrapper .page-inner section.normal div.sidebar > :first-child {
+  margin-top: 0;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal div.sidebar > :last-child {
+  margin-bottom: 0;
+}
