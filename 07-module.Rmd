@@ -1,0 +1,296 @@
+# Accuracy and Forecast Evaluations {#accuracy}
+
+In the preceding Modules, we focused much of our attention on exploring various forecasting models. We quickly saw that some models did a better job of fitting and predicting our data than others. To this point, our determination of the "best" models was entirely based on eyeballing the "goodness of fit" of the actual vs the forecasted data series.
+
+In this module, we shift our focus to formally assessing our model's forecasting performances. We will return to the Annual Corn Price series from earlier and *statistically* determine the most accurate forecasting model, both in- and out-of-sample.
+
+
+## Corn Data (Revisited)
+
+As we did in Module \@ref(stocks-use), we can again read in the dataset with the Ending Stocks/Use. We leave it as practice for interested reader to duplicate the codes and manipulations in Sections \@ref(download-data) and \@ref(clean-data).
+
+For the purpose of the exercise, we will drop the observations for 2021. To refamiliarize ourselves with the data:
+
+```{r sutimeplot}
+su.data2 <- su.data %>% filter_index(.~2020)
+su.data2 %>% 
+  autoplot(price, color = "blue", size = 1.15) +
+  geom_point() +
+  labs(title = "Time Plot of Corn Prices",
+       y = "$/bu",
+       x = "Year") +
+  theme_bw()
+```
+From the plot, the price series appears to be increasing over time. From this pattern, a trend model could conceivably be a viable candidate for our forecasting.
+
+## Exploring the Forecasting models In-sample
+
+To begin, we will subset our data into a `training` and `test` period. The `test` period will serve as our data validation window. That is, we will use it to understand how well our model performs "out of sample".
+
+We will use the last 5 years of data as the `test` period. 
+
+```{r split-data}
+# Create the training set
+train <- su.data2 %>% filter_index(.~2015)
+train %>% head()
+# Reserve the last 5 years for the test set
+
+test <- su.data2 %>% filter_index(2016~.)
+test %>% head()
+```
+
+### Method 1: Linear Trend
+
+Let us first explore the forecasting method using a simple trend. Recall that we can achieve this using a time series linear model (OLS) and the `TSLM` function. 
+
+```{r trend}
+mod1.trend <- train %>% model(trend = TSLM(price ~ trend()))
+mod1.trend %>% report()
+```
+
+From the regression results, the linear trend appears to be statistically significant in explaining the observed prices. At this point, it would also prove useful to produce the plot of the fitted and actual values.
+
+```{r}
+ mod1.trend %>% augment() %>% 
+  ggplot(aes(y = price, x = Year,
+             colour = "blue")) +
+  geom_line() +
+  geom_point() + 
+  geom_line(aes(y = .fitted,
+                colour = "Trend"),
+                size = 1.2,
+                lty = "dashed") +
+  labs(title = "Trend Model Fit",
+       subtitle = "In-Sample") +
+  theme_bw()
+```
+
+### Method 2: Naive Model (with drift)
+
+Let us assume that we have no idea of where the prices might go next. Under that condition, we could explore a **naive** forecasting approach. Additionally, since we noticed a pronounced trend in the series, we will account for that by including a **drift** term.
+
+We will use the code chunks below to accomplish this.
+
+```{r}
+mod2.drift <- train %>% 
+  model(drift = RW(price ~ drift()))
+```
+
+Here is a plot of the in sample fit.
+
+```{r}
+ mod2.drift %>% augment() %>% 
+  ggplot(aes(y = price, x = Year,
+             colour = "blue")) +
+  geom_line() + 
+  geom_point() + 
+  geom_line(aes(y = .fitted,
+                colour = "Trend"),
+                size = 1.2) +
+  labs(title = "RW + Drift Model Fit",
+       subtitle = "In-Sample") +
+  theme_bw()
+```
+
+### Method 3: Using Stocks-to-Use Approach
+
+In the last module, we explored the concept of accounting for structural breaks in the data. In particular, we split the data into different regimes and forecasted prices accordingly. We will utilize the same approach and use OLS regressions to help in the forecasting process.
+
+Our first step requires that we create market conditions dummy variables.  The process is detailed in Module 6.
+
+```{r}
+weak <- c(2009, 2014:2015)
+mod2 <- c(2007:2008, 2013)
+mod1 <- 2010
+strong <- 2011:2012
+
+#Drop 2006, and all years after 2015.
+subdata <- su.data %>% filter(Year %in% 
+                                c(1990:2005, 2007:2015)) %>% mutate(weak = ifelse(Year %in% weak, 1,0),
+         mod2 = ifelse(Year %in% mod2, 1,0),
+         mod1 = ifelse(Year %in% mod1, 1,0),
+         strong = ifelse(Year %in% strong, 1,0))
+subdata %>% head()
+```
+
+Now to perform the relevant regressions:
+
+```{r}
+mod3.stock <- subdata %>% model(
+  TSLM(price ~ ratio + weak + mod2 + mod1 + strong)
+)
+mod3.stock %>% report()
+```
+
+Likewise, we can produce a plot of the actual and fitted values from the `mod3.stock` regression above
+
+```{r}
+mod3.stock %>% augment() %>% 
+  ggplot(aes(x = Year, y = price,
+                       colour = "Actual")) + 
+  geom_line() +
+  geom_point() + 
+  geom_line(aes(y = .fitted,
+                colour = "Stocks/Use"),
+            size = 1.2) +
+  labs(title = "Stocks-to-Use Model Fit",
+       subtitle = "In-Sample") +
+  theme_bw()
+```
+
+## Out-of-sample forecasts
+
+Looking at the in-sample fits of each of the three graphs above, one could conclude that the Stocks-to-Use model fits the training data best. We will set aside that debate for now and focus instead on the out-of-sample predictions on each model. Recall that our out of sample predictions will be for the 5 years (2016--2020) we held out earlier.
+
+### Method 1: Trend 
+
+We can use the `forecast` option with the appropriate horizon (`h = 5`). 
+
+```{r}
+f.mod1 <- mod1.trend %>% forecast(h = 5)
+f.mod1
+```
+In turn, the plot would be as follows:
+
+```{r}
+f.mod1 %>% autoplot(train, level = NULL) +
+  autolayer(test,price, color = "red") +
+  labs(title = "Linear Trend Model Forecast") +
+  theme_bw()
+```
+The red line (actual values held out) are always lower than the forecasts of this model. Here, the trend model has a tendency to over predict the true values.
+
+### Method 2: Random Walk + Drfit Model
+
+We can generate and display the forecasted values (from the `RW` function) for the 5 periods of interest.
+
+```{r}
+f.mod2 <- mod2.drift %>% forecast(h = 5)
+f.mod2
+```
+
+Plotting the results we have:
+
+```{r}
+f.mod2 %>% autoplot(train, level = NULL) +
+  autolayer(test,price, color = "red") +
+  labs(title = "Random Walk with Drift Forecast") +
+  theme_bw()
+```
+
+In the earlier years, the random walk model with drift tends to over predict. Towards the latter years however, the trend is not step enough and therefore lags the true value (is under predicted).
+
+
+### Method 3: Stocks-to-Use Approach
+
+The forecast for this approach is slightly more involved but not complicated. As we did in Module \@ref(stocks-use), we will assign all years in the test set (the 5 years out-of-sample) to a single regime (i.e. all to weak, or moderate2, etc.). 
+
+Also, to help with your forecasting, we will assume that we have the gift of perfect foresight relating to the stocks-to-use ratio (`ratio`). Our task therefore, is simply to use this method to forecast prices.
+
+```{r}
+
+scenarios5 <- scenarios(
+  weak = new_data(train,5) %>% 
+    mutate(ratio = test[["ratio"]], weak = rep(1,5),
+           mod2 = rep(0,5), mod1 = rep(0,5), 
+           strong = rep(0,5)),
+  moderate2 = new_data(train,5) %>% 
+    mutate(ratio = test[["ratio"]], weak = rep(0,5),
+           mod2 = rep(1,5), mod1 = rep(0,5), 
+           strong = rep(0,5)),
+  moderate1 = new_data(train,5) %>% 
+    mutate(ratio = test[["ratio"]], weak = rep(0,5),
+           mod2 = rep(0,5), mod1 = rep(1,5),
+           strong = rep(0,5)),
+  strong = new_data(train,5) %>% 
+    mutate(ratio = test[["ratio"]], weak = rep(0,5),
+           mod2 = rep(0,5), mod1 = rep(0,5),
+           strong = rep(1,5)),
+  names_to = "Scenario"
+)
+forecast5 <- mod3.stock %>% 
+  forecast(new_data = scenarios5)
+
+train %>% autoplot(price, size = 1.5) +
+  autolayer(forecast5, size = 1.2, 
+            level = NULL) +
+  autolayer(test, price, color = "red",
+            size = 1.2) + 
+  labs(title = "Scenario Price Forecasts for Next 5 years") +
+  theme_bw()
+
+```
+
+The plot reveals that the weak regime more closely mirrors the prices observed in the last 5 years of the sample. Caution should be taken with interpreting these results as we used the observed (true) values for the reciprocal of the stocks-to-use ratio, $\frac{1}{x}$, for those years in our forecasts.^[For a refresher, please see the `ratio` variable computed in Section \@ref(clean-data).] In actuality, we would have to forecast those as well, or use expert judgement to come up with future values.
+
+
+## Model Evaluation
+
+Now that we have the three competing models, we need a more formal way of determining the "best" model. There are several such statistical tests but we will focus on 3 in particular.
+
+Before we do, it is worth defining the prediction error. The prediction error is:
+
+$$e_t = (p_t - f_t)$$
+
+Where $p_t$ is the actual price and $f_t$ is the forecast we made from each of the three methods above.
+
+We will next compute the Root Mean Squared Error (RMSE), Mean percentage error (MPE), and Mean Absolute Percentage Error (MAPE) as follows:
+
+$$ RMSE = \sqrt{\frac{1}{5} \sum_{t = 2016}^{2020}(e_t^2)}$$
+
+$$ MPE = \frac{1}{5} \sum_{t = 2016}^{2020}\bigg(\frac{e_t}{p_t}\bigg)\times 100 $$
+
+$$ MAPE = \frac{1}{5} \sum_{t = 2016}^{2020}\bigg|\frac{e_t}{p_t}\bigg|\times 100$$
+
+
+For simplicity, we will create a user defined function to achieve our calculations.
+
+```{r}
+selection <- function(actual, forecast){
+TT <-   length(actual)
+err <-  actual - forecast
+rmse <- sqrt((1/TT) * sum(err^2))
+mpe <- (1/TT)* sum(err/actual)*100
+mape <- 1/TT*sum(abs(err/actual))*100
+return(list("RMSE" = rmse,
+            "MPE" = mpe,
+            "MAPE" = mape))
+}
+```
+
+We can now use our function to compute the 3 statistics for each model. 
+
+```{r}
+r1 <- selection(actual = test[["price"]], 
+             forecast = f.mod1[[".mean"]])
+r2 <- selection(actual = test[["price"]], 
+             forecast = f.mod2[[".mean"]])
+r3 <- selection(actual = test[["price"]],
+             forecast = (forecast5 %>% 
+               filter(Scenario== "weak"))[[".mean"]])
+r4 <- selection(actual = test[["price"]],
+             forecast = (forecast5 %>% 
+               filter(Scenario== "moderate2"))[[".mean"]])
+r5 <- selection(actual = test[["price"]],
+             forecast = (forecast5 %>% 
+               filter(Scenario== "moderate1"))[[".mean"]])
+r6 <- selection(actual = test[["price"]],
+             forecast = (forecast5 %>% 
+               filter(Scenario== "strong"))[[".mean"]]    
+             )
+
+rbind("Trend" = r1, 
+      "RW + Drift" = r2, 
+      "Stocks/Use Weak" = r3,
+      "Stocks/Use Moderate2" = r4,
+      "Stocks/Use Moderate1" = r5,
+      "Stocks/Use Strong" = r6)
+
+```
+
+The decision rule requires that, under each test (the column), we choose the model with the statistic value closest to zero. RMSE and MAPE get rid of the sign of error by squaring or taking the absolute value, thus they indicate the average size of forecast error, regardless of direction.  MPE however, conserves the sign of error and indicates whether positive and negative errors dominate. 
+
+From our calculations above, the **Stocks/Use model under a weak-price regime** is preferred by all three model selection criteria. Further analysis of forecast errors may include Theil's U statistic to compare RMSE and MAPE to a naive forecast alternative and a test of bias to assess whether MPE is significantly different from zero. These various accuracy tests are discussed in Module \@ref(outlook).
+
+This [publication from ABARES](docs/ABARES Accuracy.pdf) provides additional examples (and measures) of accuracy evaluation for Australian forecasts.
+

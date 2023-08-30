@@ -1,0 +1,36 @@
+--- 
+title: "A Minimal Book Example"
+author: |
+  Olga Isengildina Massa and Shamar L. Stewart
+date: "August 2023"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+# url: your book url like https://bookdown.org/yihui/bookdown
+cover-image: images/cover.png
+description: |
+  This is a minimal example of using the bookdown package to write a book.
+  The HTML output format for this example is bookdown::gitbook,
+  set in the _output.yml file.
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+---
+
+# Preface {-}
+
+This training program is designed to enhance the technical skills and background knowledge of agricultural outlook analysts. This program was developed over 2021-2023 as part of the cooperative agreement between Virginia Tech and Economic Research Service (ERS) of the United States Department of Agriculture (USDA) targeted at enhancing the quality, communication and sustainability of the USDA commodity outlook program. This version focuses on more general materials that would be relevant for outlook analysts around the world and for the State of Maharashtra in India, in particular.
+
+The program covers both conceptual and applied topics focusing on modern tools relevant to agricultural outlook.  We demonstrate various approaches to forecasting and discuss the advantages and pitfalls of these methods.  
+
+## About the Authors {-}
+
+- [Olga Isengildina](https://aaec.vt.edu/people/faculty/Isengildina_Olga.html)
+- [Shamar Stewart](https://aaec.vt.edu/people/faculty/Stewart-Shamar.html)
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 
+  'fpp3', 'tidyUSDA' 
+), 'packages.bib')
+```

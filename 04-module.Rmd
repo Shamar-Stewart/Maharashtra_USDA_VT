@@ -1,0 +1,527 @@
+# Time Series Patterns
+
+So far, we have focused on pulling and visualizing data. However, we have not spoken about the **Patterns** that might exist and just what we look for in time series data.
+
+**Trend** $(T_t)$ 
+
+  - pattern exists when there is a long-term increase or decrease in the data. The trend may be produced, for example, by consistent population change, inflation, technological change, and productivity increases.
+
+**Cyclical** $(C_t)$
+
+  - series of wavelike pattern exists when data exhibit rises and falls that are not of fixed period (duration usually of at least 2 years). Changing economic conditions generally produce cycles.
+
+  - **In practice, cycles are often difficult to identify and are frequently regarded as part of the trend. In this case, the underlying general growth (or decline) component is called the trend-cycle.**
+
+**Seasonal** $(S_t)$  
+
+  - pattern exists when a series is influenced by seasonal factors (e.g., the quarter of the year, the month, or day of the week). 
+
+  - Seasonal variation refers to a more or less stable pattern of change that appears annually and repeats itself year after year.
+
+  - Seasonal patterns occur because of the influence of the weather or because of calendar-related events such as school vacations and national holidays.
+
+**Random/Irregular** $(I_t)$ 
+  - consists of unpredictable or random fluctuations. These fluctuations are the result of a myriad of events that individually may not be particularly important but whose combined effect could be large.
+
+```{block, type = "rmdnote"}
+Differences between seasonal and cyclic patterns
+
+ Seasonal pattern constant length; cyclic pattern variable length.
+ 
+ Average length of cycle longer than length of seasonal pattern.
+- Magnitude of cycle more variable than magnitude of seasonal
+pattern
+
+```
+
+
+## Cold Storage Data - Pork
+
+Let us shift focus to pulling monthly Cold Storage values for Pork (1983:2020).
+
+You will need your key from earlier. I will assume yours is stored using the `keyring` package.
+
+```{r}
+# Step 1: Supply your Key
+key <- keyring::key_get("tidyusda")
+
+# Step 2: Use the API to pull Pork Cold Storage
+pork <- tidyUSDA::getQuickstat(
+key = key, 
+program = "SURVEY", 
+sector = "ANIMALS & PRODUCTS",
+group = "LIVESTOCK",
+commodity = "PORK",
+category = "STOCKS",
+data_item = "PORK, COLD STORAGE, FROZEN - STOCKS, MEASURED IN LB",
+domain = "TOTAL",
+geographic_level = "NATIONAL",
+state = "US TOTAL",
+year = as.character(1983:2020)
+)
+
+# Step 3 & 4: Keep only the relevant columns and declare as tsibble object
+
+pork.ts <- pork %>% 
+# Convert the year + month index to a yearmonth object
+  mutate(date = yearmonth(paste(year,begin_code)),
+# divide Value by 1 million and save over original column
+         Value = Value/1000000) %>% 
+  select(date, Value) %>% 
+as_tsibble(index = date)
+
+pork.ts
+
+```
+
+```{r}
+# Step 5: Produce a time plot
+pork.ts %>% autoplot(Value, color = "darkred") + 
+  labs(title = "Pork Cold Storage", 
+       subtitle = "(Million pounds)") + 
+  theme_bw()
+```
+
+## Exercise {-}
+
+- Can you use the functions we covered [earlier](#viz) to explore the seasonal properties of this data?
+
+- What would you conclude regarding potential seasonality and/or trend.
+
+
+## Annualized data {-}
+
+We might be interested in the annual mean cold storage instead. Again, there are several ways to do this but we will stick with the `tidyverse` conventions.
+
+```{r}
+pork.annual <- pork.ts %>% 
+# Group observations on year index
+  index_by(year = year(date)) %>% 
+# Compute the annual means
+  summarise(Value = mean(Value))
+
+pork.annual
+```
+
+Now, you can produce a plot of the annual series.
+
+```{r}
+pork.annual %>% autoplot(Value, color = "darkgreen") + 
+  labs(title = "Annual Pork Cold Storage", 
+       subtitle = "Million pounds", 
+       x = "Year",
+       caption = "Source: NASS QuickStat") + 
+  theme_bw() 
+```
+
+## Moving Averages
+
+Sometimes it could be helpful to see where the current series is relative to its historical average. Moving averages can be helpful in achieving this. 
+
+More formally, moving averages allow us to extract the long-term trend (and cycle) in the data. 
+
+Returning to our annual pork cold storage series, `pork.annual`, we can generate a centered 3-year moving averages.
+
+```{r}
+sma3 <- pork.annual %>% mutate(
+    `3-MA` = slider::slide_dbl(Value, mean,
+                .before = 1, .after = 1, 
+                .complete = TRUE)
+  )
+sma3
+```
+
+Now we can produce a plot of the annual series and the simple moving average series.
+
+```{r, warning=FALSE}
+sma3 %>% autoplot(Value) + 
+  autolayer(sma3,`3-MA`, color = "darkorange") + 
+  labs(title = "Pork Cold Storage", subtitle = "MA (3)") +
+  theme_bw()
+```
+
+The trend-cycle component computed by the simple moving average is much smoother than the data itself. In fact, the choice of the "window" or number of data points used for smoothing will play a role in how smooth, or jagged our trend-cycle is. A larger order means smoother curves as it is less sensitive to extreme events during any particular period.
+
+
+Repeating for multiple orders:
+
+```{r}
+smas <- pork.annual %>% mutate(
+    `3-MA` = slider::slide_dbl(Value, mean,
+                .before = 1, .after = 1, 
+                .complete = TRUE),
+    `5-MA` = slider::slide_dbl(Value, mean,
+                .before = 2, .after = 2, 
+                .complete = TRUE),
+    `7-MA` = slider::slide_dbl(Value, mean,
+                .before = 3, .after = 3, 
+                .complete = TRUE)
+  )
+smas
+```
+
+It is not coincidental that all the orders used here are odd. If we use an even number (say the case of working with quarterly data), we are required to do double smoothing. We leave this as an exercise for the interested reader.
+
+Visualizing the full model results
+
+```{r, warning=FALSE}
+smas %>% 
+  pivot_longer(-c(year,Value), 
+               names_to = "Series",
+               values_to = "mean") %>% 
+  ggplot(aes(x = year, y = mean, color = Series)) +
+  geom_line() +
+  geom_line(aes(x = year, y = Value), color = "black") +
+  facet_wrap(~Series, ncol = 2) + 
+  guides(color = "none") +
+  theme_bw()
+```
+
+## Model Deviation (Error) {-}
+
+If we were interested in visualizing how often our actual data deviates from the trend cycle, we could calculate the difference between the two.
+
+```{r}
+sma3 %>%
+  mutate(error = Value - `3-MA`) %>% 
+  autoplot(error) +
+  geom_point() +
+  geom_abline(slope = 0, lty = "dashed", 
+              color = "red") +
+  labs(title = "Forecast Errors - MA(3)") +
+  theme_bw()
+```
+
+## Final Words: Moving Averages {-}
+
+- The forecast will lag turning points, if it captures them at all. There is a tendency to oversmooth at high orders.
+
+- In general, MAs can be used for forecasting only in series that lack seasonality and trend. There are a few popular methods for removing trends (de-trending) and removing seasonality (deseasonalizing) from a series:
+
+  - Advanced exponential smoothing methods, 
+  - Regression models, and 
+  - Differencing. 
+
+- In the case of the moving averages, we assigned equal weights to the most recent observations as well as those far into the past. We can quickly see how this becomes problematic when  forecasting data with structural breaks (changes drastically over time) etc.
+
+## Simple Exponential Smoothing (Again)
+
+So far, we learned that **this method is suitable for forecasting data with no clear trend or seasonal pattern.**
+
+Since the simple exponential smoothing model does not account for a potential trend nor seasonality, we saw that the out of sample forecast will be a flat line. Thankfully, there are other exponential smoothing models that account for either, and both, patterns.
+
+### Exponential Smoothing Adjusted for Trend
+
+**Holt's Method**
+
+- allows for evolving local linear trends in a time series
+- can be used to generate forecasts
+- Advantage: flexible to track changing in level and trend
+
+```{r}
+pork.annual %>%  
+  model(holt = ETS(Value ~ error("A") + trend("A") + season("N"))) %>% 
+  forecast(h = "15years") %>% 
+  autoplot(pork.annual) + 
+  labs(title = "Pork Cold Storage (Annual)",
+       subtitle = "Holt's Model") +
+  theme_bw()
+```
+
+```{block, type = "rmdnote"}
+Our choice of 15 years is strictly for illustration purposes. This is intended to help with understanding the disadvantages of a standard Holt model and for comparison with the damped trend, below.
+```
+
+**Holt’s Linear Trend Method with a Damped Trend**
+
+- The forecasts generated by Holt’s linear method display a constant trend (increasing or decreasing) indefinitely into the future. 
+- Empirical evidence indicates that these methods tend to over-forecast, especially for longer forecast horizons.
+
+```{r}
+pork.annual %>%  
+  model(holt_damped = ETS(Value ~ error("A") + trend("Ad") + season("N"))) %>% 
+  forecast(h = "15years") %>% 
+  autoplot(pork.annual) +
+    labs(title = "Pork Cold Storage (Annual)",
+       subtitle = "Holt's Model with Damped Trend") +
+  theme_bw()
+```
+
+## Exponential Smoothing Adjusted for Trend & Seasonality
+
+**Holt-Winter's Exponential Smoothing Methods**
+
+- Holt-Winter's method provides an easy way to account for seasonality when data have a seasonal pattern.
+
+We can now shift focus to the monthly cold storage data stored earlier, `pork.ts`.
+
+```{r}
+pork.ts %>%  
+  model(holtwinters = ETS(Value ~ error("A") + trend("A") + season("A"))) %>% 
+  forecast(h = "2years") %>% 
+  autoplot(pork.ts, size = 1) +
+    labs(title = "Pork Cold Storage (Monthly)",
+       subtitle = "Holt-Winter's Model") +
+  theme_bw()
+```
+
+## Time Series Regression Analysis
+
+For this section, we will maintain our focus on the monthly pork cold storage series. Declaring our series as a `tsbibble` object earlier has a number of advantages. For example, it removes the need to manually create some of the variables we will need in this section. In particular, we can estimate regresssions using trends and seasonal dummies using the `trend` and `seasons` command in the `tslm` function.
+
+### Accounting for (Linear) Trends
+
+We can introduce a trend by including $x_t = t$ as a regressor
+
+\begin{equation}\tag{1}
+y_t = \beta_0 + \beta_1 t + \varepsilon_t
+\end{equation}
+
+where $t = 1, 2, \ldots, T$. Here $T$ is the total number of years in the dataset. 
+
+We can estimate the linear trend model as follows:
+
+```{r}
+model1 <- pork.ts %>% 
+  model(TSLM(Value ~ trend()))
+
+#View estimated parameters
+model1 %>% tidy()
+```
+
+In the codes above, we estimate the regression implied by Equation (1) and store it as `model1`. Next, we used the `tidy()` function to extract the stored regression results.
+
+The value on the trend term implies that, on average, pork cold storage increases by `r (model1 %>% tidy())[2,"estimate"] %>% round(3)` million pounds per month.
+
+33333 Idea
+**Digression: How would we account for a potential quadratic trend trend model?**
+
+Our model would look like
+
+$$y_t = \beta_0 + \beta_1 t + \beta_2 t^2 + \varepsilon_t$$
+We can perform mathematical manipulations in the time series linear model (`TSLM`) function using `I()` . Alternatively, we could create a squared trend variable manually. 
+
+The former can be coded quickly as
+
+```{r}
+model.sqr <- pork.ts %>%
+  model(TSLM(Value ~ trend() + I(trend()^2)))
+
+model.sqr %>% tidy()
+```
+
+
+### Accounting for Seasonality 
+
+We can test/account for seasonality in the monthly series by including monthly dummies using the `season()` argument in the `TSLM` command. 
+
+***
+**What is a Dummy?**
+
+If a categorical variable takes only two values (e.g., ‘Yes’ or ‘No’), then we can construct a numerical variable taking value 1 if yes and 0 if no, for example. This is called a **dummy variable**.
+
+Suppose we have quarterly retail sales data and suspect that there might be seasonality in our data (e.g. Q4 might have unusually high sales figures since we have Thanksgiving, Black Friday, Cyber Monday, and Christmas in Nov. & Dec.)
+
+\scriptsize
+|         | $Q_{1,t}$ | $Q_{2,t}$ | $Q_{3,t}$ |
+|---------|:---------:|:---------:|:---------:|
+| 2000 Q1 |     1     |     0     |     0     |
+| 2000 Q2 |     0     |     1     |     0     |
+| 2000 Q3 |     0     |     0     |     1     |
+| 2000 Q4 |     0     |     0     |     0     |
+| 2001 Q1 |     1     |     0     |     0     |
+| 2001 Q2 |     0     |     1     |     0     |
+| 2001 Q3 |     0     |     0     |     1     |
+| 2001 Q4 |     0     |     0     |     0     |
+| \vdots  |   \vdots  |   \vdots  |   \vdots  |
+
+**Caution:** When estimating our regressions, we must leave out one of the dummy variables. The omitted dummy is referred to as the **base/reference** group. 
+
+For example, in our monthly series, we will omit `season()year1` or January. **The value on the remaining monthly dummies are all relative to January**.
+
+***
+
+The seasonal model is estimated as
+
+
+\begin{equation}\tag{2}
+y_t = \beta_0 + \beta_1 \underset{season()year2}{Feb} + \beta_2 \underset{season()year3}{March} + \ldots + \beta_{11} \underset{season()year4}{Dec} +  \varepsilon_t
+\end{equation}
+
+where $\text{Feb}, \text{March}, \ldots, \text{Dec}$ are monthly dummies that take a value of 1 if the observation corresponds to that month and $0$ otherwise.
+
+```{r}
+model2 <- pork.ts %>% 
+  model(TSLM(Value ~ season()))
+
+model2 %>% report()
+```
+
+Our regression results suggest that, on average, pork cold storage for February is `r (model2 %>% tidy())[2,"estimate"] %>% round(3)` million pounds *higher* than January. However, June to December are persistently lower than January (looking at the sign here).
+
+The mean value for January  is represented by the intercept. The average cold storage for January is `r (model2 %>% tidy())[1,"estimate"] %>% round(3)` million pounds.
+
+If we would like to determine the mean values for the remaining months, we need only add the intercept to the value of estimate for that month. For example, the mean pork cold storage for August would be `r ((model2 %>% tidy())[1,"estimate"] + (model2 %>% tidy())[8,"estimate"]) %>% round(3) ` million pounds.
+
+## Accounting for Seasonality and Trend
+
+\begin{equation}\tag{3}
+y_t = \beta_0 + \beta_1 Feb + \beta_2 March + \ldots + \beta_{11} Dec + \beta_{12} t + \varepsilon_t
+\end{equation}
+
+We estimate Equation (3) by combining the 2 code chunks earlier.
+
+```{r}
+model3 <- pork.ts %>% 
+  model(TSLM(Value ~ season() + trend()))
+
+model3 %>% report()
+```
+
+## Visualizing the model fits 
+
+We can use the `augment` command to see all the elements stored in our model fits earlier.
+
+```{r}
+model1 %>% augment()
+```
+
+It might prove helpful to visualize a plot of the actual data against the fitted values. We can therefore return to our select function from earlier.
+
+```{r}
+model1 %>% augment() %>%
+#plot the actual series
+  ggplot(aes(x = date, y = Value)) +
+  geom_line() +
+# Add fitted values column
+  geom_line(aes(y = .fitted),color = "darkblue",
+            size = 1) +
+  labs(title = "Forecasts - Trend Model") +
+  theme_bw()
+```
+
+Let us merge all the codes above to extract the fitted values of our three models and produce a single plot that allows us to visualize the data and the fits of all the models.
+
+```{r}
+full.mod <- pork.ts %>% 
+  model(trend = TSLM(Value ~ trend()),
+        season = TSLM(Value ~ season()),
+        trend_season = TSLM(Value ~ trend() + season())) 
+
+full.mod %>% augment()
+
+full.mod %>% augment() %>% 
+  ggplot(aes(x = date, y = Value)) +
+  geom_line() +
+  geom_line(aes(y = .fitted, color = .model),
+                size = 0.7) +
+  labs(title = "Model Fits",
+       subtitle = "Pork Cold Storage") +
+  theme_bw()
+  
+```
+
+Without formal testing (just from eyeballing the graph), it appears that the Trend+seasonal dummies model does the best job of forecasting the monthly series. We will cover formal testing in a later module.
+
+We can use the `forecast` function to create out-of-sample forecasts of our 3 models. 
+
+```{block, type = "rmdnote"}
+
+It is worthwhile to note that the trend value and dummies are always known into the future so we will not have a problem with unknown data at the time of forecasting.
+
+Our forecast will become a lot more complicated when we have other economic variables on the right hand side. We will also need forecasts of their future values, before we are able to forecast our true variable of interest.
+```
+
+```{r}
+pork.forecast <- full.mod %>% forecast(h = "2 year")
+pork.forecast 
+
+pork.forecast %>% 
+  autoplot(pork.ts, level = NULL,
+           size = 0.8) +
+  labs(title = "Forecasted Pork cold Storage", 
+       subtitle = "Next 24 Months") + 
+  guides(color = guide_legend(title = "Forecast")) +
+  theme_bw()
+```
+
+## Autoregressive Models
+
+### AR(1) model
+Sometimes it might be useful to use past values of $y$ to help in predicting the $y$'s future values. Such models are referred to as Auto-regressive lag models.
+
+For example:
+
+The price in the next period might be a function of the price observed today.
+
+$$p_t = \alpha + \beta p_{t-1} + \varepsilon_t$$
+where $p_t$ could refer to prices (value) of our frozen pork stock.
+
+Since this model includes only 1 lag of the $y$ variable, this is referred to as an AR(1) model.
+
+We will use the `lag` function to quickly create our lagged variables.
+
+```{r}
+pork.l1 <- pork.ts %>% mutate(l.pork = lag(Value,1))
+pork.l1
+```
+
+Now to estimate the equation above
+
+```{r}
+mod.ar1 <- pork.l1 %>% 
+  model(ar1 = TSLM(Value ~ l.pork))
+
+mod.ar1 %>% report()
+```
+
+### Visualizing the AR(1) model fit {-}
+
+We can use the `autoplot` to visualize the fit of the AR(1) model.
+
+```{r}
+mod.ar1 %>% augment() %>% 
+  ggplot(aes(x= date, y = Value)) +
+  geom_line() +
+  geom_line(aes(y = .fitted), color = "red") +
+  labs(title = "AR(1) Model Fit") + 
+  theme_bw()
+```
+
+```{block, type = "rmdnote"}
+- At the end of your sample, you will be able to estimate a 1-step ahead out-of-sample forecast as all values are known. 
+
+- As you move beyond that single period, you will not be able to forecast without telling `R` what your guess of the new data will be. 
+
+- You could circumvent this issue using scenario based forecasts. That is however beyond the scope of this module.
+```
+
+### AR(p) model
+We could generalize to an AR(p) model. 
+
+\begin{align*}
+y_t &= \alpha + \beta_1 y_{t-1} + \beta_2 y_{t-2} + \ldots + \beta_p y_{t-p} + \varepsilon_t\\
+\longrightarrow y_t &= \alpha + \beta_i \sum_{i = 1}^{p} y_{t-p} + \varepsilon_t
+\end{align*}
+
+The choice of the optimal $p$ can be determined by a number of model selection criteria (this is the focus of a later module).
+
+## Exercise {-}
+
+Using the `tidyUSDA` package, import *price* data for a commodity of your choice from 1990 -- 2020.
+
+Following the forecasting techniques in this and the previous module:
+
+1. obtain the monthly series declared as a `tsibble` object with the appropriate index.
+2. present a time series plot of the data.
+3. comment on what patterns you observe from part 2.
+4. produce a forecast for the next 2 years using 
+    - Holt's Method
+    - Holt-Winter's Method
+5. present the model summaries from the following model using a regression approach 
+    - Trend Model
+    - Seasonal Model (using dummies)
+    - Trend and Seasonal Model
+6. present a single graph of the data against the fitted values of each of the three models from your results in 5. Which model appears to do the best job at predicting your price series?
+7. produce a forecast for the next 2 years using your preferred model in 6.
+

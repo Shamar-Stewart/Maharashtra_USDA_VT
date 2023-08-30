@@ -1,0 +1,65 @@
+# Public Agricultural Outlook Programs: Structure, Role and Impact {#public}
+
+Agricultural markets are characterized by pervasive uncertainty regarding future prices and quantities.  The uncertainty can be attributed largely to a combination of a highly inelastic demand for food and a production technology that is subject to vagaries of nature such as weather, pests, and biological lags.  This combination of factors results in a set of market prices that may vary substantially within a year and from year to year.
+
+The objective of public situation and outlook programs is to facilitate effective decision-making in this uncertain agricultural environment, where effective decision-making is defined as economic actions that result in higher profits, utility, and social welfare than otherwise would occur.  The situation component of public programs is devoted to the production and collection of data, such as crop size, inventories of livestock, and producer acreage intentions.  The outlook component is directed towards interpretation of the data and economic analysis.
+
+Economists believe that public agricultural forecasts help markets work more efficiently, ensuring reliable source of information. These forecasts help avoid the abuse of market power by large companies, leveling the playing field across market participants. Agricultural outlook programs also enable anticipatory policy development by the government.  
+It is important to ensure that agricultural forecasts are provided by the government as market information is a public good and will be under-supplied by public sources. However, it is also important to find a balance on what forecasts are provided, how they are prepared and delivered given the technological revolution and shifting boundaries between public and private work.
+
+Public situation and outlook programs have a relatively long history.  For example, the first national meeting generally is thought to be the U.S. Department of Agriculture's Outlook Conference held on April 20, 1923. Since that time, situation and outlook programs have expanded considerably in scope, both at the federal level under the auspices of the U.S. Department of Agriculture (USDA) and at the state level within Land Grant Colleges of Agriculture.  Expenditure on these programs in the US has been substantial. The Office of Management and Budget reported that out of 
+
+>> “6.6 billion in total direct funding for major statistical programs across all Federal agencies in 2012, USDA accounted for about $521 million, or 7.8% of the total” (C-FARE, 2013, p. 4) 
+
+Over 30% of these funds were allocated to the National Agricultural Statistical Service (NASS), an agency primarily responsible for data collection and dissemination.  
+
+Because of their relevance and importance these forecasts sometimes become a center of controversy. One example begins in 1929 when the U.S. Congress singled out cotton in a notable policy restriction.  Apparently, two years earlier, one of USDA’s routine monthly forecasts had projected lower cotton prices.  When this forecast proved accurate, some in the cotton industry assumed that the forecast caused the price decline. This led to a political reaction where the USDA was banned from forecasting (only) cotton prices, a policy that remained in place until the 2008 Farm Bill. 
+
+Another example includes corn futures prices posting their biggest drop in three years after the USDA estimated a bigger-than-expected crop on August 12, 2019, despite floods that slowed planting (Huffstutter and Polansek, 2019). This price drop caused an angry reaction from a farmer who threatened a USDA employee, which prompted USDA to pull its staff from a crop tour.  While this report turned out to be accurate and USDA defended its methods, situations like this demonstrate the importance and the impact of USDA outlook reports.
+
+The materials in this module demonstrate how agricultural outlook programs differ around the world. The first is the presentation by Jennifer Bond and Ann Effland that discusses the history, structure and the changing role of the outlook program in the United States. The US public outlook program is one of the strongest and best funded in the world and serves as a benchmark for other outlook programs.
+
+[![ERS-Outlook History](images/ERS_Outlook_History.png "Click here for pdf")](docs/ERS-Outlook History Presentation_adopted.pdf)
+
+Our second example describes the history, changing role and the current approaches used for the public sector forecasting in Australian agriculture.  Just like in the US, the role of the public forecasting system has changed significantly over time due to changing priorities and resources. The current public forecasting system in Australia is much smaller than the US and therefore serves a different function. See ABARES Approach to Forecasting [here](docs/ABARES Approach to Forecasting.pdf).
+
+The similarities, differences and emerging issues in public outlook programs around the world were discussed further in a workshop conducted on October 14, 2020, which was hosted by Olga Isengildina Massa and moderated by Maurice Landes. The speakers included:
+
+- Rohan Nelson, Program Leader, Agricultural Forecasting and Policy | Agriculture and Trade Branch | ABARES, Australia.
+
+- Anastassios Haniotis, Director, DG Agriculture, European Union.
+
+- Stephan Gagne, Deputy Director, Agriculture and Agri-Food Canada, Canada.
+
+- Mark Jekanowski, Chairman, World Agricultural Outlook Board, USDA, USA.
+
+Comments were also provided by Utpal Vasavada, the Associate Direction of the Market and Trade Economics Division, USDA, USA. 
+
+>>Insert workshop recording here
+
+After viewing the workshop recording it is important to reflect and discuss how the issues mentioned in the workshops are similar or different from the situation in your country and the scale and resources available for public agricultural outlook in your case.  How you can learn from the experiences in other countries to build the best possible outlook program that would be most suitable to your situation?
+
+
+```{block, type = "rmdtip"}
+**Reflection Activity**
+
+1.	Have there been recent changes in the outlook program of your agency?  What has been done?  What new products or practices were implemented?
+2.	Why?  What issues were addressed? What are the emerging changes in outlook needs?
+3.	What resources were required to implement these changes? 
+4.	What are the different platforms and timelines for publishing and dissemination?
+5.	What staff and training needs had to be addressed to implement these changes?
+6.	Are you using USDA outlook products?  How?  Has this changed?
+7.	How do you assess commodity outlook information needs?
+8.	How do you assess the impact of commodity outlook products?
+9.	How do you collect feedback regarding the relevance of existing products?
+
+```
+
+
+## References {-}
+
+- Huffstutter, P., and Tom Polansek. 2019. “Farmer’s Threat Prompts U.S. Agriculture Department to Pull Staff from Crop Tour.” Available at: https://www.reuters.com/article/us-usa-grainstour- threat-idUSKCN1VB242
+
+- The Council on Food, Agricultural & Resource Economics (C-FARE). (2013). Value of USDA Data Products. Washington, DC.
+
+

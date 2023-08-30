@@ -1,0 +1,573 @@
+# Balance Sheet Forecasting
+
+So far, we have discussed forecasting of a single variable at a time. However, forecasting practices are often not singular or independent. 
+
+A good example of it is forecasting supply and use categories within a balance sheet published in a WASDE report. While individual forecasting approaches may (need to) be applied, at the end of the day it is essential for the balance sheet to balance and individual forecasts to fit within a balance sheet structure and agreement. Furthermore, WASDE forecasts should be consistent with other reports, such as Grain Stocks, Export Sales and ethanol production. 
+
+In this module we will discuss forecasting approaches required to consolidate different variable within a forecasting system, such as share of total, and pace of use approaches. These approaches are particularly relevant for utilization forecasts as they are constrained by forecasted supply levels.
+
+A balance sheet is structured as follows:
+
+\begin{align*}
+\text{Total Supply} &= \text{Beginning Stocks} + \text{Production} + \text{Imports} \\
+\text{Total Use} &= \text{Domestic Use} + \text{Exports} \\
+\text{Ending Stocks} &= \text{Total Supply} - \text{Total Use}\\
+\end{align*}
+
+Furthermore, WASDE forecasts should be consistent with other reports, such as Grain Stocks, Export Sales and ethanol production. 
+
+In this module we will discuss forecasting approaches required to consolidate different variables within a forecasting system, such as share of total, and pace of use approaches.  These approaches are particularly relevant for utilization forecasts as they are constrained by forecasted supply levels.
+
+## Supply Forecasts
+
+### Production
+
+Balance sheet forecasting typically starts on the supply side with forecasting yield, as we did in the last module.  Once the yield forecast is produced, it becomes a foundation of a production forecast:
+
+$$ \text{Production} = \widehat{\text{yield}} \times \widehat{\text{harvested acreage}}$$. 
+
+In order to get a forecast of the `harvested acreage`, `planted acreage` is multiplied by the average **loss ratio** over the recent period.  The loss ratio is calculated as the ratio of harvested to planted acreage and describes the share of the planted acreage that is harvested.
+
+\begin{align*}
+\text{Loss Ratio} &= {\text{Harvested Acreage}\over \text{Planted Acreage}}\\
+\implies \text{Harvested Acreage} &= \text{Loss Ratio}\times \text{Planted Acreage}
+\end{align*}
+
+### Activity I: Forecasting Corn Production 
+
+I. Download the **planted** and **harvested** data for `CORN` from Quick stats for 1986--2021, inclusive. 
+
+- Calculate the average loss ratio over the last 5 years.  
+
+- Calculate 2022 production estimate. Assume an estimate crop yield of **177 bushels/acre**.
+
+In a single step, we will
+
+i. Pull the data,
+ii. Keep only the annual values  and renamed `Value` as `harvest`,
+iii. Declare as a `tsibble` object,
+iv. Store the variable also as `harvest`.
+
+```{r}
+## Downloading Harvest Data for Corn (1986 -- 2021)
+harvest <- tidyUSDA::getQuickstat(
+  key = key,
+  program = "SURVEY",
+  sector = "CROPS",
+  group = "FIELD CROPS",
+  commodity = "CORN",
+  category = "AREA HARVESTED",
+  data_item = "CORN, GRAIN - ACRES HARVESTED",
+  domain = "TOTAL",
+  geographic_level = "NATIONAL",
+  state = "US TOTAL",
+  year = as.character(1986:2021)) %>% 
+  filter(reference_period_desc == "YEAR") %>% 
+  rename(harvest = Value) %>%
+  select(c(year, harvest)) %>% 
+  as_tsibble(index = year)
+
+harvest
+```
+
+II. Similarly, for the planted acreage, we will
+
+i. Pull the data,
+ii. Keep only the annual values  and renamed `Value` as `planted`,
+iii. Declare as a `tsibble` object,
+iv. Store the variable also as `planted.`
+
+```{r}
+## Downloading Planted Acreage Data for Corn (1986 -- 2021)
+planted <- tidyUSDA::getQuickstat(
+  key = key,
+  program = "SURVEY",
+  sector = "CROPS",
+  group = "FIELD CROPS",
+  commodity = "CORN",
+  category = "AREA PLANTED",
+  data_item = "CORN - ACRES PLANTED",
+  domain = "TOTAL",
+  geographic_level = "NATIONAL",
+  state = "US TOTAL",
+  year = as.character(1986:2021)) %>% 
+  filter(reference_period_desc == "YEAR") %>%  
+  rename(planted = Value) %>%
+  select(c(year, planted)) %>%
+  as_tsibble(index = year)
+planted
+
+```
+
+After combining both data sets, we are able to compute the historical loss ratios. We can also compute the 5-year moving averages of the loss-ratio. This will help with the second portion of the activity.
+
+```{r}
+corn <- left_join(harvest, planted, by = join_by(year)) %>% 
+  mutate(loss.ratio = harvest/planted, 
+  `5-MA_loss` = slider::slide_dbl(loss.ratio, mean, .before =4, .after = 0,
+                    .complete = TRUE)
+  )
+
+corn
+
+```
+
+Now to produce some quick plots:
+
+```{r}
+corn %>% ggplot() + 
+  geom_line(aes(x = year, y = harvest/1e6, 
+                color = "Harvest"), size = 1.1) +
+  geom_line(aes(x = year, y = planted/1e6, 
+                color = "Planted"), size = 1.1) + 
+  labs(title = "Acres Planted & Harvested",
+       y = "(million Acres)", x = NULL) +
+  guides(colour = guide_legend("")) +
+  theme_bw()
+```
+
+Now for the loss ratio:
+
+```{r warning=FALSE}
+corn %>% ggplot() + 
+  geom_line(aes(x = year, y = loss.ratio, 
+                color = "Loss Ratio"), size = 1.1) + 
+  geom_line(aes(x = year, y = `5-MA_loss`, 
+                color = "5-year Moving Average"),
+            size = 1.1) + 
+  labs(title = "Annual Loss Ratio", 
+       y = NULL, x = NULL) +
+  guides(colour = guide_legend("")) +
+  theme_bw()
+```
+
+
+We can now forecast the 2022 value of Production. At the time of writing, the planted acreage was 88,579,000.
+
+```{r}
+yield.22 <- 177
+planted.22 <- 88579000
+harvest.22 <- last(corn$`5-MA_loss`) * planted.22
+prod.22 <- yield.22*harvest.22
+prod.22
+```
+
+### Other Supply Components
+
+Once the `production forecast` is generated, it is added to `beginning stocks` and `imports` forecasts to result in `total supply`. 
+
+- Beginning stocks are equivalent to ending stocks from the previous marketing year. 
+
+- Imports are a relatively small category forecasted based on historical trends.  The [Feed Grains](http://www.ers.usda.gov/data-products/feed-grains-database/feed-grains-yearbook-tables.aspx#26780) database maintained by the USDA ERS is a great source of historical data for WASDE forecasts.
+
+### Activity II 
+
+- Download the data from Feed Grains database into `R`.  Our focus will be on the Corn Table (Table4) in Sheet \#5 of the workbook.
+
+- Using the marketing year (MY) values, plot the data relating to imports. 
+  - What patterns do you observe in annual data?
+  - What would be your best estimate for 2022?
+
+- Calculate total supply for 2022.  Total supply becomes an upper bound for utilization forecasts. 
+
+To reduce the risk of errors and additional steps, we can pull the `.xlsx` file directly into `R` from the website. We will utilize the `openxlsx` package, so this would be a good time to install it if you haven't previously. 
+
+```{r, tidy=TRUE}
+#Get the Source file hyperlink
+link <- "https://www.ers.usda.gov/webdocs/DataFiles/50048/Feed%20Grains%20Yearbook%20Tables-All%20Years.xlsx?v=3507.6"
+
+## The corn data is the 5th sheet of the file and the relevant data starts on row 4.
+grains.corn <- openxlsx::read.xlsx(link, sheet = 5, startRow = 4)
+```
+
+For our purpose, we will work with the marketing year (`MY`) data. We can therefore filter the rows to keep only those with the content `MY Sept-Aug`. Since we will lose the years, I will recreate that using the `row_number` command offset by 1974 (the year just before the first observation). Last, drop the value for 2022.
+
+```{r}
+grains.final <- grains.corn %>% 
+  filter(X2 == "MY Sep-Aug") %>% 
+#rename the first column as year
+  rename(year = X1) %>% 
+# Add proper years to each row 
+  mutate(year = row_number() + 1974) %>% 
+#drop the X2 column
+  select(-c(X2)) %>%  
+#Drop years after 2021
+  filter(year < 2022)
+
+grains.final %>% head()
+```
+
+With all the data imported, we can turn our attention to the `imports` category.
+
+```{r}
+grains.final %>% ggplot() + 
+  geom_line(aes(x = year, y = Imports), color = "maroon",
+            size = 1.1) + 
+  labs(y = "million bushels", 
+       title = "Supply - Corn Imports", 
+       x = NULL) +
+  theme_bw()
+```
+
+Corn imports have remained fairly low across the sample. There is a slight positive trend in the data. 2012 was an outlier with exports reaching almost 160 million bushels.
+
+Given the dynamics of this graph, our estimate for 2022, using expert judgement, might vary. A feasible estimate could be the average of the last 5-years. 
+
+```{r}
+mean.imports <- tail(grains.final$Imports, 5) %>% mean()
+mean.imports
+```
+Another would be to use a naïve estimate. 
+
+```{r}
+naive.imports <- last(grains.final$Imports)
+naive.imports
+```
+
+The `Imports` component forms such a small portion of the Total Supply category that we need not get too involved in its forecast.
+
+We are now ready to provide a forecast of Total Supply for 2022. Recall that the beginning stocks value for 2022 is 2021's ending stocks.
+
+```{r}
+TS.22 <- prod.22 + 
+  last(grains.final$Ending.stocks) + 
+  naive.imports 
+TS.22
+```
+## Utilization forecasts
+### Top-down approach. General components 
+
+Utilization categories typically include two components: domestic use and exports. One way to forecast utilization is to start with a forecast of total disappearance, which is then allocated to predicted shares of domestic use and exports. Alternatively, various utilization components are forecasted as proportions of total supply. We refer to this as a top-down approach.
+
+
+### Activity III 
+
+- Using the data from the Feed Grains database from earlier, plot the data for `total supply`, `total disappearance`, `total domestic use` and `exports`. 
+  - Discuss patterns in the annual data. 
+
+- Next, we will plot each category as a percent of `total supply.` 
+  - Again, discuss the patterns in the data.
+
+- How would you produce an estimate for each category for 2022 based on expected share of total supply?
+
+
+
+```{r}
+grains.final %>% ggplot() + 
+  geom_line(aes(x = year, y = `Total.supply.2/`, 
+                color = "Total Supply"), size = 1.1) + 
+  geom_line(aes(x = year, y = `Total.disappearance.2/`, 
+                color = "Total Disappearance"), size = 1.1) +
+  geom_line(aes(x = year, y = `Total.domestic.use.2/`, 
+                color = "Total Domestic Use"), size = 1.1) +
+  geom_line(aes(x = year, y = Exports, 
+                color = "Exports"), size = 1.1) +
+  labs(title = "Supply vs Use", y = "million bushels",
+       x = NULL) + 
+  guides(color = guide_legend("Component")) +
+  theme_bw() +
+  theme(legend.position = "bottom")
+  
+```
+
+```{r}
+grains.final<- grains.final %>% 
+## Create the proportions
+### Disappearance
+mutate(prop.disp = `Total.disappearance.2/`/(`Total.supply.2/`),
+### Domestic use
+prop.dom = `Total.domestic.use.2/`/(`Total.supply.2/`),
+### Exports
+prop.export = Exports/(`Total.supply.2/`)
+)
+
+grains.final %>% head()
+
+```
+
+```{block, type = "rmdnote"}
+On average, it appears that exports follow a constant trend-line with variation around the mean produced by years of surplus or scarcity. The drought year 2012, for example is clearly visible as an exceedingly low export year. 
+```
+
+
+We can now visualize the dynamics of the proportions over time.
+
+```{r}
+grains.final %>% ggplot() + 
+  geom_line(aes(x = year, y = prop.disp, 
+                color = "Total Disappearance"), size = 1.1) +
+  geom_line(aes(x = year, y = prop.dom, 
+                color = "Total Domestic Use"), size = 1.1) +
+  geom_line(aes(x = year, y = prop.export, 
+                color = "Exports"), size = 1.1) +
+  labs(title = "Use as proportions of Total Supply", 
+       y = "%", x = NULL) + 
+  guides(color = guide_legend("Components")) +
+  theme_bw() +
+  theme(legend.position = "bottom")
+
+```
+
+When exports are viewed as a proportion of production, we see a pronounced downward trend. This is due to the increasing share of production allocated to the Food, seed, and Industrial category. Exports is the most price sensitive category due to strong international competition. 
+
+### Top-down approach. Specific components
+
+### Activity IV {-}
+
+- Plot and examine the dynamics of the components of the `Total Domestic Use` category (FAI, Seed, Feed and residual). 
+  - Compute and plot their respective ratios as a percentage of Total Supply.
+  
+- Produce a forecast of Total Use and Ending Stocks. 
+  
+  
+```{r}
+grains.final %>% ggplot() + 
+  geom_line(aes(x = year, y = `Food,.alcohol,.and.industrial.use`, 
+                color = "Food, alcohol, and industrial use"), size = 1.1) +
+  geom_line(aes(x = year, y = Seed.use, 
+                color = "Seed Use"), size = 1.1) +
+  geom_line(aes(x = year, y = Feed.and.residual.use, 
+                color = "Feed and Residual Use"), size = 1.1) +
+  labs(title = "Total Domestic Use", 
+       y = "%", x = NULL) + 
+  guides(color = guide_legend("Components")) +
+  theme_bw() +
+  theme(legend.position = "bottom")
+```
+
+Computing the relative proportions:
+```{r}
+grains.final<- grains.final %>% 
+## Create the proportions
+### FAI
+mutate(prop.fai = `Food,.alcohol,.and.industrial.use`/(`Total.supply.2/`),
+### Seed Use
+prop.seed = Seed.use/(`Total.supply.2/`),
+### Exports
+prop.feed = Feed.and.residual.use/(`Total.supply.2/`)
+)
+
+grains.final %>% head()
+```
+
+Plotting the 3 components as a proportion of Total Use yields:
+
+```{r}
+grains.final %>% ggplot() +
+  geom_line(aes(x = year, y = prop.fai, 
+                color = "Food, alcohol, and industrial use"),
+            size = 1.1) +
+  geom_line(aes(x = year, y = prop.seed,
+                color = "Seed Use"), 
+            size = 1.1) +
+  geom_line(aes(x = year, y = prop.feed,
+                color = "Feed & Residual Use"), 
+            size = 1.1) +
+  labs(y = "%", 
+       title = "Domestic Use as a proportion of Total Supply") +
+  guides(color = guide_legend("Component")) +
+  theme_bw() + 
+  theme(legend.pos = "bottom")
+  
+```
+
+```{block, type = "rmdnote"}
+**FAI:**
+
+A dramatic increase in the Food, Alcohol and Industrial use is due to the dramatic increase in the production of ethanol starting around 2005/2006 and plateauing around 2010 when U.S. ethanol consumption roughly hit the ‘blend-wall’ where ethanol makes up 10% of the retail gasoline supply.  Thus, gasoline consumption from EIA can be used to forecast or gauge the pace of ethanol consumption. This is the least price sensitive category as ethanol use is essentially mandated as part of gasoline use.
+
+**Seeds:**
+
+The series is flat, small, and very predictable.
+
+
+**Feed and Residual:**
+
+Feed and residual Feed and Residual category is the most difficult to forecast as we have the least amount of additional information regarding it. It should correlate roughly to livestock feeding units, but does not prove to be that effective in practice. 
+```
+
+
+
+```{block, type = "rmdtip"}
+**Spare a thought:**
+
+How would you produce an estimate for specific use category for 2022 based on expected share of production?
+
+```
+
+#### Forecast of Total Use and Ending stocks {-}
+    
+Using this top-down method, we can compute the Total Use as a percentage of our forecasted total supply. 
+
+The dynamics of the graphs above points to a number of potential forecasting approaches. 
+
+i. `Seed Use` is such a small component and fairly flat that we could use a naive estimate.
+ii. To get a bit of the variation into our estimates, we will use the 5 year MA for the FAI and Feed categories.
+iii. The proportion of exports has been declining over time so we could model that with a "dampening" factor. Of course, a 5-year MA could work here.
+
+```{r}
+# Forecast FAI
+fai.22 <- tail(grains.final$prop.fai,5) %>% mean()
+# Forecast Feed use
+feed.22 <- tail(grains.final$prop.feed,5) %>% mean()
+# Forecast seed use
+seed.22 <- last(grains.final$prop.seed)
+export.22 <- tail(grains.final$prop.export,5) %>% mean()
+
+## Forecast of use
+pop.use <- fai.22 + feed.22+ seed.22 + export.22
+pop.use
+
+```
+We forecast Total Use to be `r round(pop.use,2)*100`\% of Total Supply. Therefore, we estimate Total use as:
+
+```{r}
+TotalUse.22 <- TS.22*pop.use
+TotalUse.22
+```
+
+Ending stock now becomes a residual category:
+
+```{r}
+endingStocks.22 <- TS.22 - TotalUse.22
+endingStocks.22
+```
+
+**Final Comments:**
+
+The Top-down approach is effective because it is relatively easy to ensure that proportions of total use allocated to each category do not add up to more than 100\%.
+
+
+## Alternative Approaches
+
+### Bottom-up approach {-}
+
+This approach would start with producing forecasts for specific components based on their growth rates and other parameters (e.g. percentage of expected gasoline use) or models and then reconciling them to satisfy supply constraints. 
+
+For example, one could estimate ending stocks based on relationship between prices and ending stocks and calculate disappearance as the difference between total supply and ending stocks.
+
+
+### Similar--year approach {-}  
+
+This is the least technical approach but history tends to repeat itself.  Sometimes a lot can be learned from observing how markets reacted to similar conditions in the past.
+
+## Forecast adjustments during the marketing year: Pace of Use (POU).
+
+Methods described above are best suited in the beginning of the forecasting cycle when little or no information about current marketing year use is available.  However, as we move through the marketing year and achieve access to this information, your initial estimates should be cross checked with what we learn about the pace of use during the year. Utilization categories differ substantially with regard to the amount and timeliness of the available information. Export sales are updated in the most timely manner (weekly).
+
+### Exports
+
+Two USDA agencies are involved in providing estimates of export sales. The USDA Foreign Agricultural Service (https://www.fas.usda.gov/) and the Federal Grain Inspection Services (https://fgisonline.ams.usda.gov/). 
+
+The FAS maintains the Export Sales Query System (https://apps.fas.usda.gov/esrquery/), which reports weekly export quantities and daily reports of large export sales.
+
+The pace of use method will allow us to compare the pace of export sales during the current marketing year 2022/23 to the pace of export sales in the previous three marketing years. Moreover, we can make inferences about whether this marketing year has gotten off to a good start in export sales.
+
+### Activity V
+
+- Using the Export Sales Query System, pull data on the Weekly Corn exports for the *MY 2019/20 -- 7/14/2022*.
+
+The important parameters are as follows:
+![Export Sales Query System -- FAS](images/ESQS_screenshot.png)
+
+**For the sake of convenience, we have stored the data to a Github repository. Also, the file format has been changed to an `xlsx` document to keep the number of required packages and lines of codes to a minimum.**
+
+  - Our column of interest is the `Accumulated Exports` (column 5)
+  
+- Using the historical values of the WASDE reports for each marketing year, compute the Pace of use across the weeks of each MY. The historical WASDE Export Values (in million bushels) are as follows:
+
+| MY 	      | Value 	|
+|:----:	    |:-----:	|
+| 2019/20 	|  1777 	|
+| 2020/21 	|  2747 	|
+| 2021/22 	|  2472 	|
+
+These values should also correspond to the last 3 elements of the Export column of our grains report dataset (`grains.final`) from earlier.
+
+```{r}
+grains.final$Exports %>% tail(3)
+```
+  - We will be required to convert from million bushels to metric tons. We will use a conversion factor of **1 bushel = .025401 metric ton**.
+
+Since the actual data begins on Row \#8 we will need to include that.
+
+```{r}
+corn.exports <- openxlsx::read.xlsx(
+  "data/ExportSales_Corn.xlsx", startRow =8,
+  detectDates = TRUE)
+corn.exports %>% head()
+```
+
+There are a few additional edits that we need to perform.
+
+1. Drop all columns besides the `Date`, `X3`, and `Accumulated Exports`. *The full name might be missing given that we started importing from Row 8.*
+2. Drop all rows in `X3`, with "Ending MY" arguments. You will note that those dates have 2 observations.
+3. Drop `X3`.
+4. Create a week of the MY indicator. For simplicity, we can replicate the week numbers 1:52 out to the length of the full data set.
+
+```{r}
+final.exports <- corn.exports[,c(2,3,5)] %>%
+  filter(X3 == "STARTING MY" | is.na(X3) ) %>%
+  mutate(week = rep_len(1:52,length(Date)))  %>%
+  select(-c(X3))  
+  
+final.exports %>% head()
+```
+
+Computing the POU and creating a MY indicator to make our graphs easier.
+
+```{r}
+conversion.factor <- 25401
+
+pou <- final.exports %>% 
+  mutate(
+  wasde.exports = rep_len(rep(c(1777,2753,2450), each = 52),
+                         length.out = length(Date)),
+  ## Create a column to capture the MYs
+  MY = rep_len(rep(c("2019/20","2020/21","2021/22"),
+                   each = 52), length(Date)),
+  WASDE = wasde.exports*conversion.factor,
+  POU = (Exports/WASDE)*100
+  )
+
+pou %>% head()
+```
+
+Last, let us visualize the Pace of Use so far this year, relative to the past 3 marketing years.
+
+```{r}
+pou %>% ggplot() +
+  geom_line(aes(x = week, y = POU, group = MY, 
+                color = MY, 
+                linetype = MY), 
+            size = 1) +
+  labs(title = "Pace of Use", 
+       subtitle = "By marketing year",
+       y = "% of MY's Total", 
+       x = "Week") +
+  theme_bw()
+```
+
+We can observe that the Pace of Use thus far in 2021/22 is largely consistent with that of the previous MY (2020/21) and above MY 2019/20.
+
+
+## Food, Seed, and Industrial (FSI)
+
+Ethanol production is the primary user of corn in the Food, Seed, and Industrial Category. Data on monthly fuel ethanol production can be found at [EIA.GOV](https://www.eia.gov/totalenergy/data/monthly/#renewable)
+
+Ethanol production and consumption increased rapidly after 2005, when the Energy Policy Act of 2005 and later the Energy Security and Independence Act of 2007 created the Renewable Fuels Standard (RFS). The RFS mandated quantities of ethanol that blenders of gasoline are required to blend into the retail gasoline supply. These annual mandates are revised every year, but they were designed to steadily increase year after year until 2015 when the mandate reached 15 billion gallons per year. This figure came about because gasoline consumption in the United States was forecast to reach 15 billion gallons per year by 2015. So the RFS mandates were designed to reach the point where the entire retail gasoline supply would include 10% ethanol. Incidentally, 300,000,000 barrels corresponds to 15 billion gallons (300,000,000*50gallons/barrel = 15,000,000,000 gallons), which is considered the “blend wall”.
+
+Going forward, without significant growth in the consumption of gasoline in the United States, this corn use category is likely to remain flat for the foreseeable future. Even so, ethanol blenders sometimes experience an ethanol-to-gasoline price ratio that is favorable to blending ethanol even above the levels of the RFS mandate. So conducting a pace-of-use analysis for this corn use category makes sense as well. Examining the current marketing year’s production of ethanol gives some indication of whether ethanol production is likely to exceed the 15 billion gallon per year mandated level.
+
+Starting in February 2015, direct estimates of the use of corn for ethanol and co-product production became available in the [monthly Grain Crushings and Co-Product Production](https://usda.library.cornell.edu/concern/publications/n583xt96p) report. For more details see (https://farmdocdaily.illinois.edu/2016/07/revisiting-usda-corn-and-soybean-grain-stocks.html)
+
+## Grain Stocks and quarterly use dynamics.
+
+Feed Grains database contains quarterly data that can be used to gauge quarterly use dynamics.  It is important to recognize equations that guide these data. Balance sheet always has to balance.
+
+Initial MY and Q1 supply is determined by beginning stocks, production and Q1 imports. Grain stocks reports provide information on the amount of corn (and other commodities) in storage for the following reference dates: September 1, December 1, March 1, and June 1. The September survey asks for separate estimates for old crop and new crop stocks. This data informs estimates for beginning stocks and endings stocks in Q1. The difference between total supply and ending stocks is total disappearance. Total disappearance consists of exports, FSI and Feed and residual use.  We likely have the most updated information about exports, as shown in Activity 5, so that would be the category that is easiest to update.  FAI use is the next category. It is fairly stable over time with additional information available from EIA, even though it becomes available with a lag. 
+
+What is left after exports and FSI are estimated, is allocated to Feed and residual use, the category for which we have the least amount of information as there is no official measure or method to track corn disappearance into animal feeds. Analysts rely on the historical pattern of quarterly feed and residual use and changes in livestock numbers and availability of other grains for feeding in order to form estimates of use during the quarter. The historical pattern includes the well-known tendency of feed and residual use in corn to vary more with the size of the corn crop than is expected based purely on price changes. This leads to a positive correlation between feed and residual use and crop size that is "large."
+
+Moving from Q1 to Q2 is also governed by equations. Q1 ending stocks are Q2 beginning stocks. Q2 beginning stocks and imports result in total supply for Q2. The difference between total supply and Q2 endings stocks is total disappearance.  We repeat the process described for Q1 to allocate total disappearance to its components. 
+
