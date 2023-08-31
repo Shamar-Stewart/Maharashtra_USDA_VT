@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Module 3 Data Manipulation, Visualization, and Basic Forecasting | Agricultural Outlook &amp; Forecasting</title>
+  <meta name="description" content="Module 3 Data Manipulation, Visualization, and Basic Forecasting | Agricultural Outlook &amp; Forecasting" />
+  <meta name="generator" content="bookdown 0.35.1 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Module 3 Data Manipulation, Visualization, and Basic Forecasting | Agricultural Outlook &amp; Forecasting" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/cover.png" />
+  
+  <meta name="github-repo" content="shamar-stewart/shamar-stewart.github.io" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Module 3 Data Manipulation, Visualization, and Basic Forecasting | Agricultural Outlook &amp; Forecasting" />
+  
+  
+  <meta name="twitter:image" content="/images/cover.png" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="outlook.html"/>
+<link rel="next" href="time-series-patterns.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Agricultural Outlook & Forecasting</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#about-the-authors"><i class="fa fa-check"></i>About the Authors</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="public.html"><a href="public.html"><i class="fa fa-check"></i><b>1</b> Public Agricultural Outlook Programs: Structure, Role and Impact</a>
+<ul>
+<li class="chapter" data-level="" data-path="public.html"><a href="public.html#references"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="outlook.html"><a href="outlook.html"><i class="fa fa-check"></i><b>2</b> Agricultural Outlook Tools and Approaches</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="outlook.html"><a href="outlook.html#balance-sheet-approach"><i class="fa fa-check"></i><b>2.1</b> Balance Sheet Approach</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="outlook.html"><a href="outlook.html#balance-sheet"><i class="fa fa-check"></i><b>2.1.1</b> Balance Sheet</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="outlook.html"><a href="outlook.html#exercise"><i class="fa fa-check"></i>Exercise</a></li>
+<li class="chapter" data-level="2.2" data-path="outlook.html"><a href="outlook.html#forecast-selection-and-evaluation"><i class="fa fa-check"></i><b>2.2</b> Forecast selection and evaluation</a></li>
+<li class="chapter" data-level="2.3" data-path="outlook.html"><a href="outlook.html#references-1"><i class="fa fa-check"></i><b>2.3</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Data Manipulation, Visualization, and Basic Forecasting</a>
+<ul>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#optional-materials"><i class="fa fa-check"></i>Optional Materials</a></li>
+<li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#nass-quickstats"><i class="fa fa-check"></i><b>3.1</b> NASS QuickStats</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="data.html"><a href="data.html#tidyusda-package"><i class="fa fa-check"></i><b>3.1.1</b> <code>tidyUSDA</code> package</a></li>
+<li class="chapter" data-level="3.1.2" data-path="data.html"><a href="data.html#api-key"><i class="fa fa-check"></i><b>3.1.2</b> API Key</a></li>
+<li class="chapter" data-level="3.1.3" data-path="data.html"><a href="data.html#query"><i class="fa fa-check"></i><b>3.1.3</b> Writing a Query</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#data-manipulation"><i class="fa fa-check"></i><b>3.2</b> Data Manipulation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="data.html"><a href="data.html#subseting-filtering"><i class="fa fa-check"></i><b>3.2.1</b> Subseting &amp; Filtering</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data.html"><a href="data.html#pipe-operator"><i class="fa fa-check"></i><b>3.2.2</b> Pipe Operator</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#visualizing-time-series-data"><i class="fa fa-check"></i><b>3.3</b> Visualizing Time Series Data</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="data.html"><a href="data.html#time-plot"><i class="fa fa-check"></i><b>3.3.1</b> Time plot</a></li>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#walkthrough-exercise"><i class="fa fa-check"></i>Walkthrough Exercise</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data.html"><a href="data.html#viz"><i class="fa fa-check"></i><b>3.3.2</b> Visualizing corn.monthly (further)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="data.html"><a href="data.html#benchmark-forecasting-methods"><i class="fa fa-check"></i><b>3.4</b> Benchmark Forecasting Methods</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="data.html"><a href="data.html#mean-method"><i class="fa fa-check"></i><b>3.4.1</b> Mean Method</a></li>
+<li class="chapter" data-level="3.4.2" data-path="data.html"><a href="data.html#naïve-method"><i class="fa fa-check"></i><b>3.4.2</b> Naïve Method</a></li>
+<li class="chapter" data-level="3.4.3" data-path="data.html"><a href="data.html#seasonal-naïve-method"><i class="fa fa-check"></i><b>3.4.3</b> Seasonal Naïve Method</a></li>
+<li class="chapter" data-level="3.4.4" data-path="data.html"><a href="data.html#drift-method"><i class="fa fa-check"></i><b>3.4.4</b> Drift Method</a></li>
+<li class="chapter" data-level="3.4.5" data-path="data.html"><a href="data.html#visualing-all-forecasts"><i class="fa fa-check"></i><b>3.4.5</b> Visualing all Forecasts</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#exercise-1"><i class="fa fa-check"></i>Exercise</a>
+<ul>
+<li class="chapter" data-level="3.4.6" data-path="data.html"><a href="data.html#exponential-smoothing"><i class="fa fa-check"></i><b>3.4.6</b> Exponential Smoothing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="time-series-patterns.html"><a href="time-series-patterns.html"><i class="fa fa-check"></i><b>4</b> Time Series Patterns</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="time-series-patterns.html"><a href="time-series-patterns.html#cold-storage-data---pork"><i class="fa fa-check"></i><b>4.1</b> Cold Storage Data - Pork</a></li>
+<li class="chapter" data-level="" data-path="time-series-patterns.html"><a href="time-series-patterns.html#exercise-2"><i class="fa fa-check"></i>Exercise</a></li>
+<li class="chapter" data-level="" data-path="time-series-patterns.html"><a href="time-series-patterns.html#annualized-data"><i class="fa fa-check"></i>Annualized data</a></li>
+<li class="chapter" data-level="4.2" data-path="time-series-patterns.html"><a href="time-series-patterns.html#moving-averages"><i class="fa fa-check"></i><b>4.2</b> Moving Averages</a></li>
+<li class="chapter" data-level="" data-path="time-series-patterns.html"><a href="time-series-patterns.html#model-deviation-error"><i class="fa fa-check"></i>Model Deviation (Error)</a></li>
+<li class="chapter" data-level="" data-path="time-series-patterns.html"><a href="time-series-patterns.html#final-words-moving-averages"><i class="fa fa-check"></i>Final Words: Moving Averages</a></li>
+<li class="chapter" data-level="4.3" data-path="time-series-patterns.html"><a href="time-series-patterns.html#simple-exponential-smoothing-again"><i class="fa fa-check"></i><b>4.3</b> Simple Exponential Smoothing (Again)</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="time-series-patterns.html"><a href="time-series-patterns.html#exponential-smoothing-adjusted-for-trend"><i class="fa fa-check"></i><b>4.3.1</b> Exponential Smoothing Adjusted for Trend</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="time-series-patterns.html"><a href="time-series-patterns.html#exponential-smoothing-adjusted-for-trend-seasonality"><i class="fa fa-check"></i><b>4.4</b> Exponential Smoothing Adjusted for Trend &amp; Seasonality</a></li>
+<li class="chapter" data-level="4.5" data-path="time-series-patterns.html"><a href="time-series-patterns.html#time-series-regression-analysis"><i class="fa fa-check"></i><b>4.5</b> Time Series Regression Analysis</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="time-series-patterns.html"><a href="time-series-patterns.html#accounting-for-linear-trends"><i class="fa fa-check"></i><b>4.5.1</b> Accounting for (Linear) Trends</a></li>
+<li class="chapter" data-level="4.5.2" data-path="time-series-patterns.html"><a href="time-series-patterns.html#accounting-for-seasonality"><i class="fa fa-check"></i><b>4.5.2</b> Accounting for Seasonality</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="time-series-patterns.html"><a href="time-series-patterns.html#accounting-for-seasonality-and-trend"><i class="fa fa-check"></i><b>4.6</b> Accounting for Seasonality and Trend</a></li>
+<li class="chapter" data-level="4.7" data-path="time-series-patterns.html"><a href="time-series-patterns.html#visualizing-the-model-fits"><i class="fa fa-check"></i><b>4.7</b> Visualizing the model fits</a></li>
+<li class="chapter" data-level="4.8" data-path="time-series-patterns.html"><a href="time-series-patterns.html#autoregressive-models"><i class="fa fa-check"></i><b>4.8</b> Autoregressive Models</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="time-series-patterns.html"><a href="time-series-patterns.html#ar1-model"><i class="fa fa-check"></i><b>4.8.1</b> AR(1) model</a></li>
+<li class="chapter" data-level="" data-path="time-series-patterns.html"><a href="time-series-patterns.html#visualizing-the-ar1-model-fit"><i class="fa fa-check"></i>Visualizing the AR(1) model fit</a></li>
+<li class="chapter" data-level="4.8.2" data-path="time-series-patterns.html"><a href="time-series-patterns.html#arp-model"><i class="fa fa-check"></i><b>4.8.2</b> AR(p) model</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="time-series-patterns.html"><a href="time-series-patterns.html#exercise-3"><i class="fa fa-check"></i>Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html"><i class="fa fa-check"></i><b>5</b> Balance Sheet Forecasting</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#supply-forecasts"><i class="fa fa-check"></i><b>5.1</b> Supply Forecasts</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#production"><i class="fa fa-check"></i><b>5.1.1</b> Production</a></li>
+<li class="chapter" data-level="5.1.2" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#activity-i-forecasting-corn-production"><i class="fa fa-check"></i><b>5.1.2</b> Activity I: Forecasting Corn Production</a></li>
+<li class="chapter" data-level="5.1.3" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#other-supply-components"><i class="fa fa-check"></i><b>5.1.3</b> Other Supply Components</a></li>
+<li class="chapter" data-level="5.1.4" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#activity-ii"><i class="fa fa-check"></i><b>5.1.4</b> Activity II</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#utilization-forecasts"><i class="fa fa-check"></i><b>5.2</b> Utilization forecasts</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#top-down-approach.-general-components"><i class="fa fa-check"></i><b>5.2.1</b> Top-down approach. General components</a></li>
+<li class="chapter" data-level="5.2.2" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#activity-iii"><i class="fa fa-check"></i><b>5.2.2</b> Activity III</a></li>
+<li class="chapter" data-level="5.2.3" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#top-down-approach.-specific-components"><i class="fa fa-check"></i><b>5.2.3</b> Top-down approach. Specific components</a></li>
+<li class="chapter" data-level="" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#activity-iv"><i class="fa fa-check"></i>Activity IV</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#alternative-approaches"><i class="fa fa-check"></i><b>5.3</b> Alternative Approaches</a>
+<ul>
+<li class="chapter" data-level="" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#bottom-up-approach"><i class="fa fa-check"></i>Bottom-up approach</a></li>
+<li class="chapter" data-level="" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#similaryear-approach"><i class="fa fa-check"></i>Similar–year approach</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#forecast-adjustments-during-the-marketing-year-pace-of-use-pou."><i class="fa fa-check"></i><b>5.4</b> Forecast adjustments during the marketing year: Pace of Use (POU).</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#exports"><i class="fa fa-check"></i><b>5.4.1</b> Exports</a></li>
+<li class="chapter" data-level="5.4.2" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#activity-v"><i class="fa fa-check"></i><b>5.4.2</b> Activity V</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#food-seed-and-industrial-fsi"><i class="fa fa-check"></i><b>5.5</b> Food, Seed, and Industrial (FSI)</a></li>
+<li class="chapter" data-level="5.6" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#grain-stocks-and-quarterly-use-dynamics."><i class="fa fa-check"></i><b>5.6</b> Grain Stocks and quarterly use dynamics.</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="stocks-use.html"><a href="stocks-use.html"><i class="fa fa-check"></i><b>6</b> Forecasting Prices Using Stocks-to-Use Ratios</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="stocks-use.html"><a href="stocks-use.html#stocks-to-use-based-forecasting-a-replication"><i class="fa fa-check"></i><b>6.1</b> Stocks-to-Use Based Forecasting: A Replication</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="stocks-use.html"><a href="stocks-use.html#download-data"><i class="fa fa-check"></i><b>6.1.1</b> Download our data for corn</a></li>
+<li class="chapter" data-level="6.1.2" data-path="stocks-use.html"><a href="stocks-use.html#clean-data"><i class="fa fa-check"></i><b>6.1.2</b> Clean Data</a></li>
+<li class="chapter" data-level="6.1.3" data-path="stocks-use.html"><a href="stocks-use.html#sub-period-1-1990-2005"><i class="fa fa-check"></i><b>6.1.3</b> Sub Period 1: 1990-2005</a></li>
+<li class="chapter" data-level="6.1.4" data-path="stocks-use.html"><a href="stocks-use.html#sub-period-2-2007---201516"><i class="fa fa-check"></i><b>6.1.4</b> Sub Period 2: 2007 - 2015/16</a></li>
+<li class="chapter" data-level="6.1.5" data-path="stocks-use.html"><a href="stocks-use.html#producing-figure-1"><i class="fa fa-check"></i><b>6.1.5</b> Producing Figure 1</a></li>
+<li class="chapter" data-level="6.1.6" data-path="stocks-use.html"><a href="stocks-use.html#market-condition-dummies"><i class="fa fa-check"></i><b>6.1.6</b> Market Condition Dummies</a></li>
+<li class="chapter" data-level="6.1.7" data-path="stocks-use.html"><a href="stocks-use.html#forecast-price-for-2021"><i class="fa fa-check"></i><b>6.1.7</b> Forecast Price for 2021</a></li>
+<li class="chapter" data-level="" data-path="stocks-use.html"><a href="stocks-use.html#alternative-approach"><i class="fa fa-check"></i>Alternative Approach</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="stocks-use.html"><a href="stocks-use.html#optional-materials-1"><i class="fa fa-check"></i><b>6.2</b> Optional Materials</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="accuracy.html"><a href="accuracy.html"><i class="fa fa-check"></i><b>7</b> Accuracy and Forecast Evaluations</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="accuracy.html"><a href="accuracy.html#corn-data-revisited"><i class="fa fa-check"></i><b>7.1</b> Corn Data (Revisited)</a></li>
+<li class="chapter" data-level="7.2" data-path="accuracy.html"><a href="accuracy.html#exploring-the-forecasting-models-in-sample"><i class="fa fa-check"></i><b>7.2</b> Exploring the Forecasting models In-sample</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="accuracy.html"><a href="accuracy.html#method-1-linear-trend"><i class="fa fa-check"></i><b>7.2.1</b> Method 1: Linear Trend</a></li>
+<li class="chapter" data-level="7.2.2" data-path="accuracy.html"><a href="accuracy.html#method-2-naive-model-with-drift"><i class="fa fa-check"></i><b>7.2.2</b> Method 2: Naive Model (with drift)</a></li>
+<li class="chapter" data-level="7.2.3" data-path="accuracy.html"><a href="accuracy.html#method-3-using-stocks-to-use-approach"><i class="fa fa-check"></i><b>7.2.3</b> Method 3: Using Stocks-to-Use Approach</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="accuracy.html"><a href="accuracy.html#out-of-sample-forecasts"><i class="fa fa-check"></i><b>7.3</b> Out-of-sample forecasts</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="accuracy.html"><a href="accuracy.html#method-1-trend"><i class="fa fa-check"></i><b>7.3.1</b> Method 1: Trend</a></li>
+<li class="chapter" data-level="7.3.2" data-path="accuracy.html"><a href="accuracy.html#method-2-random-walk-drfit-model"><i class="fa fa-check"></i><b>7.3.2</b> Method 2: Random Walk + Drfit Model</a></li>
+<li class="chapter" data-level="7.3.3" data-path="accuracy.html"><a href="accuracy.html#method-3-stocks-to-use-approach"><i class="fa fa-check"></i><b>7.3.3</b> Method 3: Stocks-to-Use Approach</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="accuracy.html"><a href="accuracy.html#model-evaluation"><i class="fa fa-check"></i><b>7.4</b> Model Evaluation</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Agricultural Outlook &amp; Forecasting</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Module 3</span> Data Manipulation, Visualization, and Basic Forecasting<a href="data.html#data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In this module, we will focus on importing, manipulating, and visualizing time series data in R. Towards the end, we will estimate and graph the forecasts of a few basic time series models.</p>
+<p>For much of our exercises, we will focus on importing data from the <a href="https://quickstats.nass.usda.gov/">USDA’s NASS QuickStats database</a>.</p>
+<div id="optional-materials" class="section level2 unnumbered hasAnchor">
+<h2>Optional Materials<a href="data.html#optional-materials" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>While these modules are intended to be self-contained, they also build on the <a href="https://usda-ers.github.io/MTED-R-Training/" target="_blank">MTED-R-Training Workshop from the USDA</a>. It would be a worthwhile exercise to review the <code>R</code> basics, Data Importation, and Data Transformation modules. This would prove especially useful for the new(er) users of <code>R</code>.</p>
+</div>
+<div id="nass-quickstats" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> NASS QuickStats<a href="data.html#nass-quickstats" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The US Department of Agriculture (USDA)’s National Agricultural Statistical Agency (NASS) has an <code>R</code> package called <code>tidyUSDA</code> that connect directly to an API and allows users to download QuickStats data into R <a href="https://usda-ers.github.io/MTED-R-Training/chp1/mod2/import-and-export-data.html#import-nass-quickstats-data-optional">(See MTED-R-Training)</a>.</p>
+<p>Additionally, <code>tidyUSDA</code> gives you the option to explore the QuickStats data at either the county or national level. This allows you to quickly visualize data for report generation.</p>
+<p>In this example, we will use an API to pull the <code>Corn GRAIN - PRICE RECEIVED, MEASURED in $ / BU</code> data series into R. Our ultimate goal is to explore the data and perform some basic forecasting.</p>
+<p>We will reserve the evaluation of these models for later modules.</p>
+<div id="tidyusda-package" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> <code>tidyUSDA</code> package<a href="data.html#tidyusda-package" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If you have never done so before, you will need to install the <code>tidyUSDA</code> package. You can achieve this using the syntax below. We suggest running this code in your <strong>console</strong> and not scripts. You need only install this package once.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="data.html#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyUSDA&quot;</span>)</span></code></pre></div>
+<p>In subsequent sessions you can simply call the library into memory.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="data.html#cb2-1" tabindex="-1"></a><span class="fu">library</span>(tidyUSDA)</span></code></pre></div>
+</div>
+<div id="api-key" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> API Key<a href="data.html#api-key" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In order to pull data directly into <code>R</code>, you will need an API key. Please <a href="https://quickstats.nass.usda.gov/api">click here</a> to obtain a free API Key via email. Return to this page once you have been issued a key.</p>
+<p>Now that you have obtained your API Key, you can supply it to <code>R</code> for use in this and subsequent sessions. There are two approaches you could take:</p>
+<ul>
+<li>Approach 1: You could hard code your key (Not Recommended).</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="data.html#cb3-1" tabindex="-1"></a>key <span class="ot">&lt;-</span> <span class="st">&quot;PUT-YOUR-KEY-HERE&quot;</span></span></code></pre></div>
+<p>If you R scripts will be public facing, this might not be a desirable option.</p>
+<ul>
+<li>Approach 2: Using the <code>keyring</code> package</li>
+</ul>
+<p>To help with protecting your API Key we will use the <code>keyring</code> package. <strong>You might need to install the <code>keyring</code> package first. You can repeat the same step from earlier to get this done.</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="data.html#cb4-1" tabindex="-1"></a><span class="co"># Load the Keyring package</span></span>
+<span id="cb4-2"><a href="data.html#cb4-2" tabindex="-1"></a><span class="fu">library</span>(keyring)</span>
+<span id="cb4-3"><a href="data.html#cb4-3" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="data.html#cb4-4" tabindex="-1"></a><span class="co"># Save the API Key (you can skip this step in the future)</span></span>
+<span id="cb4-5"><a href="data.html#cb4-5" tabindex="-1"></a><span class="co">#tidyUSDA is the nickname assigned for my API key combination</span></span>
+<span id="cb4-6"><a href="data.html#cb4-6" tabindex="-1"></a><span class="fu">key_set</span>(<span class="st">&quot;tidyUSDA&quot;</span>)</span></code></pre></div>
+<p>A password prompt should now appear. Enter your API key and click <code>OK</code>.</p>
+<div class="float">
+<img src="images/keyring_interface.png" alt="Keyring Password Prompt" />
+<div class="figcaption">Keyring Password Prompt</div>
+</div>
+<p>For this and future sessions, you can use the <code>key_get</code> command to retrieve the key. To do so, run the following line</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="data.html#cb5-1" tabindex="-1"></a>key <span class="ot">&lt;-</span> keyring<span class="sc">::</span><span class="fu">key_get</span>(<span class="st">&quot;tidyusda&quot;</span>)</span></code></pre></div>
+<p>We can determine the relevant parameters for our search by visiting the <a href="https://quickstats.nass.usda.gov/">Quickstats website</a>.</p>
+<p>We are ready to pull the <code>Corn GRAIN - PRICE RECEIVED, MEASURED in $ / BU</code> data.</p>
+</div>
+<div id="query" class="section level3 hasAnchor" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Writing a Query<a href="data.html#query" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="data.html#cb6-1" tabindex="-1"></a>corn <span class="ot">&lt;-</span> tidyUSDA<span class="sc">::</span><span class="fu">getQuickstat</span>(</span>
+<span id="cb6-2"><a href="data.html#cb6-2" tabindex="-1"></a>  <span class="at">key =</span> key,</span>
+<span id="cb6-3"><a href="data.html#cb6-3" tabindex="-1"></a>  <span class="at">program =</span> <span class="st">&quot;SURVEY&quot;</span>,</span>
+<span id="cb6-4"><a href="data.html#cb6-4" tabindex="-1"></a>  <span class="at">sector =</span> <span class="st">&quot;CROPS&quot;</span>,</span>
+<span id="cb6-5"><a href="data.html#cb6-5" tabindex="-1"></a>  <span class="at">group =</span> <span class="st">&quot;FIELD CROPS&quot;</span>,</span>
+<span id="cb6-6"><a href="data.html#cb6-6" tabindex="-1"></a>  <span class="at">commodity =</span> <span class="st">&quot;CORN&quot;</span>,</span>
+<span id="cb6-7"><a href="data.html#cb6-7" tabindex="-1"></a>  <span class="at">category =</span> <span class="st">&quot;PRICE RECEIVED&quot;</span>,</span>
+<span id="cb6-8"><a href="data.html#cb6-8" tabindex="-1"></a>  <span class="at">data_item =</span> <span class="st">&quot;CORN, GRAIN - PRICE RECEIVED, MEASURED in $ / BU&quot;</span>,</span>
+<span id="cb6-9"><a href="data.html#cb6-9" tabindex="-1"></a>  <span class="at">domain =</span> <span class="st">&quot;TOTAL&quot;</span>,</span>
+<span id="cb6-10"><a href="data.html#cb6-10" tabindex="-1"></a>  <span class="at">geographic_level =</span> <span class="st">&quot;NATIONAL&quot;</span>,</span>
+<span id="cb6-11"><a href="data.html#cb6-11" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">&quot;US TOTAL&quot;</span>,</span>
+<span id="cb6-12"><a href="data.html#cb6-12" tabindex="-1"></a><span class="co">#Must specify years as character variables </span></span>
+<span id="cb6-13"><a href="data.html#cb6-13" tabindex="-1"></a>  <span class="at">year =</span> <span class="fu">as.character</span>(<span class="fu">c</span>(<span class="dv">1990</span><span class="sc">:</span><span class="dv">2019</span>))</span>
+<span id="cb6-14"><a href="data.html#cb6-14" tabindex="-1"></a>)</span></code></pre></div>
+<p>We have a number of approaches to be able to see the full data. First, we can call the variable name in <code>R</code>.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="data.html#cb7-1" tabindex="-1"></a>corn</span></code></pre></div>
+<p>You can use the <code>View()</code> command to explore the dataset in your <code>R</code> environment.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="data.html#cb8-1" tabindex="-1"></a><span class="fu">View</span>(corn)</span></code></pre></div>
+<p>Alternatively, we can view the head (first <code>n</code> observations). <code>R</code> will default to <code>n = 6</code>.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="data.html#cb9-1" tabindex="-1"></a><span class="fu">head</span>(corn, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##    watershed_desc statisticcat_desc region_desc asd_code
+## 1                    PRICE RECEIVED                     
+## 2                    PRICE RECEIVED                     
+## 3                    PRICE RECEIVED                     
+## 4                    PRICE RECEIVED                     
+## 5                    PRICE RECEIVED                     
+## 6                    PRICE RECEIVED                     
+## 7                    PRICE RECEIVED                     
+## 8                    PRICE RECEIVED                     
+## 9                    PRICE RECEIVED                     
+## 10                   PRICE RECEIVED                     
+##    unit_desc CV (%) domaincat_desc
+## 1     $ / BU         NOT SPECIFIED
+## 2     $ / BU         NOT SPECIFIED
+## 3     $ / BU         NOT SPECIFIED
+## 4     $ / BU         NOT SPECIFIED
+## 5     $ / BU         NOT SPECIFIED
+## 6     $ / BU         NOT SPECIFIED
+## 7     $ / BU         NOT SPECIFIED
+## 8     $ / BU         NOT SPECIFIED
+## 9     $ / BU         NOT SPECIFIED
+## 10    $ / BU         NOT SPECIFIED
+##                                          short_desc
+## 1  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU
+## 2  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU
+## 3  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU
+## 4  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU
+## 5  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU
+## 6  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU
+## 7  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU
+## 8  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU
+## 9  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU
+## 10 CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU
+##    state_name  class_desc week_ending year country_code
+## 1    US TOTAL ALL CLASSES             2019         9000
+## 2    US TOTAL ALL CLASSES             2019         9000
+## 3    US TOTAL ALL CLASSES             2019         9000
+## 4    US TOTAL ALL CLASSES             2019         9000
+## 5    US TOTAL ALL CLASSES             2019         9000
+## 6    US TOTAL ALL CLASSES             2019         9000
+## 7    US TOTAL ALL CLASSES             2019         9000
+## 8    US TOTAL ALL CLASSES             2019         9000
+## 9    US TOTAL ALL CLASSES             2019         9000
+## 10   US TOTAL ALL CLASSES             2019         9000
+##    county_ansi freq_desc state_alpha
+## 1                 ANNUAL          US
+## 2                 ANNUAL          US
+## 3                MONTHLY          US
+## 4                MONTHLY          US
+## 5                MONTHLY          US
+## 6                MONTHLY          US
+## 7                MONTHLY          US
+## 8                MONTHLY          US
+## 9                MONTHLY          US
+## 10               MONTHLY          US
+##         prodn_practice_desc location_desc source_desc
+## 1  ALL PRODUCTION PRACTICES      US TOTAL      SURVEY
+## 2  ALL PRODUCTION PRACTICES      US TOTAL      SURVEY
+## 3  ALL PRODUCTION PRACTICES      US TOTAL      SURVEY
+## 4  ALL PRODUCTION PRACTICES      US TOTAL      SURVEY
+## 5  ALL PRODUCTION PRACTICES      US TOTAL      SURVEY
+## 6  ALL PRODUCTION PRACTICES      US TOTAL      SURVEY
+## 7  ALL PRODUCTION PRACTICES      US TOTAL      SURVEY
+## 8  ALL PRODUCTION PRACTICES      US TOTAL      SURVEY
+## 9  ALL PRODUCTION PRACTICES      US TOTAL      SURVEY
+## 10 ALL PRODUCTION PRACTICES      US TOTAL      SURVEY
+##    commodity_desc  country_name zip_5 sector_desc
+## 1            CORN UNITED STATES             CROPS
+## 2            CORN UNITED STATES             CROPS
+## 3            CORN UNITED STATES             CROPS
+## 4            CORN UNITED STATES             CROPS
+## 5            CORN UNITED STATES             CROPS
+## 6            CORN UNITED STATES             CROPS
+## 7            CORN UNITED STATES             CROPS
+## 8            CORN UNITED STATES             CROPS
+## 9            CORN UNITED STATES             CROPS
+## 10           CORN UNITED STATES             CROPS
+##    begin_code end_code Value agg_level_desc state_ansi
+## 1          00       00  3.56       NATIONAL           
+## 2          00       00  3.75       NATIONAL           
+## 3          01       01  3.56       NATIONAL           
+## 4          02       02  3.60       NATIONAL           
+## 5          03       03  3.61       NATIONAL           
+## 6          04       04  3.53       NATIONAL           
+## 7          05       05  3.63       NATIONAL           
+## 8          06       06  3.98       NATIONAL           
+## 9          07       07  4.16       NATIONAL           
+## 10         08       08  3.93       NATIONAL           
+##    asd_desc  group_desc domain_desc congr_district_code
+## 1           FIELD CROPS       TOTAL                    
+## 2           FIELD CROPS       TOTAL                    
+## 3           FIELD CROPS       TOTAL                    
+## 4           FIELD CROPS       TOTAL                    
+## 5           FIELD CROPS       TOTAL                    
+## 6           FIELD CROPS       TOTAL                    
+## 7           FIELD CROPS       TOTAL                    
+## 8           FIELD CROPS       TOTAL                    
+## 9           FIELD CROPS       TOTAL                    
+## 10          FIELD CROPS       TOTAL                    
+##    county_name county_code util_practice_desc
+## 1                                       GRAIN
+## 2                                       GRAIN
+## 3                                       GRAIN
+## 4                                       GRAIN
+## 5                                       GRAIN
+## 6                                       GRAIN
+## 7                                       GRAIN
+## 8                                       GRAIN
+## 9                                       GRAIN
+## 10                                      GRAIN
+##    watershed_code state_fips_code               load_time
+## 1        00000000              99 2021-11-30 15:01:54.000
+## 2        00000000              99 2022-07-29 15:01:54.000
+## 3        00000000              99 2021-09-30 15:01:42.000
+## 4        00000000              99 2021-09-30 15:01:42.000
+## 5        00000000              99 2021-09-30 15:01:42.000
+## 6        00000000              99 2021-09-30 15:01:42.000
+## 7        00000000              99 2021-09-30 15:01:42.000
+## 8        00000000              99 2021-09-30 15:01:42.000
+## 9        00000000              99 2021-11-30 15:01:54.000
+## 10       00000000              99 2021-11-30 15:01:54.000
+##    reference_period_desc
+## 1         MARKETING YEAR
+## 2                   YEAR
+## 3                    JAN
+## 4                    FEB
+## 5                    MAR
+## 6                    APR
+## 7                    MAY
+## 8                    JUN
+## 9                    JUL
+## 10                   AUG</code></pre>
+</div>
+</div>
+<div id="data-manipulation" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Data Manipulation<a href="data.html#data-manipulation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="subseting-filtering" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Subseting &amp; Filtering<a href="data.html#subseting-filtering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Much of our data manipulations can be performed quickly (and efficiently) using the <code>tidyverse</code> environment. The <code>tidyverse</code> package is very powerful and speeds up the data cleaning and manipulation process.</p>
+<p>Unfortunately, much of the functionalities we require are missing from the package of the same name.</p>
+<p>For our purpose and given our focus on time series, we will use the <code>fpp3</code> package that accompanies the free text <a href="otexts.com/fpp3/">Forecasting: Principles and Practice (3rd ed) by Rob J Hyndman and George Athanasopoulos</a>. This package builds on the <code>tidyverse</code>/<code>dplyr</code> packages and a number of packages dedicated to time series models.</p>
+<p>This would be a good time to install the <code>fpp3</code> package.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="data.html#cb11-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;fpp3&quot;</span>)  </span></code></pre></div>
+<p>Since there are so many columns in this dataset, we can drop all irrelevant columns. For our purposes assume further that we need to get the price data at the <code>annual (YEAR)</code> frequency.</p>
+<p>It might prove easier if we were to first <code>filter</code> the data on the <code>reference_period_desc</code> column. We will keep only the rows that meet the criterion of <code>reference_period_desc == "YEAR"</code></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="data.html#cb12-1" tabindex="-1"></a><span class="fu">library</span>(fpp3)</span>
+<span id="cb12-2"><a href="data.html#cb12-2" tabindex="-1"></a><span class="co"># View the column names</span></span>
+<span id="cb12-3"><a href="data.html#cb12-3" tabindex="-1"></a><span class="fu">colnames</span>(corn)</span></code></pre></div>
+<pre><code>##  [1] &quot;watershed_desc&quot;        &quot;statisticcat_desc&quot;    
+##  [3] &quot;region_desc&quot;           &quot;asd_code&quot;             
+##  [5] &quot;unit_desc&quot;             &quot;CV (%)&quot;               
+##  [7] &quot;domaincat_desc&quot;        &quot;short_desc&quot;           
+##  [9] &quot;state_name&quot;            &quot;class_desc&quot;           
+## [11] &quot;week_ending&quot;           &quot;year&quot;                 
+## [13] &quot;country_code&quot;          &quot;county_ansi&quot;          
+## [15] &quot;freq_desc&quot;             &quot;state_alpha&quot;          
+## [17] &quot;prodn_practice_desc&quot;   &quot;location_desc&quot;        
+## [19] &quot;source_desc&quot;           &quot;commodity_desc&quot;       
+## [21] &quot;country_name&quot;          &quot;zip_5&quot;                
+## [23] &quot;sector_desc&quot;           &quot;begin_code&quot;           
+## [25] &quot;end_code&quot;              &quot;Value&quot;                
+## [27] &quot;agg_level_desc&quot;        &quot;state_ansi&quot;           
+## [29] &quot;asd_desc&quot;              &quot;group_desc&quot;           
+## [31] &quot;domain_desc&quot;           &quot;congr_district_code&quot;  
+## [33] &quot;county_name&quot;           &quot;county_code&quot;          
+## [35] &quot;util_practice_desc&quot;    &quot;watershed_code&quot;       
+## [37] &quot;state_fips_code&quot;       &quot;load_time&quot;            
+## [39] &quot;reference_period_desc&quot;</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="data.html#cb14-1" tabindex="-1"></a><span class="co"># Keep only the yearly prices</span></span>
+<span id="cb14-2"><a href="data.html#cb14-2" tabindex="-1"></a>corn.annual <span class="ot">&lt;-</span> <span class="fu">filter</span>(corn,</span>
+<span id="cb14-3"><a href="data.html#cb14-3" tabindex="-1"></a>                      reference_period_desc <span class="sc">==</span> <span class="st">&quot;YEAR&quot;</span>)</span></code></pre></div>
+<p>Next, we would like to keep only the relevant columns. To do so, we can use the <code>select()</code> function to drop all columns <strong>except</strong> <code>year</code> and <code>Value</code>.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="data.html#cb15-1" tabindex="-1"></a><span class="co"># Keep the &quot;year&quot; and &quot;Value&quot; columns</span></span>
+<span id="cb15-2"><a href="data.html#cb15-2" tabindex="-1"></a>corn.annual2 <span class="ot">&lt;-</span> <span class="fu">select</span>(corn.annual, year, Value)</span>
+<span id="cb15-3"><a href="data.html#cb15-3" tabindex="-1"></a>corn.annual2</span></code></pre></div>
+<pre><code>##    year Value
+## 1  2019  3.75
+## 2  2018  3.47
+## 3  2017  3.36
+## 4  2016  3.48
+## 5  2015  3.71
+## 6  2014  4.11
+## 7  2013  6.15
+## 8  2012  6.67
+## 9  2011  6.02
+## 10 2010  3.83
+## 11 2009  3.75
+## 12 2008  4.78
+## 13 2007  3.39
+## 14 2006  2.28
+## 15 2005  1.96
+## 16 2004  2.47
+## 17 2003  2.27
+## 18 2002  2.13
+## 19 2001  1.89
+## 20 2000  1.86
+## 21 1999  1.89
+## 22 1998  2.20
+## 23 1997  2.60
+## 24 1996  3.55</code></pre>
+<p>Now, we can declare the <code>year</code> as our time index.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="data.html#cb17-1" tabindex="-1"></a>corn.ts <span class="ot">&lt;-</span> <span class="fu">as_tsibble</span>(corn.annual2, <span class="at">index =</span> <span class="st">&quot;year&quot;</span>)</span>
+<span id="cb17-2"><a href="data.html#cb17-2" tabindex="-1"></a>corn.ts</span></code></pre></div>
+<pre><code>## # A tsibble: 24 x 2 [1Y]
+##     year Value
+##    &lt;int&gt; &lt;dbl&gt;
+##  1  1996  3.55
+##  2  1997  2.6 
+##  3  1998  2.2 
+##  4  1999  1.89
+##  5  2000  1.86
+##  6  2001  1.89
+##  7  2002  2.13
+##  8  2003  2.27
+##  9  2004  2.47
+## 10  2005  1.96
+## # ℹ 14 more rows</code></pre>
+<p>Notice now that the <code>corn.ts</code> series is now a <code>tsibble</code> object arranged in chronological order (on the <code>year</code> column).</p>
+<hr />
+</div>
+<div id="pipe-operator" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Pipe Operator<a href="data.html#pipe-operator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You can imagine how cumbersome our code will get as we start to perform multiple operations on our raw dataset. We will need to save the intermediary dataframes along the way. Our variable names could quickly become long and confusing.</p>
+<p>To get around this, we can use the pipe operator, <code>%&gt;%</code>. This allows us to pass arguments (think intermediary dataframes) from left to right and perform various functions/operations at each stage. For simplicity, we will utilize this function extensively throughout this training module.</p>
+<p>Revisiting the problem above, we can recreate <code>corn.ts</code> in a single line of code. We will store the results in an aptly named variable, <code>corn.ts.pipe</code>.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="data.html#cb19-1" tabindex="-1"></a>corn.ts.pipe <span class="ot">&lt;-</span> corn <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="data.html#cb19-2" tabindex="-1"></a>  <span class="fu">filter</span>(reference_period_desc <span class="sc">==</span> <span class="st">&quot;YEAR&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-3"><a href="data.html#cb19-3" tabindex="-1"></a>  <span class="fu">select</span>(year, Value) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-4"><a href="data.html#cb19-4" tabindex="-1"></a>  <span class="fu">as_tsibble</span>(<span class="at">index =</span> <span class="st">&quot;year&quot;</span>)</span>
+<span id="cb19-5"><a href="data.html#cb19-5" tabindex="-1"></a>corn.ts.pipe</span></code></pre></div>
+<pre><code>## # A tsibble: 24 x 2 [1Y]
+##     year Value
+##    &lt;int&gt; &lt;dbl&gt;
+##  1  1996  3.55
+##  2  1997  2.6 
+##  3  1998  2.2 
+##  4  1999  1.89
+##  5  2000  1.86
+##  6  2001  1.89
+##  7  2002  2.13
+##  8  2003  2.27
+##  9  2004  2.47
+## 10  2005  1.96
+## # ℹ 14 more rows</code></pre>
+<p>If you are skeptical, you can check whether <strong>all</strong> (pairwise) elements in both <code>tsibble</code> objects are the same:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="data.html#cb21-1" tabindex="-1"></a><span class="fu">identical</span>(corn.ts, corn.ts.pipe)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="rmdtip">
+<p>
+As a shortcut, you can insert the pipe operator using the following
+syntax: - Windows: CTRL + SHIFT + M - Mac: Cmd + Shift + M
+</p>
+</div>
+</div>
+</div>
+<div id="visualizing-time-series-data" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Visualizing Time Series Data<a href="data.html#visualizing-time-series-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="time-plot" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Time plot<a href="data.html#time-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We are ready to create our first time series plot. We will use the <code>autoplot()</code> command from the <code>fpp3</code> package. For those familiar with the <code>ggplot</code> environment, the syntax is very similar.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="data.html#cb23-1" tabindex="-1"></a>corn.ts <span class="sc">%&gt;%</span> <span class="fu">autoplot</span>(Value, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb23-2"><a href="data.html#cb23-2" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Annual Corn Prices Received&quot;</span>,</span>
+<span id="cb23-3"><a href="data.html#cb23-3" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">&quot;$/bu&quot;</span>, </span>
+<span id="cb23-4"><a href="data.html#cb23-4" tabindex="-1"></a>       <span class="at">x=</span> <span class="st">&quot;Year&quot;</span>,</span>
+<span id="cb23-5"><a href="data.html#cb23-5" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Source: NASS QuickStat&quot;</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>The argument <code>theme_bw()</code> is optional. It was used to change the presentation of the graph and gridlines. You can change yours to other default options such as <code>theme_classic()</code>, <code>theme_minimal()</code> or even a user-defined customized theme.</p>
+<div class="rmdtip">
+<p>
+Try removing the <code>+ theme_bw()</code> portion of your code to
+see what the results now look like.
+</p>
+</div>
+</div>
+<div id="walkthrough-exercise" class="section level3 unnumbered hasAnchor">
+<h3>Walkthrough Exercise<a href="data.html#walkthrough-exercise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let us return to the <a href="@query">Writing a Query Section</a>.</p>
+<ol style="list-style-type: decimal">
+<li>Instead of annual data, get the monthly corn prices.</li>
+</ol>
+<ul>
+<li>It is easiest to filter rows where <code>freq_desc=="MONTHLY"</code></li>
+<li>Keep only the <code>year</code>, <code>reference_period_desc</code>, and <code>values</code> column.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><p>We will declare the data as a <code>tsibble</code> object. This will require some work though to allow <code>R</code> to recognize we have a <code>yearmonth</code> variable. You can use the <code>paste0</code> function to first create a variable that combines both the <code>year</code> and <code>reference_period_desc</code> columns.</p></li>
+<li><p>Store your variable as <code>corn.monthly</code> and drop all irrelevant columns.</p></li>
+<li><p>Be sure to use the pipe operator to achieve Tasks 1 – 3 in a single step.</p></li>
+<li><p>Now produce an <code>autoplot</code> of <code>corn.monthly</code>. Be sure to add appropriate labels.</p></li>
+</ol>
+<div id="solution" class="section level4 unnumbered hasAnchor">
+<h4>Solution<a href="data.html#solution" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="data.html#cb24-1" tabindex="-1"></a>corn.monthly <span class="ot">&lt;-</span> corn <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="data.html#cb24-2" tabindex="-1"></a>  <span class="co"># Keep only the Months</span></span>
+<span id="cb24-3"><a href="data.html#cb24-3" tabindex="-1"></a>  <span class="fu">filter</span>(freq_desc<span class="sc">==</span> <span class="st">&quot;MONTHLY&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-4"><a href="data.html#cb24-4" tabindex="-1"></a><span class="co"># Keep only the year, reference_period_desc, and Value columns</span></span>
+<span id="cb24-5"><a href="data.html#cb24-5" tabindex="-1"></a>  <span class="fu">select</span>(year, reference_period_desc, Value) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-6"><a href="data.html#cb24-6" tabindex="-1"></a><span class="co"># Create a yearmonth object</span></span>
+<span id="cb24-7"><a href="data.html#cb24-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">yearmonth</span>(<span class="fu">paste0</span>(year, reference_period_desc))) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-8"><a href="data.html#cb24-8" tabindex="-1"></a><span class="co"># declare date as index</span></span>
+<span id="cb24-9"><a href="data.html#cb24-9" tabindex="-1"></a>  <span class="fu">as_tsibble</span>(<span class="at">index =</span> date) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-10"><a href="data.html#cb24-10" tabindex="-1"></a><span class="co"># Keep only the date and Value column</span></span>
+<span id="cb24-11"><a href="data.html#cb24-11" tabindex="-1"></a>  <span class="fu">select</span>(date, Value)</span>
+<span id="cb24-12"><a href="data.html#cb24-12" tabindex="-1"></a></span>
+<span id="cb24-13"><a href="data.html#cb24-13" tabindex="-1"></a>corn.monthly <span class="sc">%&gt;%</span> <span class="fu">autoplot</span>(Value, <span class="at">col =</span> <span class="st">&quot;darkblue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb24-14"><a href="data.html#cb24-14" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Monthly Corn Prices&quot;</span>,</span>
+<span id="cb24-15"><a href="data.html#cb24-15" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;$/bu&quot;</span>) <span class="sc">+</span></span>
+<span id="cb24-16"><a href="data.html#cb24-16" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<div class="rmdtip">
+<ul>
+<li>
+<p>
+Are you able to identify any unique features in this data? Is it
+trending for example, do we observe seasonality? etc.
+</p>
+</li>
+<li>
+<p>
+How could you forecast this series?
+</p>
+</li>
+</ul>
+<p>
+In the ensuing sections, we will explore the properties of
+<code>corn.monthly</code> a bit closer.
+</p>
+</div>
+</div>
+</div>
+<div id="viz" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Visualizing corn.monthly (further)<a href="data.html#viz" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A researcher might be potentially concerned about seasonality in prices received. We have several <em>graphical</em> tools at our disposal to explore this a bit further.</p>
+<div id="subseriesplots" class="section level4 hasAnchor" number="3.3.2.1">
+<h4><span class="header-section-number">3.3.2.1</span> Subseriesplots<a href="data.html#subseriesplots" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="data.html#cb25-1" tabindex="-1"></a>corn.monthly <span class="sc">%&gt;%</span> <span class="fu">gg_subseries</span>(Value) <span class="sc">+</span> </span>
+<span id="cb25-2"><a href="data.html#cb25-2" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Subseries Plot&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb25-3"><a href="data.html#cb25-3" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>The <code>gg_subseriesplot</code> command creates a plot of our corn price data grouped by month (across all years). The blue lines correspond to each monthly average.</p>
+<p>From these graphs we do not observe the presence of strong seasonality in the price data.</p>
+</div>
+<div id="seasonplots" class="section level4 hasAnchor" number="3.3.2.2">
+<h4><span class="header-section-number">3.3.2.2</span> Seasonplots<a href="data.html#seasonplots" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>If we would like to see the time plot of the data against the seasons (months) instead, we can use the <code>gg_season</code> command. In fact, this is usually a good way to identify years that were potential outliers.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="data.html#cb26-1" tabindex="-1"></a>corn.monthly <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a href="data.html#cb26-2" tabindex="-1"></a>  <span class="fu">gg_season</span>(Value, <span class="at">labels =</span> <span class="st">&quot;both&quot;</span>) <span class="sc">+</span></span>
+<span id="cb26-3"><a href="data.html#cb26-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Seasonal Plot of Corn Prices&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb26-4"><a href="data.html#cb26-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+The <code>year.labels = "both"</code> argument adds the year labels to the graph (on both sides) instead of in a legend. It is particularly useful in our case since the colors quickly get confusing with so many years.</p>
+<p>Adding the argument <code>polar = TRUE</code> to the <code>gg_season</code> function produces a variation using polar coordinates. Adding this option makes the time series axis circular rather than horizontal.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="data.html#cb27-1" tabindex="-1"></a>corn.monthly <span class="sc">%&gt;%</span> <span class="fu">gg_season</span>(Value, <span class="at">polar =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb27-2"><a href="data.html#cb27-2" tabindex="-1"></a>                           <span class="at">labels =</span> <span class="st">&quot;both&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb27-3"><a href="data.html#cb27-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Seasonal Plot of Corn Prices&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb27-4"><a href="data.html#cb27-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>In general, the summary of the seasonal plot above matches the <code>autoplot</code> earlier. We observe that:</p>
+<ul>
+<li><p>In the earlier periods, the values across months were closer (less volatile) than in later periods.</p></li>
+<li><p>On average, prices between 2010 and 2015 were higher than the remaining periods.</p></li>
+<li><p>2015 to 2019 saw a temperance of prices, albeit higher than the beginning of the sample.</p></li>
+</ul>
+</div>
+<div id="autocorrelation-acf-plot" class="section level4 hasAnchor" number="3.3.2.3">
+<h4><span class="header-section-number">3.3.2.3</span> Autocorrelation (ACF) Plot<a href="data.html#autocorrelation-acf-plot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Correlation, as a statistical concept, measures the degree of a <strong>linear</strong> relationship between two variables.</p>
+<p>Autocorrelation, on the other hand, measures the <strong>linear</strong> relationship between a variable and its lagged (past) values. The higher the correlation (positive or negative) between our variable, <span class="math inline">\(y_t\)</span> and its lags <span class="math inline">\(y_{t-k}\)</span> where <span class="math inline">\(k = 1, \ldots, T\)</span>, the closer the correlation coefficient is to <span class="math inline">\(\pm 1\)</span></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="data.html#cb28-1" tabindex="-1"></a>corn.monthly <span class="sc">%&gt;%</span> <span class="fu">ACF</span>(Value, <span class="at">lag_max =</span> <span class="dv">36</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="data.html#cb28-2" tabindex="-1"></a>  <span class="fu">autoplot</span>() <span class="sc">+</span> </span>
+<span id="cb28-3"><a href="data.html#cb28-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;ACF: Monthly Corn Prices&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb28-4"><a href="data.html#cb28-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p>The value of 0.971 at lag 1 implies that last month’s corn price explains more than 94.2841% of the current corn price.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> The correlation value slowly goes to zero as we go further back in time. This indicates that we have a series with a trend. We will discuss further later.</p>
+<p>To view the correlation statistic at each lag, you can copy and paste the code below.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="data.html#cb29-1" tabindex="-1"></a>corn.monthly <span class="sc">%&gt;%</span> <span class="fu">ACF</span>(Value) </span></code></pre></div>
+<pre><code>## # A tsibble: 25 x 2 [1M]
+##         lag   acf
+##    &lt;cf_lag&gt; &lt;dbl&gt;
+##  1       1M 0.989
+##  2       2M 0.971
+##  3       3M 0.949
+##  4       4M 0.927
+##  5       5M 0.904
+##  6       6M 0.882
+##  7       7M 0.861
+##  8       8M 0.842
+##  9       9M 0.825
+## 10      10M 0.807
+## # ℹ 15 more rows</code></pre>
+</div>
+</div>
+</div>
+<div id="benchmark-forecasting-methods" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Benchmark Forecasting Methods<a href="data.html#benchmark-forecasting-methods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p>Given our graph above, how could you go about forecasting the corn prices for the next 3 years (<span class="math inline">\(h = 36\)</span>)?</p>
+<p>Below, we will discuss some of the most basic (benchmark) models that are often considered when doing outlook forecasting.</p>
+<div id="mean-method" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Mean Method<a href="data.html#mean-method" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A potential model could be to set our forecast equivalent to the mean of the historical series.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="data.html#cb31-1" tabindex="-1"></a><span class="co"># The forecast horizon (h) = 36 or 3 years</span></span>
+<span id="cb31-2"><a href="data.html#cb31-2" tabindex="-1"></a>corn.mean <span class="ot">&lt;-</span> corn.monthly <span class="sc">%&gt;%</span> </span>
+<span id="cb31-3"><a href="data.html#cb31-3" tabindex="-1"></a>  <span class="co">#Specify the model and give it a name (Optional)</span></span>
+<span id="cb31-4"><a href="data.html#cb31-4" tabindex="-1"></a>  <span class="fu">model</span>(<span class="at">meanf =</span> <span class="fu">MEAN</span>(Value)) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-5"><a href="data.html#cb31-5" tabindex="-1"></a>  <span class="co"># Specify the horizon</span></span>
+<span id="cb31-6"><a href="data.html#cb31-6" tabindex="-1"></a>  <span class="fu">forecast</span>(<span class="at">h =</span> <span class="st">&quot;3 years&quot;</span>)</span>
+<span id="cb31-7"><a href="data.html#cb31-7" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="data.html#cb31-8" tabindex="-1"></a>corn.mean <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>## # A fable: 6 x 4 [1M]
+## # Key:     .model [1]
+##   .model     date       Value .mean
+##   &lt;chr&gt;     &lt;mth&gt;      &lt;dist&gt; &lt;dbl&gt;
+## 1 meanf  2020 Jan N(3.2, 1.8)  3.19
+## 2 meanf  2020 Feb N(3.2, 1.8)  3.19
+## 3 meanf  2020 Mar N(3.2, 1.8)  3.19
+## 4 meanf  2020 Apr N(3.2, 1.8)  3.19
+## 5 meanf  2020 May N(3.2, 1.8)  3.19
+## 6 meanf  2020 Jun N(3.2, 1.8)  3.19</code></pre>
+<p>You should note that the forecasts produced and stored in <code>corn.mean</code> have prediction intervals assigned to them. In this case, it is unremarkable as there is no true uncertainty in our forecasts since we are making projections at the historical mean of the data. Unsurprisingly, all the forecasts are equal to the mean of the data.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="data.html#cb33-1" tabindex="-1"></a><span class="fu">mean</span>(corn.monthly<span class="sc">$</span>Value)</span></code></pre></div>
+<pre><code>## [1] 3.192139</code></pre>
+<p>We can now visualize the data along with the mean forecasts.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="data.html#cb35-1" tabindex="-1"></a>corn.mean <span class="sc">%&gt;%</span> <span class="fu">autoplot</span>(corn.monthly, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>,</span>
+<span id="cb35-2"><a href="data.html#cb35-2" tabindex="-1"></a>                       <span class="at">level =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb35-3"><a href="data.html#cb35-3" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p>The <code>level = NULL</code> argument turns off the prediction Intervals (PI) associated with each point in our forecast. If it were omitted, we have</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="data.html#cb36-1" tabindex="-1"></a>corn.mean <span class="sc">%&gt;%</span> <span class="fu">autoplot</span>(corn.monthly, </span>
+<span id="cb36-2"><a href="data.html#cb36-2" tabindex="-1"></a>                       <span class="at">color =</span> <span class="st">&quot;red&quot;</span>,</span>
+<span id="cb36-3"><a href="data.html#cb36-3" tabindex="-1"></a>                       <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb36-4"><a href="data.html#cb36-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Mean Forecast&quot;</span>,</span>
+<span id="cb36-5"><a href="data.html#cb36-5" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Corn (Monthly)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb36-6"><a href="data.html#cb36-6" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+</div>
+<div id="naïve-method" class="section level3 hasAnchor" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Naïve Method<a href="data.html#naïve-method" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Another useful method could be to set the forecasts equal to the <strong>last observed value</strong>.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="data.html#cb37-1" tabindex="-1"></a><span class="co"># Looking at the last 6 values</span></span>
+<span id="cb37-2"><a href="data.html#cb37-2" tabindex="-1"></a><span class="fu">tail</span>(corn.monthly<span class="sc">$</span>Value)</span></code></pre></div>
+<pre><code>## [1] 4.16 3.93 3.80 3.85 3.68 3.71</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="data.html#cb39-1" tabindex="-1"></a><span class="co">#Last value</span></span>
+<span id="cb39-2"><a href="data.html#cb39-2" tabindex="-1"></a><span class="fu">last</span>(corn.monthly<span class="sc">$</span>Value)</span></code></pre></div>
+<pre><code>## [1] 3.71</code></pre>
+<p>This is especially true if we believe in the Efficient Market hypothesis and in cases where the market is exceptionally volatile or even mean reverting.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="data.html#cb41-1" tabindex="-1"></a><span class="co"># The forecast horizon (h) = 36 or 3 years</span></span>
+<span id="cb41-2"><a href="data.html#cb41-2" tabindex="-1"></a>corn.naive <span class="ot">&lt;-</span> corn.monthly <span class="sc">%&gt;%</span> </span>
+<span id="cb41-3"><a href="data.html#cb41-3" tabindex="-1"></a>  <span class="fu">model</span>(<span class="at">naive =</span> <span class="fu">NAIVE</span>(Value)) <span class="sc">%&gt;%</span> <span class="fu">forecast</span>(<span class="at">h =</span> <span class="st">&quot;3 years&quot;</span>)</span>
+<span id="cb41-4"><a href="data.html#cb41-4" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="data.html#cb41-5" tabindex="-1"></a>corn.naive</span></code></pre></div>
+<pre><code>## # A fable: 36 x 4 [1M]
+## # Key:     .model [1]
+##    .model     date         Value .mean
+##    &lt;chr&gt;     &lt;mth&gt;        &lt;dist&gt; &lt;dbl&gt;
+##  1 naive  2020 Jan N(3.7, 0.036)  3.71
+##  2 naive  2020 Feb N(3.7, 0.072)  3.71
+##  3 naive  2020 Mar  N(3.7, 0.11)  3.71
+##  4 naive  2020 Apr  N(3.7, 0.14)  3.71
+##  5 naive  2020 May  N(3.7, 0.18)  3.71
+##  6 naive  2020 Jun  N(3.7, 0.22)  3.71
+##  7 naive  2020 Jul  N(3.7, 0.25)  3.71
+##  8 naive  2020 Aug  N(3.7, 0.29)  3.71
+##  9 naive  2020 Sep  N(3.7, 0.32)  3.71
+## 10 naive  2020 Oct  N(3.7, 0.36)  3.71
+## # ℹ 26 more rows</code></pre>
+<p>Notice here that the forecasts for all future periods are set to the last observed value, 3.71</p>
+<p>Visualizing the data and the forecasts</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="data.html#cb43-1" tabindex="-1"></a><span class="co"># plot the forecasts stored in corn.naive</span></span>
+<span id="cb43-2"><a href="data.html#cb43-2" tabindex="-1"></a>corn.naive <span class="sc">%&gt;%</span> <span class="fu">autoplot</span>(corn.monthly, </span>
+<span id="cb43-3"><a href="data.html#cb43-3" tabindex="-1"></a>                        <span class="at">color =</span> <span class="st">&quot;purple&quot;</span>, </span>
+<span id="cb43-4"><a href="data.html#cb43-4" tabindex="-1"></a>                        <span class="at">size =</span> <span class="dv">1</span>)  <span class="sc">+</span> </span>
+<span id="cb43-5"><a href="data.html#cb43-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Naïve Forecast&quot;</span>,</span>
+<span id="cb43-6"><a href="data.html#cb43-6" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Corn (Monthly)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb43-7"><a href="data.html#cb43-7" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<div class="rmdnote">
+<p>
+Notice that despite setting the forecasts all equal to the last
+value, the uncertainty around our predictions (as shown by the PIs) is
+increasing as we go further into the future.
+</p>
+</div>
+</div>
+<div id="seasonal-naïve-method" class="section level3 hasAnchor" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> Seasonal Naïve Method<a href="data.html#seasonal-naïve-method" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If we assume that the series displays seasonality, we could use a <strong>seasonal naïve method</strong>. The forecast for a given season (say January 2020 and February 2020) is equal to the last value observed for that same season (January 2019 and February 2019, respectively, in this case).</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="data.html#cb44-1" tabindex="-1"></a><span class="co"># The forecast horizon (h) = 36 or 3 years</span></span>
+<span id="cb44-2"><a href="data.html#cb44-2" tabindex="-1"></a>corn.snaive <span class="ot">&lt;-</span> corn.monthly <span class="sc">%&gt;%</span> </span>
+<span id="cb44-3"><a href="data.html#cb44-3" tabindex="-1"></a>  <span class="fu">model</span>(<span class="at">snaive =</span> <span class="fu">SNAIVE</span>(Value)) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-4"><a href="data.html#cb44-4" tabindex="-1"></a>  <span class="fu">forecast</span>(<span class="at">h =</span> <span class="st">&quot;3 years&quot;</span>)</span>
+<span id="cb44-5"><a href="data.html#cb44-5" tabindex="-1"></a></span>
+<span id="cb44-6"><a href="data.html#cb44-6" tabindex="-1"></a>corn.snaive</span></code></pre></div>
+<pre><code>## # A fable: 36 x 4 [1M]
+## # Key:     .model [1]
+##    .model     date        Value .mean
+##    &lt;chr&gt;     &lt;mth&gt;       &lt;dist&gt; &lt;dbl&gt;
+##  1 snaive 2020 Jan N(3.6, 0.81)  3.56
+##  2 snaive 2020 Feb N(3.6, 0.81)  3.6 
+##  3 snaive 2020 Mar N(3.6, 0.81)  3.61
+##  4 snaive 2020 Apr N(3.5, 0.81)  3.53
+##  5 snaive 2020 May N(3.6, 0.81)  3.63
+##  6 snaive 2020 Jun   N(4, 0.81)  3.98
+##  7 snaive 2020 Jul N(4.2, 0.81)  4.16
+##  8 snaive 2020 Aug N(3.9, 0.81)  3.93
+##  9 snaive 2020 Sep N(3.8, 0.81)  3.8 
+## 10 snaive 2020 Oct N(3.8, 0.81)  3.85
+## # ℹ 26 more rows</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="data.html#cb46-1" tabindex="-1"></a><span class="co"># plot the forecasts stored in corn.snaive</span></span>
+<span id="cb46-2"><a href="data.html#cb46-2" tabindex="-1"></a>corn.snaive <span class="sc">%&gt;%</span> <span class="fu">autoplot</span>(corn.monthly,</span>
+<span id="cb46-3"><a href="data.html#cb46-3" tabindex="-1"></a>                         <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>,</span>
+<span id="cb46-4"><a href="data.html#cb46-4" tabindex="-1"></a>                         <span class="at">size =</span> <span class="dv">1</span>)  <span class="sc">+</span> </span>
+<span id="cb46-5"><a href="data.html#cb46-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Seasonal Naïve Forecast&quot;</span>,</span>
+<span id="cb46-6"><a href="data.html#cb46-6" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Corn (Monthly)&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb46-7"><a href="data.html#cb46-7" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p>Notice that the pattern (over a year) repeats itself into the future. This is the nature of the seasonal naive model. All January values will be assigned the last observed January value.</p>
+<p>You can view the last 12 values (since we ended the dataset in December 2019) to validate this:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="data.html#cb47-1" tabindex="-1"></a><span class="fu">tail</span>(corn.monthly,<span class="dv">12</span>)</span></code></pre></div>
+<pre><code>## # A tsibble: 12 x 2 [1M]
+##        date Value
+##       &lt;mth&gt; &lt;dbl&gt;
+##  1 2019 Jan  3.56
+##  2 2019 Feb  3.6 
+##  3 2019 Mar  3.61
+##  4 2019 Apr  3.53
+##  5 2019 May  3.63
+##  6 2019 Jun  3.98
+##  7 2019 Jul  4.16
+##  8 2019 Aug  3.93
+##  9 2019 Sep  3.8 
+## 10 2019 Oct  3.85
+## 11 2019 Nov  3.68
+## 12 2019 Dec  3.71</code></pre>
+</div>
+<div id="drift-method" class="section level3 hasAnchor" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> Drift Method<a href="data.html#drift-method" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In this case, we assign the forecasts as the last value plus the average change over the sample. This is equivalent to drawing a straight line between the first and last observations and extrapolating out into the future.</p>
+<p>This is commonly referred to as the RW (Naïve) model with drift.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="data.html#cb49-1" tabindex="-1"></a><span class="co"># The forecast horizon (h) = 36 or 3 years</span></span>
+<span id="cb49-2"><a href="data.html#cb49-2" tabindex="-1"></a>corn.drift <span class="ot">&lt;-</span> corn.monthly <span class="sc">%&gt;%</span> <span class="fu">model</span>(</span>
+<span id="cb49-3"><a href="data.html#cb49-3" tabindex="-1"></a>  <span class="at">drift =</span> <span class="fu">RW</span>(Value <span class="sc">~</span> <span class="fu">drift</span> ())) <span class="sc">%&gt;%</span> </span>
+<span id="cb49-4"><a href="data.html#cb49-4" tabindex="-1"></a>  <span class="fu">forecast</span>(<span class="at">h =</span> <span class="dv">36</span>)</span>
+<span id="cb49-5"><a href="data.html#cb49-5" tabindex="-1"></a></span>
+<span id="cb49-6"><a href="data.html#cb49-6" tabindex="-1"></a>corn.drift</span></code></pre></div>
+<pre><code>## # A fable: 36 x 4 [1M]
+## # Key:     .model [1]
+##    .model     date         Value .mean
+##    &lt;chr&gt;     &lt;mth&gt;        &lt;dist&gt; &lt;dbl&gt;
+##  1 drift  2020 Jan N(3.7, 0.036)  3.71
+##  2 drift  2020 Feb N(3.7, 0.073)  3.72
+##  3 drift  2020 Mar  N(3.7, 0.11)  3.72
+##  4 drift  2020 Apr  N(3.7, 0.15)  3.73
+##  5 drift  2020 May  N(3.7, 0.18)  3.73
+##  6 drift  2020 Jun  N(3.7, 0.22)  3.73
+##  7 drift  2020 Jul  N(3.7, 0.26)  3.74
+##  8 drift  2020 Aug   N(3.7, 0.3)  3.74
+##  9 drift  2020 Sep  N(3.7, 0.33)  3.75
+## 10 drift  2020 Oct  N(3.7, 0.37)  3.75
+## # ℹ 26 more rows</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="data.html#cb51-1" tabindex="-1"></a><span class="co"># plot the forecasts stored in corn.drift</span></span>
+<span id="cb51-2"><a href="data.html#cb51-2" tabindex="-1"></a>corn.drift <span class="sc">%&gt;%</span> <span class="fu">autoplot</span>(corn.monthly,</span>
+<span id="cb51-3"><a href="data.html#cb51-3" tabindex="-1"></a>                        <span class="at">color =</span> <span class="st">&quot;cornflowerblue&quot;</span>,</span>
+<span id="cb51-4"><a href="data.html#cb51-4" tabindex="-1"></a>                        <span class="at">size =</span> <span class="dv">1</span>)  <span class="sc">+</span> </span>
+<span id="cb51-5"><a href="data.html#cb51-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Randow Walk with Drift Forecast&quot;</span>,</span>
+<span id="cb51-6"><a href="data.html#cb51-6" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Corn (Monthly)&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb51-7"><a href="data.html#cb51-7" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+</div>
+<div id="visualing-all-forecasts" class="section level3 hasAnchor" number="3.4.5">
+<h3><span class="header-section-number">3.4.5</span> Visualing all Forecasts<a href="data.html#visualing-all-forecasts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Like much of coding in <code>R</code>, there are several ways to accomplish a given task. We will take the simplest path and first save all 4 models in a single <code>fable</code>.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="data.html#cb52-1" tabindex="-1"></a>models.corn <span class="ot">&lt;-</span> corn.monthly <span class="sc">%&gt;%</span> <span class="fu">model</span>(</span>
+<span id="cb52-2"><a href="data.html#cb52-2" tabindex="-1"></a>  <span class="at">mean =</span> <span class="fu">MEAN</span>(Value),</span>
+<span id="cb52-3"><a href="data.html#cb52-3" tabindex="-1"></a>  <span class="at">naive =</span> <span class="fu">RW</span>(Value),</span>
+<span id="cb52-4"><a href="data.html#cb52-4" tabindex="-1"></a>  <span class="at">snaive =</span> <span class="fu">SNAIVE</span>(Value),</span>
+<span id="cb52-5"><a href="data.html#cb52-5" tabindex="-1"></a>  <span class="at">drift =</span> <span class="fu">RW</span>(Value <span class="sc">~</span> <span class="fu">drift</span>())</span>
+<span id="cb52-6"><a href="data.html#cb52-6" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb52-7"><a href="data.html#cb52-7" tabindex="-1"></a>  <span class="fu">forecast</span>(<span class="at">h =</span> <span class="st">&quot;3 years&quot;</span>)</span>
+<span id="cb52-8"><a href="data.html#cb52-8" tabindex="-1"></a></span>
+<span id="cb52-9"><a href="data.html#cb52-9" tabindex="-1"></a>models.corn</span></code></pre></div>
+<pre><code>## # A fable: 144 x 4 [1M]
+## # Key:     .model [4]
+##    .model     date       Value .mean
+##    &lt;chr&gt;     &lt;mth&gt;      &lt;dist&gt; &lt;dbl&gt;
+##  1 mean   2020 Jan N(3.2, 1.8)  3.19
+##  2 mean   2020 Feb N(3.2, 1.8)  3.19
+##  3 mean   2020 Mar N(3.2, 1.8)  3.19
+##  4 mean   2020 Apr N(3.2, 1.8)  3.19
+##  5 mean   2020 May N(3.2, 1.8)  3.19
+##  6 mean   2020 Jun N(3.2, 1.8)  3.19
+##  7 mean   2020 Jul N(3.2, 1.8)  3.19
+##  8 mean   2020 Aug N(3.2, 1.8)  3.19
+##  9 mean   2020 Sep N(3.2, 1.8)  3.19
+## 10 mean   2020 Oct N(3.2, 1.8)  3.19
+## # ℹ 134 more rows</code></pre>
+<div class="rmdnote">
+<p>
+Unlike the codes earlier, you will notice I used the <code>RW</code>
+function to estimate the Naïve model instead of the <code>NAIVE</code>
+function. Both functions are equivalent. <code>RW</code> is more
+flexible however, as it allows us to add the <code>drift</code>
+term.
+</p>
+</div>
+<p>You might find it best to turn off the PIs for this plot. Otherwise, our graph will be too busy.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="data.html#cb54-1" tabindex="-1"></a>models.corn <span class="sc">%&gt;%</span> <span class="fu">autoplot</span>(corn.monthly,</span>
+<span id="cb54-2"><a href="data.html#cb54-2" tabindex="-1"></a>                         <span class="at">level =</span> <span class="cn">NULL</span>,</span>
+<span id="cb54-3"><a href="data.html#cb54-3" tabindex="-1"></a>                         <span class="at">size =</span> <span class="fl">0.8</span>)  <span class="sc">+</span> </span>
+<span id="cb54-4"><a href="data.html#cb54-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Forecasts - Corn (Monthly)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb54-5"><a href="data.html#cb54-5" tabindex="-1"></a>  <span class="fu">theme_bw</span>() </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<div class="rmdnote">
+<p>
+The emphasis of this module is not to perform model comparisons. We
+will have a module dedicated to that later. Instead, this module is
+centered on improving your competence and familiarity with typical
+models and the associated <code>R</code> syntax.
+</p>
+</div>
+</div>
+</div>
+<div id="exercise-1" class="section level2 unnumbered hasAnchor">
+<h2>Exercise<a href="data.html#exercise-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Using the <code>tidyUSDA</code> package, import price data (at the <strong>National Level</strong>) for a commodity of your choice from 2000 – 2019. Following the data manipulation techniques earlier in this module,</p>
+<ol style="list-style-type: lower-roman">
+<li><p>obtain the monthly series declared as a <code>tsibble</code> object.</p></li>
+<li><p>present a time series plot of the data.</p></li>
+<li><p>produce a <code>subseriesplot</code> and <code>seasonplot</code> of your data.</p></li>
+<li><p>produce the <code>ACF</code> plot of the data.</p></li>
+<li><p>what do you observe from parts ii – iv.</p></li>
+<li><p>produce and plot the 4 Benchmark forecasts of your data. Use a forecast horizon of 2 years (h = 24).</p></li>
+</ol>
+<div id="exponential-smoothing" class="section level3 hasAnchor" number="3.4.6">
+<h3><span class="header-section-number">3.4.6</span> Exponential Smoothing<a href="data.html#exponential-smoothing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are many ways to do exponential smoothing. The general idea is always to have a declining weight given to observations. The more recent an observation, the more important it should be to our forecasting (and hence a higher weight).</p>
+<div id="simple-exponential-smoothing" class="section level4 hasAnchor" number="3.4.6.1">
+<h4><span class="header-section-number">3.4.6.1</span> Simple exponential Smoothing<a href="data.html#simple-exponential-smoothing" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>This method is suitable for forecasting data with no clear trend or seasonal pattern.</strong> For a moment, let us ignore the trend present in the our corn prices data.</p>
+<p>We could estimate the simple exponential smoothing model forecasts as follows</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="data.html#cb55-1" tabindex="-1"></a>corn.ses <span class="ot">&lt;-</span> corn.monthly <span class="sc">%&gt;%</span> </span>
+<span id="cb55-2"><a href="data.html#cb55-2" tabindex="-1"></a>  <span class="fu">model</span>(<span class="at">ses =</span> <span class="fu">ETS</span>(Value <span class="sc">~</span> <span class="fu">error</span>(<span class="st">&quot;A&quot;</span>)<span class="sc">+</span> <span class="fu">trend</span>(<span class="st">&quot;N&quot;</span>) <span class="sc">+</span> <span class="fu">season</span>(<span class="st">&quot;N&quot;</span>)))</span></code></pre></div>
+<p>You can view the stored model fit (in-sample) using the <code>augment</code> function</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="data.html#cb56-1" tabindex="-1"></a>corn.ses <span class="sc">%&gt;%</span> <span class="fu">augment</span>()</span></code></pre></div>
+<pre><code>## # A tsibble: 360 x 6 [1M]
+## # Key:       .model [1]
+##    .model     date Value .fitted    .resid    .innov
+##    &lt;chr&gt;     &lt;mth&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+##  1 ses    1990 Jan  2.31    2.31  0.000556  0.000556
+##  2 ses    1990 Feb  2.32    2.31  0.0100    0.0100  
+##  3 ses    1990 Mar  2.37    2.32  0.0500    0.0500  
+##  4 ses    1990 Apr  2.51    2.37  0.140     0.140   
+##  5 ses    1990 May  2.62    2.51  0.110     0.110   
+##  6 ses    1990 Jun  2.63    2.62  0.0100    0.0100  
+##  7 ses    1990 Jul  2.62    2.63 -0.0100   -0.0100  
+##  8 ses    1990 Aug  2.51    2.62 -0.110    -0.110   
+##  9 ses    1990 Sep  2.32    2.51 -0.190    -0.190   
+## 10 ses    1990 Oct  2.19    2.32 -0.130    -0.130   
+## # ℹ 350 more rows</code></pre>
+<p>Producing our forecasts as before:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="data.html#cb58-1" tabindex="-1"></a>corn.ses <span class="sc">%&gt;%</span> <span class="fu">forecast</span>(<span class="at">h =</span> <span class="st">&quot;3 years&quot;</span>)</span></code></pre></div>
+<pre><code>## # A fable: 36 x 4 [1M]
+## # Key:     .model [1]
+##    .model     date         Value .mean
+##    &lt;chr&gt;     &lt;mth&gt;        &lt;dist&gt; &lt;dbl&gt;
+##  1 ses    2020 Jan N(3.7, 0.036)  3.71
+##  2 ses    2020 Feb N(3.7, 0.072)  3.71
+##  3 ses    2020 Mar  N(3.7, 0.11)  3.71
+##  4 ses    2020 Apr  N(3.7, 0.14)  3.71
+##  5 ses    2020 May  N(3.7, 0.18)  3.71
+##  6 ses    2020 Jun  N(3.7, 0.22)  3.71
+##  7 ses    2020 Jul  N(3.7, 0.25)  3.71
+##  8 ses    2020 Aug  N(3.7, 0.29)  3.71
+##  9 ses    2020 Sep  N(3.7, 0.33)  3.71
+## 10 ses    2020 Oct  N(3.7, 0.36)  3.71
+## # ℹ 26 more rows</code></pre>
+<p>You will quickly notice that the point estimates of our forecasts are flat over the forecast horizon. However, the uncertainty of that estimate will be increasing over time. That is, the prediction interval (PI) is increasing.</p>
+<p>We can visualize the information stored in <code>corn.ses</code> using the <code>autoplot</code> command.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="data.html#cb60-1" tabindex="-1"></a>corn.ses <span class="sc">%&gt;%</span> <span class="fu">forecast</span>(<span class="at">h =</span> <span class="st">&quot;3 years&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb60-2"><a href="data.html#cb60-2" tabindex="-1"></a>  <span class="fu">autoplot</span>(corn.monthly,</span>
+<span id="cb60-3"><a href="data.html#cb60-3" tabindex="-1"></a>           <span class="at">color =</span> <span class="st">&quot;goldenrod&quot;</span>,</span>
+<span id="cb60-4"><a href="data.html#cb60-4" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb60-5"><a href="data.html#cb60-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Simple Exponential Smoothing&quot;</span>,</span>
+<span id="cb60-6"><a href="data.html#cb60-6" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Corn (Monthly)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb60-7"><a href="data.html#cb60-7" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-43-1.png" width="672" />
+We might need to consider other exponential smoothing techniques that could account for a potential trend.</p>
+<div class="float">
+<img src="images/ets_image.png" alt="ETS Taxonomy" />
+<div class="figcaption">ETS Taxonomy</div>
+</div>
+<p>Exponential smoothing methods are classified by their “Trend” and “Seasonal” components, <span class="math inline">\(T\)</span> &amp; <span class="math inline">\(S\)</span>, respectively.</p>
+<div class="float">
+<img src="images/ets_components.png" alt="Classifications of exponetntail smoothing methods" />
+<div class="figcaption">Classifications of exponetntail smoothing methods</div>
+</div>
+<p><strong>Error:</strong>
+Additive (“A”) or Multiplicative (“M”)</p>
+<p><strong>Trend:</strong>
+None (“N”), additive (“A”), multiplicative (“M”), or damped (“Ad” or “Md”)</p>
+<p><strong>Season:</strong>
+None (“N”), additive (“A”), or multiplicative (“M”)</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>We will suppress the results here to conserve on space.<a href="data.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>The correlation stats squared.<a href="data.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="outlook.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="time-series-patterns.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/shamar-stewart/shamar-stewart.github.io/edit/main/03-module.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

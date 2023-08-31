@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Module 6 Forecasting Prices Using Stocks-to-Use Ratios | Agricultural Outlook &amp; Forecasting</title>
+  <meta name="description" content="Module 6 Forecasting Prices Using Stocks-to-Use Ratios | Agricultural Outlook &amp; Forecasting" />
+  <meta name="generator" content="bookdown 0.35.1 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Module 6 Forecasting Prices Using Stocks-to-Use Ratios | Agricultural Outlook &amp; Forecasting" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/cover.png" />
+  
+  <meta name="github-repo" content="shamar-stewart/shamar-stewart.github.io" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Module 6 Forecasting Prices Using Stocks-to-Use Ratios | Agricultural Outlook &amp; Forecasting" />
+  
+  
+  <meta name="twitter:image" content="/images/cover.png" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="balance-sheet-forecasting.html"/>
+<link rel="next" href="accuracy.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Agricultural Outlook & Forecasting</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#about-the-authors"><i class="fa fa-check"></i>About the Authors</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="public.html"><a href="public.html"><i class="fa fa-check"></i><b>1</b> Public Agricultural Outlook Programs: Structure, Role and Impact</a>
+<ul>
+<li class="chapter" data-level="" data-path="public.html"><a href="public.html#references"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="outlook.html"><a href="outlook.html"><i class="fa fa-check"></i><b>2</b> Agricultural Outlook Tools and Approaches</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="outlook.html"><a href="outlook.html#balance-sheet-approach"><i class="fa fa-check"></i><b>2.1</b> Balance Sheet Approach</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="outlook.html"><a href="outlook.html#balance-sheet"><i class="fa fa-check"></i><b>2.1.1</b> Balance Sheet</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="outlook.html"><a href="outlook.html#exercise"><i class="fa fa-check"></i>Exercise</a></li>
+<li class="chapter" data-level="2.2" data-path="outlook.html"><a href="outlook.html#forecast-selection-and-evaluation"><i class="fa fa-check"></i><b>2.2</b> Forecast selection and evaluation</a></li>
+<li class="chapter" data-level="2.3" data-path="outlook.html"><a href="outlook.html#references-1"><i class="fa fa-check"></i><b>2.3</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Data Manipulation, Visualization, and Basic Forecasting</a>
+<ul>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#optional-materials"><i class="fa fa-check"></i>Optional Materials</a></li>
+<li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#nass-quickstats"><i class="fa fa-check"></i><b>3.1</b> NASS QuickStats</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="data.html"><a href="data.html#tidyusda-package"><i class="fa fa-check"></i><b>3.1.1</b> <code>tidyUSDA</code> package</a></li>
+<li class="chapter" data-level="3.1.2" data-path="data.html"><a href="data.html#api-key"><i class="fa fa-check"></i><b>3.1.2</b> API Key</a></li>
+<li class="chapter" data-level="3.1.3" data-path="data.html"><a href="data.html#query"><i class="fa fa-check"></i><b>3.1.3</b> Writing a Query</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#data-manipulation"><i class="fa fa-check"></i><b>3.2</b> Data Manipulation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="data.html"><a href="data.html#subseting-filtering"><i class="fa fa-check"></i><b>3.2.1</b> Subseting &amp; Filtering</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data.html"><a href="data.html#pipe-operator"><i class="fa fa-check"></i><b>3.2.2</b> Pipe Operator</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#visualizing-time-series-data"><i class="fa fa-check"></i><b>3.3</b> Visualizing Time Series Data</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="data.html"><a href="data.html#time-plot"><i class="fa fa-check"></i><b>3.3.1</b> Time plot</a></li>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#walkthrough-exercise"><i class="fa fa-check"></i>Walkthrough Exercise</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data.html"><a href="data.html#viz"><i class="fa fa-check"></i><b>3.3.2</b> Visualizing corn.monthly (further)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="data.html"><a href="data.html#benchmark-forecasting-methods"><i class="fa fa-check"></i><b>3.4</b> Benchmark Forecasting Methods</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="data.html"><a href="data.html#mean-method"><i class="fa fa-check"></i><b>3.4.1</b> Mean Method</a></li>
+<li class="chapter" data-level="3.4.2" data-path="data.html"><a href="data.html#naïve-method"><i class="fa fa-check"></i><b>3.4.2</b> Naïve Method</a></li>
+<li class="chapter" data-level="3.4.3" data-path="data.html"><a href="data.html#seasonal-naïve-method"><i class="fa fa-check"></i><b>3.4.3</b> Seasonal Naïve Method</a></li>
+<li class="chapter" data-level="3.4.4" data-path="data.html"><a href="data.html#drift-method"><i class="fa fa-check"></i><b>3.4.4</b> Drift Method</a></li>
+<li class="chapter" data-level="3.4.5" data-path="data.html"><a href="data.html#visualing-all-forecasts"><i class="fa fa-check"></i><b>3.4.5</b> Visualing all Forecasts</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#exercise-1"><i class="fa fa-check"></i>Exercise</a>
+<ul>
+<li class="chapter" data-level="3.4.6" data-path="data.html"><a href="data.html#exponential-smoothing"><i class="fa fa-check"></i><b>3.4.6</b> Exponential Smoothing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="time-series-patterns.html"><a href="time-series-patterns.html"><i class="fa fa-check"></i><b>4</b> Time Series Patterns</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="time-series-patterns.html"><a href="time-series-patterns.html#cold-storage-data---pork"><i class="fa fa-check"></i><b>4.1</b> Cold Storage Data - Pork</a></li>
+<li class="chapter" data-level="" data-path="time-series-patterns.html"><a href="time-series-patterns.html#exercise-2"><i class="fa fa-check"></i>Exercise</a></li>
+<li class="chapter" data-level="" data-path="time-series-patterns.html"><a href="time-series-patterns.html#annualized-data"><i class="fa fa-check"></i>Annualized data</a></li>
+<li class="chapter" data-level="4.2" data-path="time-series-patterns.html"><a href="time-series-patterns.html#moving-averages"><i class="fa fa-check"></i><b>4.2</b> Moving Averages</a></li>
+<li class="chapter" data-level="" data-path="time-series-patterns.html"><a href="time-series-patterns.html#model-deviation-error"><i class="fa fa-check"></i>Model Deviation (Error)</a></li>
+<li class="chapter" data-level="" data-path="time-series-patterns.html"><a href="time-series-patterns.html#final-words-moving-averages"><i class="fa fa-check"></i>Final Words: Moving Averages</a></li>
+<li class="chapter" data-level="4.3" data-path="time-series-patterns.html"><a href="time-series-patterns.html#simple-exponential-smoothing-again"><i class="fa fa-check"></i><b>4.3</b> Simple Exponential Smoothing (Again)</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="time-series-patterns.html"><a href="time-series-patterns.html#exponential-smoothing-adjusted-for-trend"><i class="fa fa-check"></i><b>4.3.1</b> Exponential Smoothing Adjusted for Trend</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="time-series-patterns.html"><a href="time-series-patterns.html#exponential-smoothing-adjusted-for-trend-seasonality"><i class="fa fa-check"></i><b>4.4</b> Exponential Smoothing Adjusted for Trend &amp; Seasonality</a></li>
+<li class="chapter" data-level="4.5" data-path="time-series-patterns.html"><a href="time-series-patterns.html#time-series-regression-analysis"><i class="fa fa-check"></i><b>4.5</b> Time Series Regression Analysis</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="time-series-patterns.html"><a href="time-series-patterns.html#accounting-for-linear-trends"><i class="fa fa-check"></i><b>4.5.1</b> Accounting for (Linear) Trends</a></li>
+<li class="chapter" data-level="4.5.2" data-path="time-series-patterns.html"><a href="time-series-patterns.html#accounting-for-seasonality"><i class="fa fa-check"></i><b>4.5.2</b> Accounting for Seasonality</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="time-series-patterns.html"><a href="time-series-patterns.html#accounting-for-seasonality-and-trend"><i class="fa fa-check"></i><b>4.6</b> Accounting for Seasonality and Trend</a></li>
+<li class="chapter" data-level="4.7" data-path="time-series-patterns.html"><a href="time-series-patterns.html#visualizing-the-model-fits"><i class="fa fa-check"></i><b>4.7</b> Visualizing the model fits</a></li>
+<li class="chapter" data-level="4.8" data-path="time-series-patterns.html"><a href="time-series-patterns.html#autoregressive-models"><i class="fa fa-check"></i><b>4.8</b> Autoregressive Models</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="time-series-patterns.html"><a href="time-series-patterns.html#ar1-model"><i class="fa fa-check"></i><b>4.8.1</b> AR(1) model</a></li>
+<li class="chapter" data-level="" data-path="time-series-patterns.html"><a href="time-series-patterns.html#visualizing-the-ar1-model-fit"><i class="fa fa-check"></i>Visualizing the AR(1) model fit</a></li>
+<li class="chapter" data-level="4.8.2" data-path="time-series-patterns.html"><a href="time-series-patterns.html#arp-model"><i class="fa fa-check"></i><b>4.8.2</b> AR(p) model</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="time-series-patterns.html"><a href="time-series-patterns.html#exercise-3"><i class="fa fa-check"></i>Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html"><i class="fa fa-check"></i><b>5</b> Balance Sheet Forecasting</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#supply-forecasts"><i class="fa fa-check"></i><b>5.1</b> Supply Forecasts</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#production"><i class="fa fa-check"></i><b>5.1.1</b> Production</a></li>
+<li class="chapter" data-level="5.1.2" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#activity-i-forecasting-corn-production"><i class="fa fa-check"></i><b>5.1.2</b> Activity I: Forecasting Corn Production</a></li>
+<li class="chapter" data-level="5.1.3" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#other-supply-components"><i class="fa fa-check"></i><b>5.1.3</b> Other Supply Components</a></li>
+<li class="chapter" data-level="5.1.4" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#activity-ii"><i class="fa fa-check"></i><b>5.1.4</b> Activity II</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#utilization-forecasts"><i class="fa fa-check"></i><b>5.2</b> Utilization forecasts</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#top-down-approach.-general-components"><i class="fa fa-check"></i><b>5.2.1</b> Top-down approach. General components</a></li>
+<li class="chapter" data-level="5.2.2" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#activity-iii"><i class="fa fa-check"></i><b>5.2.2</b> Activity III</a></li>
+<li class="chapter" data-level="5.2.3" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#top-down-approach.-specific-components"><i class="fa fa-check"></i><b>5.2.3</b> Top-down approach. Specific components</a></li>
+<li class="chapter" data-level="" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#activity-iv"><i class="fa fa-check"></i>Activity IV</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#alternative-approaches"><i class="fa fa-check"></i><b>5.3</b> Alternative Approaches</a>
+<ul>
+<li class="chapter" data-level="" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#bottom-up-approach"><i class="fa fa-check"></i>Bottom-up approach</a></li>
+<li class="chapter" data-level="" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#similaryear-approach"><i class="fa fa-check"></i>Similar–year approach</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#forecast-adjustments-during-the-marketing-year-pace-of-use-pou."><i class="fa fa-check"></i><b>5.4</b> Forecast adjustments during the marketing year: Pace of Use (POU).</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#exports"><i class="fa fa-check"></i><b>5.4.1</b> Exports</a></li>
+<li class="chapter" data-level="5.4.2" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#activity-v"><i class="fa fa-check"></i><b>5.4.2</b> Activity V</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#food-seed-and-industrial-fsi"><i class="fa fa-check"></i><b>5.5</b> Food, Seed, and Industrial (FSI)</a></li>
+<li class="chapter" data-level="5.6" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#grain-stocks-and-quarterly-use-dynamics."><i class="fa fa-check"></i><b>5.6</b> Grain Stocks and quarterly use dynamics.</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="stocks-use.html"><a href="stocks-use.html"><i class="fa fa-check"></i><b>6</b> Forecasting Prices Using Stocks-to-Use Ratios</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="stocks-use.html"><a href="stocks-use.html#stocks-to-use-based-forecasting-a-replication"><i class="fa fa-check"></i><b>6.1</b> Stocks-to-Use Based Forecasting: A Replication</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="stocks-use.html"><a href="stocks-use.html#download-data"><i class="fa fa-check"></i><b>6.1.1</b> Download our data for corn</a></li>
+<li class="chapter" data-level="6.1.2" data-path="stocks-use.html"><a href="stocks-use.html#clean-data"><i class="fa fa-check"></i><b>6.1.2</b> Clean Data</a></li>
+<li class="chapter" data-level="6.1.3" data-path="stocks-use.html"><a href="stocks-use.html#sub-period-1-1990-2005"><i class="fa fa-check"></i><b>6.1.3</b> Sub Period 1: 1990-2005</a></li>
+<li class="chapter" data-level="6.1.4" data-path="stocks-use.html"><a href="stocks-use.html#sub-period-2-2007---201516"><i class="fa fa-check"></i><b>6.1.4</b> Sub Period 2: 2007 - 2015/16</a></li>
+<li class="chapter" data-level="6.1.5" data-path="stocks-use.html"><a href="stocks-use.html#producing-figure-1"><i class="fa fa-check"></i><b>6.1.5</b> Producing Figure 1</a></li>
+<li class="chapter" data-level="6.1.6" data-path="stocks-use.html"><a href="stocks-use.html#market-condition-dummies"><i class="fa fa-check"></i><b>6.1.6</b> Market Condition Dummies</a></li>
+<li class="chapter" data-level="6.1.7" data-path="stocks-use.html"><a href="stocks-use.html#forecast-price-for-2021"><i class="fa fa-check"></i><b>6.1.7</b> Forecast Price for 2021</a></li>
+<li class="chapter" data-level="" data-path="stocks-use.html"><a href="stocks-use.html#alternative-approach"><i class="fa fa-check"></i>Alternative Approach</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="stocks-use.html"><a href="stocks-use.html#optional-materials-1"><i class="fa fa-check"></i><b>6.2</b> Optional Materials</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="accuracy.html"><a href="accuracy.html"><i class="fa fa-check"></i><b>7</b> Accuracy and Forecast Evaluations</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="accuracy.html"><a href="accuracy.html#corn-data-revisited"><i class="fa fa-check"></i><b>7.1</b> Corn Data (Revisited)</a></li>
+<li class="chapter" data-level="7.2" data-path="accuracy.html"><a href="accuracy.html#exploring-the-forecasting-models-in-sample"><i class="fa fa-check"></i><b>7.2</b> Exploring the Forecasting models In-sample</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="accuracy.html"><a href="accuracy.html#method-1-linear-trend"><i class="fa fa-check"></i><b>7.2.1</b> Method 1: Linear Trend</a></li>
+<li class="chapter" data-level="7.2.2" data-path="accuracy.html"><a href="accuracy.html#method-2-naive-model-with-drift"><i class="fa fa-check"></i><b>7.2.2</b> Method 2: Naive Model (with drift)</a></li>
+<li class="chapter" data-level="7.2.3" data-path="accuracy.html"><a href="accuracy.html#method-3-using-stocks-to-use-approach"><i class="fa fa-check"></i><b>7.2.3</b> Method 3: Using Stocks-to-Use Approach</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="accuracy.html"><a href="accuracy.html#out-of-sample-forecasts"><i class="fa fa-check"></i><b>7.3</b> Out-of-sample forecasts</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="accuracy.html"><a href="accuracy.html#method-1-trend"><i class="fa fa-check"></i><b>7.3.1</b> Method 1: Trend</a></li>
+<li class="chapter" data-level="7.3.2" data-path="accuracy.html"><a href="accuracy.html#method-2-random-walk-drfit-model"><i class="fa fa-check"></i><b>7.3.2</b> Method 2: Random Walk + Drfit Model</a></li>
+<li class="chapter" data-level="7.3.3" data-path="accuracy.html"><a href="accuracy.html#method-3-stocks-to-use-approach"><i class="fa fa-check"></i><b>7.3.3</b> Method 3: Stocks-to-Use Approach</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="accuracy.html"><a href="accuracy.html#model-evaluation"><i class="fa fa-check"></i><b>7.4</b> Model Evaluation</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Agricultural Outlook &amp; Forecasting</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="stocks-use" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Module 6</span> Forecasting Prices Using Stocks-to-Use Ratios<a href="stocks-use.html#stocks-use" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In the previous module we discussed forecasting various balance sheet components relating to either supply or utilization (consumption). Therefore, a commodity forecasting balance sheet reflects the current information about fundamental forces that drive market prices. This fundamental supply and demand information is connected to market prices through the ending stocks variable. This variable is not forecasted, but rather calculated as the difference between total supply and total use in the balance sheet. As a residual between supply and use, ending stocks represent a degree of scarcity (or plenitude) of the commodity in the market. As a result of this relative scarcity, low ending stocks are typically associated with high prices (and vice versa). Hence, the relationship between ending stocks and price is often used to forecast prices. We will start by introducing price forecasting models developed by Irwin and Good and described in this <a href="https://farmdocdaily.illinois.edu/2016/04/relationship-between-stock-to-use-and-prices.html">article</a>.</p>
+<p>Before we formally examine the relationship between ending stocks and prices, it is customary to “normalize” ending stocks by the level of use through calculating a stocks-to-use ratio. The figure below shows changes in the average price of corn received as well as the stocks-to-use of corn over time.</p>
+<div class="float">
+<img src="images/figure0.png" alt="Corn Price and Stock/Use" />
+<div class="figcaption">Corn Price and Stock/Use</div>
+</div>
+<p>Pronounced stocks-to-use spikes occurred in the 1982/1983 and 1985/1986, 1986/1987, 1987/1988 marketing years. Those exceptionally high stocks relative to use was a result of government commodity programs designed to keep prices from falling too far. Specifically, the stocks were help primarily in the Farmer-Owned-Reserve or by the Commodity Credit Corporation (Westcott and Hoffman 1999). Both programs were designed to keep bushels off the market and thus buoying prices. During periods of prolonged excesses, however, it becomes very costly for the government to procure and store large quantities of the commodity and it has a continuing depressing effect on market prices because the market knows the government holds large stockpiles. Farm legislation (‘The Farm Bill’ is re-negotiated every four years by congress) has trended toward more market-oriented approaches to supporting agriculture, and one can observe a marked decline in stocks-to-use over time.</p>
+<p>Aside from the wild swings in the 1980’s, the series still seem to show a negative relationship between stocks-to-use and prices, as one would expect. Figure 1 from the article shows these two series as a scatter-plot with stocks-to-use on the x-axis and price on the y-axis.</p>
+<div class="float">
+<img src="images/Figure1.jpg" alt="Figure 1: Reciprocal Regression Model Fit" />
+<div class="figcaption">Figure 1: Reciprocal Regression Model Fit</div>
+</div>
+<p>Good and Irwin argue that the relationship should be viewed in the context of two different eras. The first era spans from 1990-91 through 2005-06 and consists of the lower and more horizontal cluster of points in Figure 1. The second era spans from 2007-08 through 2014-15 and it contains the upper and more steeply sloped cluster of points in Figure 1. Note that 2006-07 is treated as a transition year is this division of eras.</p>
+<p>The two eras represented in Figure 1 are mainly differentiated by the substantial increase in ethanol demand for corn that began in 2007-08. That is, the outward shift in the demand curve resulted in higher prices, for a given level of supply, than was the case in the period prior to 2007-08. While the corn supply curve likely did not shift at first, there was undoubtedly movement along the supply curve as higher prices resulted in expanded corn acreage. The resulting large outward shift in the demand curve and movement along a relatively inelastic (price insensitive) supply curve meant that a stocks to-use ratio of a given magnitude was associated with a higher price in the latter era than in the former era.
+Next, the authors estimate the relationship between the average marketing year price and ending stock-to-use ratio for the two different eras over 1990-91 through 2014-15. A reciprocal regression specification is used, so that:</p>
+<p><span class="math inline">\(\text{Corn Price} = a + \frac{b}{\text{Stocks/Use Ratio}}\)</span>.</p>
+<p>This specification is simple and imposes a curvilinear relationship between price and the stocks-to-use ratio. That is, the curve becomes steeper and steeper as the stocks-to-use ratio declines, and vice versa.</p>
+<p>Separating the observations into two eras results in a good “fit” between the stocks-to-use ratio and the average marketing year farm price. The fit is particularly good in the latter period, with the stocks-to-use ratio explaining 86 percent of the annual variation in the marketing year average price from 2007-08 through 2014-15. As expected, the estimated regression line is much steeper for the second era compared to the first.</p>
+<p>While this model of the relationship between the stocks-to-use ratio and price appeared to provide a satisfactory level of explanation of the marketing year average farm price of corn, the ratio clearly did not satisfactorily explain the average farm price of soybeans. In fact, the authors concluded that the projected soybean stocks-to-use ratio was not useful in projecting the marketing year U.S. average price of soybeans. These potential problems motivated the search for an alternative model that would better explain the relationship between stocks and price for corn and soybeans.</p>
+<p>In an alternative specification, the authors estimate a base relationship for 1990-91 through 2005-2006, skip 2006-07 as a transition year, and then estimate relationships after 2005-06 that are exactly parallel to the base period model. Thus, the model has a base specification described in the equation above, excludes 2007-2007, and includes dummy variables for groups of years reflecting different strengths of demand. The first group includes 2009-10, 2014-15, and 2015-16 and represents “weak” demand after 2005-06. The second group represents the first level of “moderate” demand and includes 2007-08, 2008-09, and 2013-14. The third group contains only one year, 2010-11, and it represents the second level of “moderate” demand. The fourth and final group includes 2011-12 and 2012-13 and it represents “strong” demand.</p>
+<div class="float">
+<img src="images/Figure3.jpg" alt="Figure 3: New Reciprocal Model" />
+<div class="figcaption">Figure 3: New Reciprocal Model</div>
+</div>
+<p>A useful way to benchmark the strength of demand in the different groups is by comparing the intercepts, which estimate minimum (season-average farm) prices. From lowest to highest, the estimated intercepts are $2.96, $3.50, $4.20, and $5.44, which means that at any given stocks-to-use ratio the price of corn is $2.48 bushel higher under the strong demand relationship compared to weak demand. The <span class="math inline">\(R^2\)</span> for the alternative model in Figure 3 is 0.99, but this is due to the inclusion of the dummy variables for the different groups of years. It is more important to note that all of the coefficients in the model are highly statistically significant.</p>
+<p>Next, we will demonstrate how to replicate this analysis using <code>R</code> and use it to generate a price forecast for the current marketing year.</p>
+<div id="stocks-to-use-based-forecasting-a-replication" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Stocks-to-Use Based Forecasting: A Replication<a href="stocks-use.html#stocks-to-use-based-forecasting-a-replication" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="download-data" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Download our data for corn<a href="stocks-use.html#download-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can again use the <code>openxlsx</code> package to read in the <code>corn</code> data. Our focus is on the worksheet called <code>Annual Data</code> and we need to start from row 10.</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="stocks-use.html#cb144-1" tabindex="-1"></a><span class="co"># pull the data from data folder</span></span>
+<span id="cb144-2"><a href="stocks-use.html#cb144-2" tabindex="-1"></a>dat <span class="ot">&lt;-</span> openxlsx<span class="sc">::</span><span class="fu">read.xlsx</span>(<span class="st">&quot;data/CornSD.xlsx&quot;</span>, </span>
+<span id="cb144-3"><a href="stocks-use.html#cb144-3" tabindex="-1"></a>                        <span class="at">sheet =</span> <span class="st">&quot;Annual Data&quot;</span>,</span>
+<span id="cb144-4"><a href="stocks-use.html#cb144-4" tabindex="-1"></a>                        <span class="at">startRow =</span> <span class="dv">10</span>,</span>
+<span id="cb144-5"><a href="stocks-use.html#cb144-5" tabindex="-1"></a>                        <span class="at">cols =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>)</span>
+<span id="cb144-6"><a href="stocks-use.html#cb144-6" tabindex="-1"></a></span>
+<span id="cb144-7"><a href="stocks-use.html#cb144-7" tabindex="-1"></a><span class="co"># Keep only the first Year column</span></span>
+<span id="cb144-8"><a href="stocks-use.html#cb144-8" tabindex="-1"></a><span class="co"># Keep only rows 1:93 (the actual Years)</span></span>
+<span id="cb144-9"><a href="stocks-use.html#cb144-9" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat[<span class="dv">1</span><span class="sc">:</span><span class="dv">93</span>,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>)]</span>
+<span id="cb144-10"><a href="stocks-use.html#cb144-10" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>##   Year Planted.Acres Harvested.Acres Actual.Yield
+## 1 1929         99130           97805         25.7
+## 2 1930        103915          101465         20.5
+## 3 1931        109364          106866         24.1
+## 4 1932        113024          110577         26.5
+## 5 1933        109830          105918         22.6
+## 6 1934        100563           92193         15.7
+##   Production Stocks Imports Total.Supply Seed
+## 1       &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;         &lt;NA&gt; &lt;NA&gt;
+## 2       &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;         &lt;NA&gt; &lt;NA&gt;
+## 3       &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;         &lt;NA&gt; &lt;NA&gt;
+## 4       &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;         &lt;NA&gt; &lt;NA&gt;
+## 5       &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;         &lt;NA&gt; &lt;NA&gt;
+## 6       &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;         &lt;NA&gt; &lt;NA&gt;
+##   Food,.Alcohol.&amp;.Industrial Corn.Used.for.Ethanol
+## 1                         NA                    NA
+## 2                         NA                    NA
+## 3                         NA                    NA
+## 4                         NA                    NA
+## 5                         NA                    NA
+## 6                         NA                    NA
+##   Feed.&amp;.Residual.Usage All.Dom..Use Exports Total.Usage
+## 1                    NA           NA      NA          NA
+## 2                    NA           NA      NA          NA
+## 3                    NA           NA      NA          NA
+## 4                    NA           NA      NA          NA
+## 5                    NA           NA      NA          NA
+## 6                    NA           NA      NA          NA
+##   Ending.Stocks Free Reserve CCC Loan Stock/Use.(%)
+## 1            NA   NA      NA  NA   NA          &lt;NA&gt;
+## 2            NA   NA      NA  NA   NA          &lt;NA&gt;
+## 3            NA   NA      NA  NA   NA          &lt;NA&gt;
+## 4            NA   NA      NA  NA   NA          &lt;NA&gt;
+## 5            NA   NA      NA  NA   NA          &lt;NA&gt;
+## 6            NA   NA      NA  NA   NA          &lt;NA&gt;
+##   Corn.Avg.Farm.Price
+## 1 0.79900000000000004
+## 2 0.59799999999999998
+## 3 0.32100000000000001
+## 4               0.316
+## 5                0.52
+## 6 0.81499999999999995</code></pre>
+</div>
+<div id="clean-data" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Clean Data<a href="stocks-use.html#clean-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We need to create a data set using data starting in 1990 in order to replicate analysis in Irwin and Good (2016) study. Our focus in on <code>Stock/Use (%)</code> column and <code>Corn Avg Farm Price</code> column. Need to make sure the data is in numeric format. Use these data to calculate a new variable called “ratio”, defined as a ratio of 1 over stocks-to-use percentage (times 100). Select the data we will need for our analysis, consisting of <code>year</code>, <code>su</code>, <code>price</code>, and <code>ratio</code>.</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="stocks-use.html#cb146-1" tabindex="-1"></a>su.data <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span> </span>
+<span id="cb146-2"><a href="stocks-use.html#cb146-2" tabindex="-1"></a>  <span class="fu">as_tsibble</span>(<span class="at">index =</span> Year) <span class="sc">%&gt;%</span> </span>
+<span id="cb146-3"><a href="stocks-use.html#cb146-3" tabindex="-1"></a><span class="co"># Keep only years after 1989</span></span>
+<span id="cb146-4"><a href="stocks-use.html#cb146-4" tabindex="-1"></a>  <span class="fu">filter_index</span>(<span class="dv">1990</span><span class="sc">~</span>.) <span class="sc">%&gt;%</span> </span>
+<span id="cb146-5"><a href="stocks-use.html#cb146-5" tabindex="-1"></a><span class="co"># Convert stocks-to-use to numbers</span></span>
+<span id="cb146-6"><a href="stocks-use.html#cb146-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">su =</span> <span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">Stock/Use.(%)</span><span class="st">`</span>),</span>
+<span id="cb146-7"><a href="stocks-use.html#cb146-7" tabindex="-1"></a><span class="co"># Convert sprice to numbers</span></span>
+<span id="cb146-8"><a href="stocks-use.html#cb146-8" tabindex="-1"></a>         <span class="at">price =</span> <span class="fu">as.numeric</span>(Corn.Avg.Farm.Price),</span>
+<span id="cb146-9"><a href="stocks-use.html#cb146-9" tabindex="-1"></a>         <span class="at">ratio =</span> <span class="dv">1</span><span class="sc">/</span>(su<span class="sc">*</span><span class="dv">100</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb146-10"><a href="stocks-use.html#cb146-10" tabindex="-1"></a>  <span class="fu">select</span>(Year, su, price, ratio)</span>
+<span id="cb146-11"><a href="stocks-use.html#cb146-11" tabindex="-1"></a></span>
+<span id="cb146-12"><a href="stocks-use.html#cb146-12" tabindex="-1"></a>su.data <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>## # A tsibble: 6 x 4 [1Y]
+##    Year     su price  ratio
+##   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+## 1  1990 0.196   2.28 0.0511
+## 2  1991 0.139   2.37 0.0720
+## 3  1992 0.249   2.07 0.0402
+## 4  1993 0.112   2.5  0.0896
+## 5  1994 0.166   2.26 0.0603
+## 6  1995 0.0500  3.24 0.200</code></pre>
+<p>To replicate analysis shown in Figure 1 we need to estimate regressions for 1990-2005 and 2007-2015 separately.</p>
+</div>
+<div id="sub-period-1-1990-2005" class="section level3 hasAnchor" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> Sub Period 1: 1990-2005<a href="stocks-use.html#sub-period-1-1990-2005" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="stocks-use.html#cb148-1" tabindex="-1"></a>reg1 <span class="ot">&lt;-</span> su.data <span class="sc">%&gt;%</span> <span class="fu">filter_index</span>(.<span class="sc">~</span><span class="dv">2005</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb148-2"><a href="stocks-use.html#cb148-2" tabindex="-1"></a>  <span class="fu">model</span>(<span class="fu">TSLM</span>(price <span class="sc">~</span> ratio))</span>
+<span id="cb148-3"><a href="stocks-use.html#cb148-3" tabindex="-1"></a>reg1 <span class="sc">%&gt;%</span> <span class="fu">report</span>()</span></code></pre></div>
+<pre><code>## Series: price 
+## Model: TSLM 
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.27933 -0.11909 -0.02277  0.12216  0.24056 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   1.6351     0.0975  16.770 1.15e-10 ***
+## ratio         8.3821     1.1623   7.212 4.48e-06 ***
+## ---
+## Signif. codes:  
+## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.1733 on 14 degrees of freedom
+## Multiple R-squared: 0.7879,  Adjusted R-squared: 0.7727
+## F-statistic: 52.01 on 1 and 14 DF, p-value: 4.4839e-06</code></pre>
+</div>
+<div id="sub-period-2-2007---201516" class="section level3 hasAnchor" number="6.1.4">
+<h3><span class="header-section-number">6.1.4</span> Sub Period 2: 2007 - 2015/16<a href="stocks-use.html#sub-period-2-2007---201516" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="stocks-use.html#cb150-1" tabindex="-1"></a>reg2 <span class="ot">&lt;-</span> su.data <span class="sc">%&gt;%</span> <span class="fu">filter_index</span>(<span class="dv">2007</span><span class="sc">~</span><span class="dv">2015</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb150-2"><a href="stocks-use.html#cb150-2" tabindex="-1"></a>  <span class="fu">model</span>(<span class="fu">TSLM</span>(price <span class="sc">~</span> ratio))</span>
+<span id="cb150-3"><a href="stocks-use.html#cb150-3" tabindex="-1"></a></span>
+<span id="cb150-4"><a href="stocks-use.html#cb150-4" tabindex="-1"></a>reg2 <span class="sc">%&gt;%</span> <span class="fu">report</span>()</span></code></pre></div>
+<pre><code>## Series: price 
+## Model: TSLM 
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -0.7595 -0.2489 -0.1927  0.4843  0.5215 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   0.3554     0.6841   0.520 0.619406    
+## ratio        44.5375     6.8862   6.468 0.000344 ***
+## ---
+## Signif. codes:  
+## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.4857 on 7 degrees of freedom
+## Multiple R-squared: 0.8566,  Adjusted R-squared: 0.8362
+## F-statistic: 41.83 on 1 and 7 DF, p-value: 0.00034447</code></pre>
+</div>
+<div id="producing-figure-1" class="section level3 hasAnchor" number="6.1.5">
+<h3><span class="header-section-number">6.1.5</span> Producing Figure 1<a href="stocks-use.html#producing-figure-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Our goal is to build a scatter plot showing prices against stock/use ratios replicating Figure 1.</p>
+<p>To replicate the fitted/regression lines on the graph, we will plug potential Ending Stocks/Use values (along the x-axis) into our respective estimated regression equations to generate fitted values.</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="stocks-use.html#cb152-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">5</span>,<span class="dv">27</span>, <span class="at">by =</span> <span class="dv">3</span>)</span>
+<span id="cb152-2"><a href="stocks-use.html#cb152-2" tabindex="-1"></a><span class="co">#Extracting regression coefficients</span></span>
+<span id="cb152-3"><a href="stocks-use.html#cb152-3" tabindex="-1"></a>price1 <span class="ot">&lt;-</span> <span class="fu">coef</span>(reg1)[[<span class="dv">1</span>,<span class="dv">3</span>]] <span class="sc">+</span> </span>
+<span id="cb152-4"><a href="stocks-use.html#cb152-4" tabindex="-1"></a>  (<span class="fu">coef</span>(reg1)[[<span class="dv">2</span>,<span class="dv">3</span>]])<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span>x)</span>
+<span id="cb152-5"><a href="stocks-use.html#cb152-5" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">7.5</span>,<span class="dv">15</span>, <span class="at">by =</span> <span class="dv">2</span>)</span>
+<span id="cb152-6"><a href="stocks-use.html#cb152-6" tabindex="-1"></a>price2 <span class="ot">&lt;-</span> <span class="fu">coef</span>(reg2)[[<span class="dv">1</span>,<span class="dv">3</span>]] <span class="sc">+</span> </span>
+<span id="cb152-7"><a href="stocks-use.html#cb152-7" tabindex="-1"></a>  (<span class="fu">coef</span>(reg2)[[<span class="dv">2</span>,<span class="dv">3</span>]])<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span>x2)</span>
+<span id="cb152-8"><a href="stocks-use.html#cb152-8" tabindex="-1"></a></span>
+<span id="cb152-9"><a href="stocks-use.html#cb152-9" tabindex="-1"></a>reg_lines <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, </span>
+<span id="cb152-10"><a href="stocks-use.html#cb152-10" tabindex="-1"></a>                        <span class="at">reg1 =</span> price1)</span>
+<span id="cb152-11"><a href="stocks-use.html#cb152-11" tabindex="-1"></a>reg_lines2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x2, </span>
+<span id="cb152-12"><a href="stocks-use.html#cb152-12" tabindex="-1"></a>                        <span class="at">reg2 =</span> price2)</span></code></pre></div>
+<p>Now, we are ready to produce our plots.</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="stocks-use.html#cb153-1" tabindex="-1"></a>su.data <span class="sc">%&gt;%</span> <span class="fu">filter_index</span>(.<span class="sc">~</span><span class="dv">2015</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb153-2"><a href="stocks-use.html#cb153-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> (su<span class="sc">*</span><span class="dv">100</span>), <span class="at">y =</span> price)) <span class="sc">+</span></span>
+<span id="cb153-3"><a href="stocks-use.html#cb153-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, </span>
+<span id="cb153-4"><a href="stocks-use.html#cb153-4" tabindex="-1"></a>             <span class="at">pch =</span> <span class="st">&quot;diamond&quot;</span>,</span>
+<span id="cb153-5"><a href="stocks-use.html#cb153-5" tabindex="-1"></a>             <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb153-6"><a href="stocks-use.html#cb153-6" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> reg_lines,</span>
+<span id="cb153-7"><a href="stocks-use.html#cb153-7" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> x,</span>
+<span id="cb153-8"><a href="stocks-use.html#cb153-8" tabindex="-1"></a>                <span class="at">y =</span> price1, </span>
+<span id="cb153-9"><a href="stocks-use.html#cb153-9" tabindex="-1"></a>                <span class="at">color =</span> <span class="st">&quot;1990/91 - 2005/06&quot;</span>),</span>
+<span id="cb153-10"><a href="stocks-use.html#cb153-10" tabindex="-1"></a>            <span class="at">lwd =</span> <span class="fl">1.25</span>) <span class="sc">+</span></span>
+<span id="cb153-11"><a href="stocks-use.html#cb153-11" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">data =</span> reg_lines2,</span>
+<span id="cb153-12"><a href="stocks-use.html#cb153-12" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> x2,</span>
+<span id="cb153-13"><a href="stocks-use.html#cb153-13" tabindex="-1"></a>                <span class="at">y =</span> price2, </span>
+<span id="cb153-14"><a href="stocks-use.html#cb153-14" tabindex="-1"></a>                <span class="at">color =</span> <span class="st">&quot;2007/08 - 2015/16&quot;</span>),</span>
+<span id="cb153-15"><a href="stocks-use.html#cb153-15" tabindex="-1"></a>            <span class="at">lwd =</span> <span class="fl">1.25</span>) <span class="sc">+</span></span>
+<span id="cb153-16"><a href="stocks-use.html#cb153-16" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_legend</span>(<span class="st">&quot;Period&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb153-17"><a href="stocks-use.html#cb153-17" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Figure 1 - Replication&quot;</span>,</span>
+<span id="cb153-18"><a href="stocks-use.html#cb153-18" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Price ($/bu)&quot;</span>,</span>
+<span id="cb153-19"><a href="stocks-use.html#cb153-19" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Ending Stocks/Use (%)&quot;</span></span>
+<span id="cb153-20"><a href="stocks-use.html#cb153-20" tabindex="-1"></a>       ) <span class="sc">+</span></span>
+<span id="cb153-21"><a href="stocks-use.html#cb153-21" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/plot-1.png" width="672" /></p>
+</div>
+<div id="market-condition-dummies" class="section level3 hasAnchor" number="6.1.6">
+<h3><span class="header-section-number">6.1.6</span> Market Condition Dummies<a href="stocks-use.html#market-condition-dummies" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To go from Figure 1 to Figure 3, we need to create market conditions dummy variables, as described in the last paragraph on page 4 of Irwin and Good’s paper. First, we create sub-samples for each market regime. Second we drop 2006, as it is considered a “transitional” year and is excluded from analysis. We also need to limit the sample not to include data post 2015.</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="stocks-use.html#cb154-1" tabindex="-1"></a>weak <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2009</span>, <span class="dv">2014</span><span class="sc">:</span><span class="dv">2015</span>)</span>
+<span id="cb154-2"><a href="stocks-use.html#cb154-2" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2007</span><span class="sc">:</span><span class="dv">2008</span>, <span class="dv">2013</span>)</span>
+<span id="cb154-3"><a href="stocks-use.html#cb154-3" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="dv">2010</span></span>
+<span id="cb154-4"><a href="stocks-use.html#cb154-4" tabindex="-1"></a>strong <span class="ot">&lt;-</span> <span class="dv">2011</span><span class="sc">:</span><span class="dv">2012</span></span>
+<span id="cb154-5"><a href="stocks-use.html#cb154-5" tabindex="-1"></a></span>
+<span id="cb154-6"><a href="stocks-use.html#cb154-6" tabindex="-1"></a><span class="co">#Drop 2006, and all years after 2015.</span></span>
+<span id="cb154-7"><a href="stocks-use.html#cb154-7" tabindex="-1"></a>subdata <span class="ot">&lt;-</span> su.data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Year <span class="sc">%in%</span> </span>
+<span id="cb154-8"><a href="stocks-use.html#cb154-8" tabindex="-1"></a>                                <span class="fu">c</span>(<span class="dv">1990</span><span class="sc">:</span><span class="dv">2005</span>, <span class="dv">2007</span><span class="sc">:</span><span class="dv">2015</span>))</span>
+<span id="cb154-9"><a href="stocks-use.html#cb154-9" tabindex="-1"></a>subdata <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>## # A tsibble: 6 x 4 [1Y]
+##    Year     su price  ratio
+##   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+## 1  1990 0.196   2.28 0.0511
+## 2  1991 0.139   2.37 0.0720
+## 3  1992 0.249   2.07 0.0402
+## 4  1993 0.112   2.5  0.0896
+## 5  1994 0.166   2.26 0.0603
+## 6  1995 0.0500  3.24 0.200</code></pre>
+<p>Once we formatted the data, we can create our desired new variables.</p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="stocks-use.html#cb156-1" tabindex="-1"></a>subdata <span class="ot">&lt;-</span> subdata <span class="sc">%&gt;%</span> </span>
+<span id="cb156-2"><a href="stocks-use.html#cb156-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weak =</span> <span class="fu">ifelse</span>(Year <span class="sc">%in%</span> weak, <span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb156-3"><a href="stocks-use.html#cb156-3" tabindex="-1"></a>         <span class="at">mod2 =</span> <span class="fu">ifelse</span>(Year <span class="sc">%in%</span> mod2, <span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb156-4"><a href="stocks-use.html#cb156-4" tabindex="-1"></a>         <span class="at">mod1 =</span> <span class="fu">ifelse</span>(Year <span class="sc">%in%</span> mod1, <span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb156-5"><a href="stocks-use.html#cb156-5" tabindex="-1"></a>         <span class="at">strong =</span> <span class="fu">ifelse</span>(Year <span class="sc">%in%</span> strong, <span class="dv">1</span>,<span class="dv">0</span>))</span>
+<span id="cb156-6"><a href="stocks-use.html#cb156-6" tabindex="-1"></a>subdata</span></code></pre></div>
+<pre><code>## # A tsibble: 25 x 8 [1Y]
+##     Year     su price  ratio  weak  mod2  mod1 strong
+##    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+##  1  1990 0.196   2.28 0.0511     0     0     0      0
+##  2  1991 0.139   2.37 0.0720     0     0     0      0
+##  3  1992 0.249   2.07 0.0402     0     0     0      0
+##  4  1993 0.112   2.5  0.0896     0     0     0      0
+##  5  1994 0.166   2.26 0.0603     0     0     0      0
+##  6  1995 0.0500  3.24 0.200      0     0     0      0
+##  7  1996 0.100   2.71 0.0995     0     0     0      0
+##  8  1997 0.149   2.43 0.0672     0     0     0      0
+##  9  1998 0.192   1.94 0.0520     0     0     0      0
+## 10  1999 0.181   1.82 0.0554     0     0     0      0
+## # ℹ 15 more rows</code></pre>
+<p>Now that the data is ready, we can combine it to show relationships illustrated in Figure 3.</p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="stocks-use.html#cb158-1" tabindex="-1"></a>reg.all <span class="ot">&lt;-</span> subdata <span class="sc">%&gt;%</span> <span class="fu">model</span>(</span>
+<span id="cb158-2"><a href="stocks-use.html#cb158-2" tabindex="-1"></a>  <span class="fu">TSLM</span>(price <span class="sc">~</span> ratio <span class="sc">+</span> weak <span class="sc">+</span> mod2 <span class="sc">+</span></span>
+<span id="cb158-3"><a href="stocks-use.html#cb158-3" tabindex="-1"></a>         mod1 <span class="sc">+</span> strong))</span>
+<span id="cb158-4"><a href="stocks-use.html#cb158-4" tabindex="-1"></a>reg.all <span class="sc">%&gt;%</span> <span class="fu">report</span>()</span></code></pre></div>
+<pre><code>## Series: price 
+## Model: TSLM 
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -0.2994 -0.1125  0.0000  0.1118  0.2994 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  1.62417    0.09947   16.33 1.23e-12 ***
+## ratio        8.52790    1.18120    7.22 7.43e-07 ***
+## weak         1.32899    0.11305   11.76 3.66e-10 ***
+## mod2         1.89273    0.11366   16.65 8.64e-13 ***
+## mod1         2.56885    0.19122   13.43 3.77e-11 ***
+## strong       3.81502    0.14990   25.45 3.83e-16 ***
+## ---
+## Signif. codes:  
+## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.1796 on 19 degrees of freedom
+## Multiple R-squared: 0.9868,  Adjusted R-squared: 0.9833
+## F-statistic: 283.9 on 5 and 19 DF, p-value: &lt; 2.22e-16</code></pre>
+<div id="adding-the-regression-lines-to-figure-3" class="section level4 hasAnchor" number="6.1.6.1">
+<h4><span class="header-section-number">6.1.6.1</span> Adding the Regression lines to Figure 3<a href="stocks-use.html#adding-the-regression-lines-to-figure-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Using the same construct as above, we can generate the fitted values (regression lines) for the 5 demand curves.</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="stocks-use.html#cb160-1" tabindex="-1"></a>x.c <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">5</span>,<span class="dv">25</span>, <span class="at">by =</span> <span class="fl">0.5</span>)</span>
+<span id="cb160-2"><a href="stocks-use.html#cb160-2" tabindex="-1"></a>base <span class="ot">=</span> <span class="fu">coef</span>(reg.all)[[<span class="dv">2</span>,<span class="dv">3</span>]]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span>x.c) <span class="sc">+</span> </span>
+<span id="cb160-3"><a href="stocks-use.html#cb160-3" tabindex="-1"></a>  <span class="fu">coef</span>(reg.all)[[<span class="dv">1</span>,<span class="dv">3</span>]]</span>
+<span id="cb160-4"><a href="stocks-use.html#cb160-4" tabindex="-1"></a>weak <span class="ot">=</span> <span class="fu">coef</span>(reg.all)[[<span class="dv">2</span>,<span class="dv">3</span>]]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span>x.c) <span class="sc">+</span> </span>
+<span id="cb160-5"><a href="stocks-use.html#cb160-5" tabindex="-1"></a>  (<span class="fu">coef</span>(reg.all)[[<span class="dv">1</span>,<span class="dv">3</span>]] <span class="sc">+</span> <span class="fu">coef</span>(reg.all)[[<span class="dv">3</span>,<span class="dv">3</span>]])</span>
+<span id="cb160-6"><a href="stocks-use.html#cb160-6" tabindex="-1"></a>mod2 <span class="ot">=</span> <span class="fu">coef</span>(reg.all)[[<span class="dv">2</span>,<span class="dv">3</span>]]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span>x.c) <span class="sc">+</span> </span>
+<span id="cb160-7"><a href="stocks-use.html#cb160-7" tabindex="-1"></a>  (<span class="fu">coef</span>(reg.all)[[<span class="dv">1</span>,<span class="dv">3</span>]] <span class="sc">+</span> <span class="fu">coef</span>(reg.all)[[<span class="dv">4</span>,<span class="dv">3</span>]])</span>
+<span id="cb160-8"><a href="stocks-use.html#cb160-8" tabindex="-1"></a>mod1 <span class="ot">=</span> <span class="fu">coef</span>(reg.all)[[<span class="dv">2</span>,<span class="dv">3</span>]]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span>x.c) <span class="sc">+</span> </span>
+<span id="cb160-9"><a href="stocks-use.html#cb160-9" tabindex="-1"></a>  (<span class="fu">coef</span>(reg.all)[[<span class="dv">1</span>,<span class="dv">3</span>]] <span class="sc">+</span> <span class="fu">coef</span>(reg.all)[[<span class="dv">5</span>,<span class="dv">3</span>]])</span>
+<span id="cb160-10"><a href="stocks-use.html#cb160-10" tabindex="-1"></a>strong <span class="ot">=</span> <span class="fu">coef</span>(reg.all)[[<span class="dv">2</span>,<span class="dv">3</span>]]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span>x.c) <span class="sc">+</span> </span>
+<span id="cb160-11"><a href="stocks-use.html#cb160-11" tabindex="-1"></a>  (<span class="fu">coef</span>(reg.all)[[<span class="dv">1</span>,<span class="dv">3</span>]] <span class="sc">+</span> <span class="fu">coef</span>(reg.all)[[<span class="dv">6</span>,<span class="dv">3</span>]])</span>
+<span id="cb160-12"><a href="stocks-use.html#cb160-12" tabindex="-1"></a></span>
+<span id="cb160-13"><a href="stocks-use.html#cb160-13" tabindex="-1"></a>demand <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x=</span> x.c,</span>
+<span id="cb160-14"><a href="stocks-use.html#cb160-14" tabindex="-1"></a>           <span class="at">base=</span>base,</span>
+<span id="cb160-15"><a href="stocks-use.html#cb160-15" tabindex="-1"></a>           <span class="at">weak =</span> weak,</span>
+<span id="cb160-16"><a href="stocks-use.html#cb160-16" tabindex="-1"></a>           <span class="at">mod2 =</span> mod2,</span>
+<span id="cb160-17"><a href="stocks-use.html#cb160-17" tabindex="-1"></a>           <span class="at">mod1 =</span>  mod1,</span>
+<span id="cb160-18"><a href="stocks-use.html#cb160-18" tabindex="-1"></a>           <span class="at">strong =</span> strong)</span></code></pre></div>
+<p>Again, we can plot the results as follows:</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="stocks-use.html#cb161-1" tabindex="-1"></a>demand <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="sc">!</span>x, <span class="at">names_to =</span> <span class="st">&quot;Demand&quot;</span>,</span>
+<span id="cb161-2"><a href="stocks-use.html#cb161-2" tabindex="-1"></a>                        <span class="at">values_to =</span> <span class="st">&quot;Price&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb161-3"><a href="stocks-use.html#cb161-3" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb161-4"><a href="stocks-use.html#cb161-4" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> Price,</span>
+<span id="cb161-5"><a href="stocks-use.html#cb161-5" tabindex="-1"></a>                <span class="at">group =</span> Demand),</span>
+<span id="cb161-6"><a href="stocks-use.html#cb161-6" tabindex="-1"></a>                <span class="at">colour =</span> <span class="st">&quot;hotpink&quot;</span>,</span>
+<span id="cb161-7"><a href="stocks-use.html#cb161-7" tabindex="-1"></a>            <span class="at">lwd =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb161-8"><a href="stocks-use.html#cb161-8" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> su<span class="sc">*</span><span class="dv">100</span>,</span>
+<span id="cb161-9"><a href="stocks-use.html#cb161-9" tabindex="-1"></a>                 <span class="at">y =</span> price),</span>
+<span id="cb161-10"><a href="stocks-use.html#cb161-10" tabindex="-1"></a>             <span class="at">data =</span> subdata,</span>
+<span id="cb161-11"><a href="stocks-use.html#cb161-11" tabindex="-1"></a>             <span class="at">size =</span> <span class="fl">2.5</span>,</span>
+<span id="cb161-12"><a href="stocks-use.html#cb161-12" tabindex="-1"></a>             <span class="at">color =</span> <span class="st">&quot;darkblue&quot;</span>,</span>
+<span id="cb161-13"><a href="stocks-use.html#cb161-13" tabindex="-1"></a>             <span class="at">pch =</span> <span class="st">&quot;diamond&quot;</span>) <span class="sc">+</span></span>
+<span id="cb161-14"><a href="stocks-use.html#cb161-14" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Figure 3 - Replication&quot;</span>,</span>
+<span id="cb161-15"><a href="stocks-use.html#cb161-15" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Price ($/bu)&quot;</span>,</span>
+<span id="cb161-16"><a href="stocks-use.html#cb161-16" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Ending Stocks/Use (%)&quot;</span></span>
+<span id="cb161-17"><a href="stocks-use.html#cb161-17" tabindex="-1"></a>       ) <span class="sc">+</span></span>
+<span id="cb161-18"><a href="stocks-use.html#cb161-18" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
+</div>
+</div>
+<div id="forecast-price-for-2021" class="section level3 hasAnchor" number="6.1.7">
+<h3><span class="header-section-number">6.1.7</span> Forecast Price for 2021<a href="stocks-use.html#forecast-price-for-2021" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Our next goal is to use the regression estimates from this method and this sample to generate corn price forecasts for <strong>2021</strong>.</p>
+<div class="rmdtip">
+<p>
+Why would we use the original sample estimates for these regressions
+and not simply extend our data through to 2020?
+</p>
+<p>
+<em>Answer: This regression method will require that we make
+assumptions about the market conditions between 2016 and 2020. To avoid
+this, we will use the coefficient estimates from the regression model
+using data from 1990 – 2015, and excluding 2006.</em>
+</p>
+</div>
+<p>We start by creating names for our forecasts. Our forecast will be based on the new value of Stocks/Use ratio from the most recent balance sheet (2021 forecasts) and will generate and estimate for each potential market regime (scenario).</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="stocks-use.html#cb162-1" tabindex="-1"></a>future_scenarios <span class="ot">&lt;-</span> <span class="fu">scenarios</span>(</span>
+<span id="cb162-2"><a href="stocks-use.html#cb162-2" tabindex="-1"></a>  <span class="at">weak =</span> <span class="fu">new_data</span>(subdata,<span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb162-3"><a href="stocks-use.html#cb162-3" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">ratio =</span> <span class="fl">0.08477816</span>, <span class="at">weak =</span> <span class="dv">1</span>,</span>
+<span id="cb162-4"><a href="stocks-use.html#cb162-4" tabindex="-1"></a>           <span class="at">mod2 =</span> <span class="dv">0</span>, <span class="at">mod1 =</span> <span class="dv">0</span>, <span class="at">strong =</span> <span class="dv">0</span>),</span>
+<span id="cb162-5"><a href="stocks-use.html#cb162-5" tabindex="-1"></a>  <span class="at">moderate2 =</span> <span class="fu">new_data</span>(subdata,<span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb162-6"><a href="stocks-use.html#cb162-6" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">ratio =</span> <span class="fl">0.08477816</span>, <span class="at">weak =</span> <span class="dv">0</span>,</span>
+<span id="cb162-7"><a href="stocks-use.html#cb162-7" tabindex="-1"></a>           <span class="at">mod2 =</span> <span class="dv">1</span>, <span class="at">mod1 =</span> <span class="dv">0</span>, <span class="at">strong =</span> <span class="dv">0</span>),</span>
+<span id="cb162-8"><a href="stocks-use.html#cb162-8" tabindex="-1"></a>  <span class="at">moderate1 =</span> <span class="fu">new_data</span>(subdata,<span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb162-9"><a href="stocks-use.html#cb162-9" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">ratio =</span> <span class="fl">0.08477816</span>, <span class="at">weak =</span> <span class="dv">0</span>,</span>
+<span id="cb162-10"><a href="stocks-use.html#cb162-10" tabindex="-1"></a>           <span class="at">mod2 =</span> <span class="dv">0</span>, <span class="at">mod1 =</span> <span class="dv">1</span>, <span class="at">strong =</span> <span class="dv">0</span>),</span>
+<span id="cb162-11"><a href="stocks-use.html#cb162-11" tabindex="-1"></a>  <span class="at">strong =</span> <span class="fu">new_data</span>(subdata,<span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb162-12"><a href="stocks-use.html#cb162-12" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">ratio =</span> <span class="fl">0.08477816</span>, <span class="at">weak =</span> <span class="dv">0</span>,</span>
+<span id="cb162-13"><a href="stocks-use.html#cb162-13" tabindex="-1"></a>           <span class="at">mod2 =</span> <span class="dv">0</span>, <span class="at">mod1 =</span> <span class="dv">0</span>, <span class="at">strong =</span> <span class="dv">1</span>),</span>
+<span id="cb162-14"><a href="stocks-use.html#cb162-14" tabindex="-1"></a>  <span class="at">names_to =</span> <span class="st">&quot;Scenario&quot;</span></span>
+<span id="cb162-15"><a href="stocks-use.html#cb162-15" tabindex="-1"></a>)</span>
+<span id="cb162-16"><a href="stocks-use.html#cb162-16" tabindex="-1"></a>forecast21 <span class="ot">&lt;-</span> reg.all <span class="sc">%&gt;%</span> </span>
+<span id="cb162-17"><a href="stocks-use.html#cb162-17" tabindex="-1"></a>  <span class="fu">forecast</span>(<span class="at">new_data =</span> future_scenarios)</span>
+<span id="cb162-18"><a href="stocks-use.html#cb162-18" tabindex="-1"></a></span>
+<span id="cb162-19"><a href="stocks-use.html#cb162-19" tabindex="-1"></a>subdata <span class="sc">%&gt;%</span> <span class="fu">autoplot</span>(price) <span class="sc">+</span></span>
+<span id="cb162-20"><a href="stocks-use.html#cb162-20" tabindex="-1"></a>  <span class="fu">autolayer</span>(forecast21, <span class="at">level =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb162-21"><a href="stocks-use.html#cb162-21" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Scenario Forecasts for Prices in 2021&quot;</span>) <span class="sc">+</span></span>
+<span id="cb162-22"><a href="stocks-use.html#cb162-22" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/dataframe-1.png" width="672" /></p>
+</div>
+<div id="alternative-approach" class="section level3 unnumbered hasAnchor">
+<h3>Alternative Approach<a href="stocks-use.html#alternative-approach" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Alternatively we can extend our regression estimates through 2020</strong></p>
+<p>This will require that we make assumptions about the market conditions between 2016 and 2020. 2016-2020 were characterized by low prices which could have been caused by weak market conditions and associated with trade war with China in 2019. Thus, we add these years to the “weak” dummy variable.</p>
+<p>To revise our analysis we need to go back and revise our definitions of market conditions and extend the time period included for analysis.</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="stocks-use.html#cb163-1" tabindex="-1"></a>weak <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2009</span>, <span class="dv">2014</span><span class="sc">:</span><span class="dv">2020</span>)</span>
+<span id="cb163-2"><a href="stocks-use.html#cb163-2" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2007</span><span class="sc">:</span><span class="dv">2008</span>, <span class="dv">2013</span>)</span>
+<span id="cb163-3"><a href="stocks-use.html#cb163-3" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="dv">2010</span></span>
+<span id="cb163-4"><a href="stocks-use.html#cb163-4" tabindex="-1"></a>strong <span class="ot">&lt;-</span> <span class="dv">2011</span><span class="sc">:</span><span class="dv">2012</span></span>
+<span id="cb163-5"><a href="stocks-use.html#cb163-5" tabindex="-1"></a></span>
+<span id="cb163-6"><a href="stocks-use.html#cb163-6" tabindex="-1"></a><span class="co">#Drop 2006</span></span>
+<span id="cb163-7"><a href="stocks-use.html#cb163-7" tabindex="-1"></a>subdata <span class="ot">&lt;-</span> su.data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Year <span class="sc">%in%</span> </span>
+<span id="cb163-8"><a href="stocks-use.html#cb163-8" tabindex="-1"></a>                                <span class="fu">c</span>(<span class="dv">1990</span><span class="sc">:</span><span class="dv">2005</span>,<span class="dv">2007</span><span class="sc">:</span><span class="dv">2020</span>))</span>
+<span id="cb163-9"><a href="stocks-use.html#cb163-9" tabindex="-1"></a></span>
+<span id="cb163-10"><a href="stocks-use.html#cb163-10" tabindex="-1"></a>subdata <span class="ot">&lt;-</span> subdata <span class="sc">%&gt;%</span> </span>
+<span id="cb163-11"><a href="stocks-use.html#cb163-11" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weak.d =</span> <span class="fu">ifelse</span>(Year <span class="sc">%in%</span> weak, <span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb163-12"><a href="stocks-use.html#cb163-12" tabindex="-1"></a>         <span class="at">mod2.d =</span> <span class="fu">ifelse</span>(Year <span class="sc">%in%</span> mod2, <span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb163-13"><a href="stocks-use.html#cb163-13" tabindex="-1"></a>         <span class="at">mod1.d =</span> <span class="fu">ifelse</span>(Year <span class="sc">%in%</span> mod1, <span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb163-14"><a href="stocks-use.html#cb163-14" tabindex="-1"></a>         <span class="at">strong.d =</span> <span class="fu">ifelse</span>(Year <span class="sc">%in%</span> strong, <span class="dv">1</span>,<span class="dv">0</span>))</span>
+<span id="cb163-15"><a href="stocks-use.html#cb163-15" tabindex="-1"></a></span>
+<span id="cb163-16"><a href="stocks-use.html#cb163-16" tabindex="-1"></a>subdata</span></code></pre></div>
+<pre><code>## # A tsibble: 30 x 8 [1Y]
+##     Year     su price  ratio weak.d mod2.d mod1.d strong.d
+##    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+##  1  1990 0.196   2.28 0.0511      0      0      0        0
+##  2  1991 0.139   2.37 0.0720      0      0      0        0
+##  3  1992 0.249   2.07 0.0402      0      0      0        0
+##  4  1993 0.112   2.5  0.0896      0      0      0        0
+##  5  1994 0.166   2.26 0.0603      0      0      0        0
+##  6  1995 0.0500  3.24 0.200       0      0      0        0
+##  7  1996 0.100   2.71 0.0995      0      0      0        0
+##  8  1997 0.149   2.43 0.0672      0      0      0        0
+##  9  1998 0.192   1.94 0.0520      0      0      0        0
+## 10  1999 0.181   1.82 0.0554      0      0      0        0
+## # ℹ 20 more rows</code></pre>
+<p>The rest of the code should work without any changes. These forecasts are based on a full dataset from 1990 through 2020, excluding 2006.</p>
+</div>
+</div>
+<div id="optional-materials-1" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Optional Materials<a href="stocks-use.html#optional-materials-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Other illustrations of forecasting prices using stocks-to-use and other variables include:</p>
+<ul>
+<li><p><a href="files/Forecasting%20Cotton%20Prices.pdf">Forecasting Cotton Prices</a></p></li>
+<li><p><a href="files/FFC1997_World_Cotton_Price.pdf">Forecasting World Cotton Price</a></p></li>
+<li><p><a href="files/Modelling%20Soybean%20Prices.pdf">Modelling Soybean Prices in a Changing Policy</a></p></li>
+<li><p><a href="https://www.ers.usda.gov/publications/pub-details/?pubid=47277">Price Determination for Corn and Wheat</a></p></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="balance-sheet-forecasting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="accuracy.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/shamar-stewart/shamar-stewart.github.io/edit/main/06-module.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

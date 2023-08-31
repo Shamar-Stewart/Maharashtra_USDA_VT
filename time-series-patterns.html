@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Module 4 Time Series Patterns | Agricultural Outlook &amp; Forecasting</title>
+  <meta name="description" content="Module 4 Time Series Patterns | Agricultural Outlook &amp; Forecasting" />
+  <meta name="generator" content="bookdown 0.35.1 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Module 4 Time Series Patterns | Agricultural Outlook &amp; Forecasting" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/cover.png" />
+  
+  <meta name="github-repo" content="shamar-stewart/shamar-stewart.github.io" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Module 4 Time Series Patterns | Agricultural Outlook &amp; Forecasting" />
+  
+  
+  <meta name="twitter:image" content="/images/cover.png" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data.html"/>
+<link rel="next" href="balance-sheet-forecasting.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Agricultural Outlook & Forecasting</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#about-the-authors"><i class="fa fa-check"></i>About the Authors</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="public.html"><a href="public.html"><i class="fa fa-check"></i><b>1</b> Public Agricultural Outlook Programs: Structure, Role and Impact</a>
+<ul>
+<li class="chapter" data-level="" data-path="public.html"><a href="public.html#references"><i class="fa fa-check"></i>References</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="outlook.html"><a href="outlook.html"><i class="fa fa-check"></i><b>2</b> Agricultural Outlook Tools and Approaches</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="outlook.html"><a href="outlook.html#balance-sheet-approach"><i class="fa fa-check"></i><b>2.1</b> Balance Sheet Approach</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="outlook.html"><a href="outlook.html#balance-sheet"><i class="fa fa-check"></i><b>2.1.1</b> Balance Sheet</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="outlook.html"><a href="outlook.html#exercise"><i class="fa fa-check"></i>Exercise</a></li>
+<li class="chapter" data-level="2.2" data-path="outlook.html"><a href="outlook.html#forecast-selection-and-evaluation"><i class="fa fa-check"></i><b>2.2</b> Forecast selection and evaluation</a></li>
+<li class="chapter" data-level="2.3" data-path="outlook.html"><a href="outlook.html#references-1"><i class="fa fa-check"></i><b>2.3</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Data Manipulation, Visualization, and Basic Forecasting</a>
+<ul>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#optional-materials"><i class="fa fa-check"></i>Optional Materials</a></li>
+<li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#nass-quickstats"><i class="fa fa-check"></i><b>3.1</b> NASS QuickStats</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="data.html"><a href="data.html#tidyusda-package"><i class="fa fa-check"></i><b>3.1.1</b> <code>tidyUSDA</code> package</a></li>
+<li class="chapter" data-level="3.1.2" data-path="data.html"><a href="data.html#api-key"><i class="fa fa-check"></i><b>3.1.2</b> API Key</a></li>
+<li class="chapter" data-level="3.1.3" data-path="data.html"><a href="data.html#query"><i class="fa fa-check"></i><b>3.1.3</b> Writing a Query</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#data-manipulation"><i class="fa fa-check"></i><b>3.2</b> Data Manipulation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="data.html"><a href="data.html#subseting-filtering"><i class="fa fa-check"></i><b>3.2.1</b> Subseting &amp; Filtering</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data.html"><a href="data.html#pipe-operator"><i class="fa fa-check"></i><b>3.2.2</b> Pipe Operator</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#visualizing-time-series-data"><i class="fa fa-check"></i><b>3.3</b> Visualizing Time Series Data</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="data.html"><a href="data.html#time-plot"><i class="fa fa-check"></i><b>3.3.1</b> Time plot</a></li>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#walkthrough-exercise"><i class="fa fa-check"></i>Walkthrough Exercise</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data.html"><a href="data.html#viz"><i class="fa fa-check"></i><b>3.3.2</b> Visualizing corn.monthly (further)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="data.html"><a href="data.html#benchmark-forecasting-methods"><i class="fa fa-check"></i><b>3.4</b> Benchmark Forecasting Methods</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="data.html"><a href="data.html#mean-method"><i class="fa fa-check"></i><b>3.4.1</b> Mean Method</a></li>
+<li class="chapter" data-level="3.4.2" data-path="data.html"><a href="data.html#naïve-method"><i class="fa fa-check"></i><b>3.4.2</b> Naïve Method</a></li>
+<li class="chapter" data-level="3.4.3" data-path="data.html"><a href="data.html#seasonal-naïve-method"><i class="fa fa-check"></i><b>3.4.3</b> Seasonal Naïve Method</a></li>
+<li class="chapter" data-level="3.4.4" data-path="data.html"><a href="data.html#drift-method"><i class="fa fa-check"></i><b>3.4.4</b> Drift Method</a></li>
+<li class="chapter" data-level="3.4.5" data-path="data.html"><a href="data.html#visualing-all-forecasts"><i class="fa fa-check"></i><b>3.4.5</b> Visualing all Forecasts</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#exercise-1"><i class="fa fa-check"></i>Exercise</a>
+<ul>
+<li class="chapter" data-level="3.4.6" data-path="data.html"><a href="data.html#exponential-smoothing"><i class="fa fa-check"></i><b>3.4.6</b> Exponential Smoothing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="time-series-patterns.html"><a href="time-series-patterns.html"><i class="fa fa-check"></i><b>4</b> Time Series Patterns</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="time-series-patterns.html"><a href="time-series-patterns.html#cold-storage-data---pork"><i class="fa fa-check"></i><b>4.1</b> Cold Storage Data - Pork</a></li>
+<li class="chapter" data-level="" data-path="time-series-patterns.html"><a href="time-series-patterns.html#exercise-2"><i class="fa fa-check"></i>Exercise</a></li>
+<li class="chapter" data-level="" data-path="time-series-patterns.html"><a href="time-series-patterns.html#annualized-data"><i class="fa fa-check"></i>Annualized data</a></li>
+<li class="chapter" data-level="4.2" data-path="time-series-patterns.html"><a href="time-series-patterns.html#moving-averages"><i class="fa fa-check"></i><b>4.2</b> Moving Averages</a></li>
+<li class="chapter" data-level="" data-path="time-series-patterns.html"><a href="time-series-patterns.html#model-deviation-error"><i class="fa fa-check"></i>Model Deviation (Error)</a></li>
+<li class="chapter" data-level="" data-path="time-series-patterns.html"><a href="time-series-patterns.html#final-words-moving-averages"><i class="fa fa-check"></i>Final Words: Moving Averages</a></li>
+<li class="chapter" data-level="4.3" data-path="time-series-patterns.html"><a href="time-series-patterns.html#simple-exponential-smoothing-again"><i class="fa fa-check"></i><b>4.3</b> Simple Exponential Smoothing (Again)</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="time-series-patterns.html"><a href="time-series-patterns.html#exponential-smoothing-adjusted-for-trend"><i class="fa fa-check"></i><b>4.3.1</b> Exponential Smoothing Adjusted for Trend</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="time-series-patterns.html"><a href="time-series-patterns.html#exponential-smoothing-adjusted-for-trend-seasonality"><i class="fa fa-check"></i><b>4.4</b> Exponential Smoothing Adjusted for Trend &amp; Seasonality</a></li>
+<li class="chapter" data-level="4.5" data-path="time-series-patterns.html"><a href="time-series-patterns.html#time-series-regression-analysis"><i class="fa fa-check"></i><b>4.5</b> Time Series Regression Analysis</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="time-series-patterns.html"><a href="time-series-patterns.html#accounting-for-linear-trends"><i class="fa fa-check"></i><b>4.5.1</b> Accounting for (Linear) Trends</a></li>
+<li class="chapter" data-level="4.5.2" data-path="time-series-patterns.html"><a href="time-series-patterns.html#accounting-for-seasonality"><i class="fa fa-check"></i><b>4.5.2</b> Accounting for Seasonality</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="time-series-patterns.html"><a href="time-series-patterns.html#accounting-for-seasonality-and-trend"><i class="fa fa-check"></i><b>4.6</b> Accounting for Seasonality and Trend</a></li>
+<li class="chapter" data-level="4.7" data-path="time-series-patterns.html"><a href="time-series-patterns.html#visualizing-the-model-fits"><i class="fa fa-check"></i><b>4.7</b> Visualizing the model fits</a></li>
+<li class="chapter" data-level="4.8" data-path="time-series-patterns.html"><a href="time-series-patterns.html#autoregressive-models"><i class="fa fa-check"></i><b>4.8</b> Autoregressive Models</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="time-series-patterns.html"><a href="time-series-patterns.html#ar1-model"><i class="fa fa-check"></i><b>4.8.1</b> AR(1) model</a></li>
+<li class="chapter" data-level="" data-path="time-series-patterns.html"><a href="time-series-patterns.html#visualizing-the-ar1-model-fit"><i class="fa fa-check"></i>Visualizing the AR(1) model fit</a></li>
+<li class="chapter" data-level="4.8.2" data-path="time-series-patterns.html"><a href="time-series-patterns.html#arp-model"><i class="fa fa-check"></i><b>4.8.2</b> AR(p) model</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="time-series-patterns.html"><a href="time-series-patterns.html#exercise-3"><i class="fa fa-check"></i>Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html"><i class="fa fa-check"></i><b>5</b> Balance Sheet Forecasting</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#supply-forecasts"><i class="fa fa-check"></i><b>5.1</b> Supply Forecasts</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#production"><i class="fa fa-check"></i><b>5.1.1</b> Production</a></li>
+<li class="chapter" data-level="5.1.2" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#activity-i-forecasting-corn-production"><i class="fa fa-check"></i><b>5.1.2</b> Activity I: Forecasting Corn Production</a></li>
+<li class="chapter" data-level="5.1.3" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#other-supply-components"><i class="fa fa-check"></i><b>5.1.3</b> Other Supply Components</a></li>
+<li class="chapter" data-level="5.1.4" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#activity-ii"><i class="fa fa-check"></i><b>5.1.4</b> Activity II</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#utilization-forecasts"><i class="fa fa-check"></i><b>5.2</b> Utilization forecasts</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#top-down-approach.-general-components"><i class="fa fa-check"></i><b>5.2.1</b> Top-down approach. General components</a></li>
+<li class="chapter" data-level="5.2.2" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#activity-iii"><i class="fa fa-check"></i><b>5.2.2</b> Activity III</a></li>
+<li class="chapter" data-level="5.2.3" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#top-down-approach.-specific-components"><i class="fa fa-check"></i><b>5.2.3</b> Top-down approach. Specific components</a></li>
+<li class="chapter" data-level="" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#activity-iv"><i class="fa fa-check"></i>Activity IV</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#alternative-approaches"><i class="fa fa-check"></i><b>5.3</b> Alternative Approaches</a>
+<ul>
+<li class="chapter" data-level="" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#bottom-up-approach"><i class="fa fa-check"></i>Bottom-up approach</a></li>
+<li class="chapter" data-level="" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#similaryear-approach"><i class="fa fa-check"></i>Similar–year approach</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#forecast-adjustments-during-the-marketing-year-pace-of-use-pou."><i class="fa fa-check"></i><b>5.4</b> Forecast adjustments during the marketing year: Pace of Use (POU).</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#exports"><i class="fa fa-check"></i><b>5.4.1</b> Exports</a></li>
+<li class="chapter" data-level="5.4.2" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#activity-v"><i class="fa fa-check"></i><b>5.4.2</b> Activity V</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#food-seed-and-industrial-fsi"><i class="fa fa-check"></i><b>5.5</b> Food, Seed, and Industrial (FSI)</a></li>
+<li class="chapter" data-level="5.6" data-path="balance-sheet-forecasting.html"><a href="balance-sheet-forecasting.html#grain-stocks-and-quarterly-use-dynamics."><i class="fa fa-check"></i><b>5.6</b> Grain Stocks and quarterly use dynamics.</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="stocks-use.html"><a href="stocks-use.html"><i class="fa fa-check"></i><b>6</b> Forecasting Prices Using Stocks-to-Use Ratios</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="stocks-use.html"><a href="stocks-use.html#stocks-to-use-based-forecasting-a-replication"><i class="fa fa-check"></i><b>6.1</b> Stocks-to-Use Based Forecasting: A Replication</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="stocks-use.html"><a href="stocks-use.html#download-data"><i class="fa fa-check"></i><b>6.1.1</b> Download our data for corn</a></li>
+<li class="chapter" data-level="6.1.2" data-path="stocks-use.html"><a href="stocks-use.html#clean-data"><i class="fa fa-check"></i><b>6.1.2</b> Clean Data</a></li>
+<li class="chapter" data-level="6.1.3" data-path="stocks-use.html"><a href="stocks-use.html#sub-period-1-1990-2005"><i class="fa fa-check"></i><b>6.1.3</b> Sub Period 1: 1990-2005</a></li>
+<li class="chapter" data-level="6.1.4" data-path="stocks-use.html"><a href="stocks-use.html#sub-period-2-2007---201516"><i class="fa fa-check"></i><b>6.1.4</b> Sub Period 2: 2007 - 2015/16</a></li>
+<li class="chapter" data-level="6.1.5" data-path="stocks-use.html"><a href="stocks-use.html#producing-figure-1"><i class="fa fa-check"></i><b>6.1.5</b> Producing Figure 1</a></li>
+<li class="chapter" data-level="6.1.6" data-path="stocks-use.html"><a href="stocks-use.html#market-condition-dummies"><i class="fa fa-check"></i><b>6.1.6</b> Market Condition Dummies</a></li>
+<li class="chapter" data-level="6.1.7" data-path="stocks-use.html"><a href="stocks-use.html#forecast-price-for-2021"><i class="fa fa-check"></i><b>6.1.7</b> Forecast Price for 2021</a></li>
+<li class="chapter" data-level="" data-path="stocks-use.html"><a href="stocks-use.html#alternative-approach"><i class="fa fa-check"></i>Alternative Approach</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="stocks-use.html"><a href="stocks-use.html#optional-materials-1"><i class="fa fa-check"></i><b>6.2</b> Optional Materials</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="accuracy.html"><a href="accuracy.html"><i class="fa fa-check"></i><b>7</b> Accuracy and Forecast Evaluations</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="accuracy.html"><a href="accuracy.html#corn-data-revisited"><i class="fa fa-check"></i><b>7.1</b> Corn Data (Revisited)</a></li>
+<li class="chapter" data-level="7.2" data-path="accuracy.html"><a href="accuracy.html#exploring-the-forecasting-models-in-sample"><i class="fa fa-check"></i><b>7.2</b> Exploring the Forecasting models In-sample</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="accuracy.html"><a href="accuracy.html#method-1-linear-trend"><i class="fa fa-check"></i><b>7.2.1</b> Method 1: Linear Trend</a></li>
+<li class="chapter" data-level="7.2.2" data-path="accuracy.html"><a href="accuracy.html#method-2-naive-model-with-drift"><i class="fa fa-check"></i><b>7.2.2</b> Method 2: Naive Model (with drift)</a></li>
+<li class="chapter" data-level="7.2.3" data-path="accuracy.html"><a href="accuracy.html#method-3-using-stocks-to-use-approach"><i class="fa fa-check"></i><b>7.2.3</b> Method 3: Using Stocks-to-Use Approach</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="accuracy.html"><a href="accuracy.html#out-of-sample-forecasts"><i class="fa fa-check"></i><b>7.3</b> Out-of-sample forecasts</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="accuracy.html"><a href="accuracy.html#method-1-trend"><i class="fa fa-check"></i><b>7.3.1</b> Method 1: Trend</a></li>
+<li class="chapter" data-level="7.3.2" data-path="accuracy.html"><a href="accuracy.html#method-2-random-walk-drfit-model"><i class="fa fa-check"></i><b>7.3.2</b> Method 2: Random Walk + Drfit Model</a></li>
+<li class="chapter" data-level="7.3.3" data-path="accuracy.html"><a href="accuracy.html#method-3-stocks-to-use-approach"><i class="fa fa-check"></i><b>7.3.3</b> Method 3: Stocks-to-Use Approach</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="accuracy.html"><a href="accuracy.html#model-evaluation"><i class="fa fa-check"></i><b>7.4</b> Model Evaluation</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Agricultural Outlook &amp; Forecasting</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="time-series-patterns" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Module 4</span> Time Series Patterns<a href="time-series-patterns.html#time-series-patterns" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>So far, we have focused on pulling and visualizing data. However, we have not spoken about the <strong>Patterns</strong> that might exist and just what we look for in time series data.</p>
+<p><strong>Trend</strong> <span class="math inline">\((T_t)\)</span></p>
+<ul>
+<li>pattern exists when there is a long-term increase or decrease in the data. The trend may be produced, for example, by consistent population change, inflation, technological change, and productivity increases.</li>
+</ul>
+<p><strong>Cyclical</strong> <span class="math inline">\((C_t)\)</span></p>
+<ul>
+<li><p>series of wavelike pattern exists when data exhibit rises and falls that are not of fixed period (duration usually of at least 2 years). Changing economic conditions generally produce cycles.</p></li>
+<li><p><strong>In practice, cycles are often difficult to identify and are frequently regarded as part of the trend. In this case, the underlying general growth (or decline) component is called the trend-cycle.</strong></p></li>
+</ul>
+<p><strong>Seasonal</strong> <span class="math inline">\((S_t)\)</span></p>
+<ul>
+<li><p>pattern exists when a series is influenced by seasonal factors (e.g., the quarter of the year, the month, or day of the week).</p></li>
+<li><p>Seasonal variation refers to a more or less stable pattern of change that appears annually and repeats itself year after year.</p></li>
+<li><p>Seasonal patterns occur because of the influence of the weather or because of calendar-related events such as school vacations and national holidays.</p></li>
+</ul>
+<p><strong>Random/Irregular</strong> <span class="math inline">\((I_t)\)</span>
+- consists of unpredictable or random fluctuations. These fluctuations are the result of a myriad of events that individually may not be particularly important but whose combined effect could be large.</p>
+<div class="rmdnote">
+<p>
+Differences between seasonal and cyclic patterns
+</p>
+<p>
+Seasonal pattern constant length; cyclic pattern variable length.
+</p>
+<p>
+Average length of cycle longer than length of seasonal pattern. -
+Magnitude of cycle more variable than magnitude of seasonal pattern
+</p>
+</div>
+<div id="cold-storage-data---pork" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Cold Storage Data - Pork<a href="time-series-patterns.html#cold-storage-data---pork" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let us shift focus to pulling monthly Cold Storage values for Pork (1983:2020).</p>
+<p>You will need your key from earlier. I will assume yours is stored using the <code>keyring</code> package.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="time-series-patterns.html#cb61-1" tabindex="-1"></a><span class="co"># Step 1: Supply your Key</span></span>
+<span id="cb61-2"><a href="time-series-patterns.html#cb61-2" tabindex="-1"></a>key <span class="ot">&lt;-</span> keyring<span class="sc">::</span><span class="fu">key_get</span>(<span class="st">&quot;tidyusda&quot;</span>)</span>
+<span id="cb61-3"><a href="time-series-patterns.html#cb61-3" tabindex="-1"></a></span>
+<span id="cb61-4"><a href="time-series-patterns.html#cb61-4" tabindex="-1"></a><span class="co"># Step 2: Use the API to pull Pork Cold Storage</span></span>
+<span id="cb61-5"><a href="time-series-patterns.html#cb61-5" tabindex="-1"></a>pork <span class="ot">&lt;-</span> tidyUSDA<span class="sc">::</span><span class="fu">getQuickstat</span>(</span>
+<span id="cb61-6"><a href="time-series-patterns.html#cb61-6" tabindex="-1"></a><span class="at">key =</span> key, </span>
+<span id="cb61-7"><a href="time-series-patterns.html#cb61-7" tabindex="-1"></a><span class="at">program =</span> <span class="st">&quot;SURVEY&quot;</span>, </span>
+<span id="cb61-8"><a href="time-series-patterns.html#cb61-8" tabindex="-1"></a><span class="at">sector =</span> <span class="st">&quot;ANIMALS &amp; PRODUCTS&quot;</span>,</span>
+<span id="cb61-9"><a href="time-series-patterns.html#cb61-9" tabindex="-1"></a><span class="at">group =</span> <span class="st">&quot;LIVESTOCK&quot;</span>,</span>
+<span id="cb61-10"><a href="time-series-patterns.html#cb61-10" tabindex="-1"></a><span class="at">commodity =</span> <span class="st">&quot;PORK&quot;</span>,</span>
+<span id="cb61-11"><a href="time-series-patterns.html#cb61-11" tabindex="-1"></a><span class="at">category =</span> <span class="st">&quot;STOCKS&quot;</span>,</span>
+<span id="cb61-12"><a href="time-series-patterns.html#cb61-12" tabindex="-1"></a><span class="at">data_item =</span> <span class="st">&quot;PORK, COLD STORAGE, FROZEN - STOCKS, MEASURED IN LB&quot;</span>,</span>
+<span id="cb61-13"><a href="time-series-patterns.html#cb61-13" tabindex="-1"></a><span class="at">domain =</span> <span class="st">&quot;TOTAL&quot;</span>,</span>
+<span id="cb61-14"><a href="time-series-patterns.html#cb61-14" tabindex="-1"></a><span class="at">geographic_level =</span> <span class="st">&quot;NATIONAL&quot;</span>,</span>
+<span id="cb61-15"><a href="time-series-patterns.html#cb61-15" tabindex="-1"></a><span class="at">state =</span> <span class="st">&quot;US TOTAL&quot;</span>,</span>
+<span id="cb61-16"><a href="time-series-patterns.html#cb61-16" tabindex="-1"></a><span class="at">year =</span> <span class="fu">as.character</span>(<span class="dv">1983</span><span class="sc">:</span><span class="dv">2020</span>)</span>
+<span id="cb61-17"><a href="time-series-patterns.html#cb61-17" tabindex="-1"></a>)</span>
+<span id="cb61-18"><a href="time-series-patterns.html#cb61-18" tabindex="-1"></a></span>
+<span id="cb61-19"><a href="time-series-patterns.html#cb61-19" tabindex="-1"></a><span class="co"># Step 3 &amp; 4: Keep only the relevant columns and declare as tsibble object</span></span>
+<span id="cb61-20"><a href="time-series-patterns.html#cb61-20" tabindex="-1"></a></span>
+<span id="cb61-21"><a href="time-series-patterns.html#cb61-21" tabindex="-1"></a>pork.ts <span class="ot">&lt;-</span> pork <span class="sc">%&gt;%</span> </span>
+<span id="cb61-22"><a href="time-series-patterns.html#cb61-22" tabindex="-1"></a><span class="co"># Convert the year + month index to a yearmonth object</span></span>
+<span id="cb61-23"><a href="time-series-patterns.html#cb61-23" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">yearmonth</span>(<span class="fu">paste</span>(year,begin_code)),</span>
+<span id="cb61-24"><a href="time-series-patterns.html#cb61-24" tabindex="-1"></a><span class="co"># divide Value by 1 million and save over original column</span></span>
+<span id="cb61-25"><a href="time-series-patterns.html#cb61-25" tabindex="-1"></a>         <span class="at">Value =</span> Value<span class="sc">/</span><span class="dv">1000000</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb61-26"><a href="time-series-patterns.html#cb61-26" tabindex="-1"></a>  <span class="fu">select</span>(date, Value) <span class="sc">%&gt;%</span> </span>
+<span id="cb61-27"><a href="time-series-patterns.html#cb61-27" tabindex="-1"></a><span class="fu">as_tsibble</span>(<span class="at">index =</span> date)</span>
+<span id="cb61-28"><a href="time-series-patterns.html#cb61-28" tabindex="-1"></a></span>
+<span id="cb61-29"><a href="time-series-patterns.html#cb61-29" tabindex="-1"></a>pork.ts</span></code></pre></div>
+<pre><code>## # A tsibble: 456 x 2 [1M]
+##        date Value
+##       &lt;mth&gt; &lt;dbl&gt;
+##  1 1983 Jan  224.
+##  2 1983 Feb  216.
+##  3 1983 Mar  235.
+##  4 1983 Apr  273.
+##  5 1983 May  293.
+##  6 1983 Jun  280.
+##  7 1983 Jul  253.
+##  8 1983 Aug  214.
+##  9 1983 Sep  210.
+## 10 1983 Oct  240.
+## # ℹ 446 more rows</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="time-series-patterns.html#cb63-1" tabindex="-1"></a><span class="co"># Step 5: Produce a time plot</span></span>
+<span id="cb63-2"><a href="time-series-patterns.html#cb63-2" tabindex="-1"></a>pork.ts <span class="sc">%&gt;%</span> <span class="fu">autoplot</span>(Value, <span class="at">color =</span> <span class="st">&quot;darkred&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb63-3"><a href="time-series-patterns.html#cb63-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Pork Cold Storage&quot;</span>, </span>
+<span id="cb63-4"><a href="time-series-patterns.html#cb63-4" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;(Million pounds)&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb63-5"><a href="time-series-patterns.html#cb63-5" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+</div>
+<div id="exercise-2" class="section level2 unnumbered hasAnchor">
+<h2>Exercise<a href="time-series-patterns.html#exercise-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>Can you use the functions we covered <a href="data.html#viz">earlier</a> to explore the seasonal properties of this data?</p></li>
+<li><p>What would you conclude regarding potential seasonality and/or trend.</p></li>
+</ul>
+</div>
+<div id="annualized-data" class="section level2 unnumbered hasAnchor">
+<h2>Annualized data<a href="time-series-patterns.html#annualized-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We might be interested in the annual mean cold storage instead. Again, there are several ways to do this but we will stick with the <code>tidyverse</code> conventions.</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="time-series-patterns.html#cb64-1" tabindex="-1"></a>pork.annual <span class="ot">&lt;-</span> pork.ts <span class="sc">%&gt;%</span> </span>
+<span id="cb64-2"><a href="time-series-patterns.html#cb64-2" tabindex="-1"></a><span class="co"># Group observations on year index</span></span>
+<span id="cb64-3"><a href="time-series-patterns.html#cb64-3" tabindex="-1"></a>  <span class="fu">index_by</span>(<span class="at">year =</span> <span class="fu">year</span>(date)) <span class="sc">%&gt;%</span> </span>
+<span id="cb64-4"><a href="time-series-patterns.html#cb64-4" tabindex="-1"></a><span class="co"># Compute the annual means</span></span>
+<span id="cb64-5"><a href="time-series-patterns.html#cb64-5" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Value =</span> <span class="fu">mean</span>(Value))</span>
+<span id="cb64-6"><a href="time-series-patterns.html#cb64-6" tabindex="-1"></a></span>
+<span id="cb64-7"><a href="time-series-patterns.html#cb64-7" tabindex="-1"></a>pork.annual</span></code></pre></div>
+<pre><code>## # A tsibble: 38 x 2 [1Y]
+##     year Value
+##    &lt;dbl&gt; &lt;dbl&gt;
+##  1  1983  253.
+##  2  1984  323.
+##  3  1985  312.
+##  4  1986  228.
+##  5  1987  215.
+##  6  1988  337.
+##  7  1989  343.
+##  8  1990  267.
+##  9  1991  297.
+## 10  1992  325.
+## # ℹ 28 more rows</code></pre>
+<p>Now, you can produce a plot of the annual series.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="time-series-patterns.html#cb66-1" tabindex="-1"></a>pork.annual <span class="sc">%&gt;%</span> <span class="fu">autoplot</span>(Value, <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb66-2"><a href="time-series-patterns.html#cb66-2" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Annual Pork Cold Storage&quot;</span>, </span>
+<span id="cb66-3"><a href="time-series-patterns.html#cb66-3" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Million pounds&quot;</span>, </span>
+<span id="cb66-4"><a href="time-series-patterns.html#cb66-4" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>,</span>
+<span id="cb66-5"><a href="time-series-patterns.html#cb66-5" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Source: NASS QuickStat&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb66-6"><a href="time-series-patterns.html#cb66-6" tabindex="-1"></a>  <span class="fu">theme_bw</span>() </span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+</div>
+<div id="moving-averages" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Moving Averages<a href="time-series-patterns.html#moving-averages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sometimes it could be helpful to see where the current series is relative to its historical average. Moving averages can be helpful in achieving this.</p>
+<p>More formally, moving averages allow us to extract the long-term trend (and cycle) in the data.</p>
+<p>Returning to our annual pork cold storage series, <code>pork.annual</code>, we can generate a centered 3-year moving averages.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="time-series-patterns.html#cb67-1" tabindex="-1"></a>sma3 <span class="ot">&lt;-</span> pork.annual <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
+<span id="cb67-2"><a href="time-series-patterns.html#cb67-2" tabindex="-1"></a>    <span class="st">`</span><span class="at">3-MA</span><span class="st">`</span> <span class="ot">=</span> slider<span class="sc">::</span><span class="fu">slide_dbl</span>(Value, mean,</span>
+<span id="cb67-3"><a href="time-series-patterns.html#cb67-3" tabindex="-1"></a>                <span class="at">.before =</span> <span class="dv">1</span>, <span class="at">.after =</span> <span class="dv">1</span>, </span>
+<span id="cb67-4"><a href="time-series-patterns.html#cb67-4" tabindex="-1"></a>                <span class="at">.complete =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb67-5"><a href="time-series-patterns.html#cb67-5" tabindex="-1"></a>  )</span>
+<span id="cb67-6"><a href="time-series-patterns.html#cb67-6" tabindex="-1"></a>sma3</span></code></pre></div>
+<pre><code>## # A tsibble: 38 x 3 [1Y]
+##     year Value `3-MA`
+##    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+##  1  1983  253.    NA 
+##  2  1984  323.   296.
+##  3  1985  312.   288.
+##  4  1986  228.   252.
+##  5  1987  215.   260.
+##  6  1988  337.   298.
+##  7  1989  343.   316.
+##  8  1990  267.   302.
+##  9  1991  297.   296.
+## 10  1992  325.   319.
+## # ℹ 28 more rows</code></pre>
+<p>Now we can produce a plot of the annual series and the simple moving average series.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="time-series-patterns.html#cb69-1" tabindex="-1"></a>sma3 <span class="sc">%&gt;%</span> <span class="fu">autoplot</span>(Value) <span class="sc">+</span> </span>
+<span id="cb69-2"><a href="time-series-patterns.html#cb69-2" tabindex="-1"></a>  <span class="fu">autolayer</span>(sma3,<span class="st">`</span><span class="at">3-MA</span><span class="st">`</span>, <span class="at">color =</span> <span class="st">&quot;darkorange&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb69-3"><a href="time-series-patterns.html#cb69-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Pork Cold Storage&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;MA (3)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb69-4"><a href="time-series-patterns.html#cb69-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
+<p>The trend-cycle component computed by the simple moving average is much smoother than the data itself. In fact, the choice of the “window” or number of data points used for smoothing will play a role in how smooth, or jagged our trend-cycle is. A larger order means smoother curves as it is less sensitive to extreme events during any particular period.</p>
+<p>Repeating for multiple orders:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="time-series-patterns.html#cb70-1" tabindex="-1"></a>smas <span class="ot">&lt;-</span> pork.annual <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
+<span id="cb70-2"><a href="time-series-patterns.html#cb70-2" tabindex="-1"></a>    <span class="st">`</span><span class="at">3-MA</span><span class="st">`</span> <span class="ot">=</span> slider<span class="sc">::</span><span class="fu">slide_dbl</span>(Value, mean,</span>
+<span id="cb70-3"><a href="time-series-patterns.html#cb70-3" tabindex="-1"></a>                <span class="at">.before =</span> <span class="dv">1</span>, <span class="at">.after =</span> <span class="dv">1</span>, </span>
+<span id="cb70-4"><a href="time-series-patterns.html#cb70-4" tabindex="-1"></a>                <span class="at">.complete =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb70-5"><a href="time-series-patterns.html#cb70-5" tabindex="-1"></a>    <span class="st">`</span><span class="at">5-MA</span><span class="st">`</span> <span class="ot">=</span> slider<span class="sc">::</span><span class="fu">slide_dbl</span>(Value, mean,</span>
+<span id="cb70-6"><a href="time-series-patterns.html#cb70-6" tabindex="-1"></a>                <span class="at">.before =</span> <span class="dv">2</span>, <span class="at">.after =</span> <span class="dv">2</span>, </span>
+<span id="cb70-7"><a href="time-series-patterns.html#cb70-7" tabindex="-1"></a>                <span class="at">.complete =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb70-8"><a href="time-series-patterns.html#cb70-8" tabindex="-1"></a>    <span class="st">`</span><span class="at">7-MA</span><span class="st">`</span> <span class="ot">=</span> slider<span class="sc">::</span><span class="fu">slide_dbl</span>(Value, mean,</span>
+<span id="cb70-9"><a href="time-series-patterns.html#cb70-9" tabindex="-1"></a>                <span class="at">.before =</span> <span class="dv">3</span>, <span class="at">.after =</span> <span class="dv">3</span>, </span>
+<span id="cb70-10"><a href="time-series-patterns.html#cb70-10" tabindex="-1"></a>                <span class="at">.complete =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb70-11"><a href="time-series-patterns.html#cb70-11" tabindex="-1"></a>  )</span>
+<span id="cb70-12"><a href="time-series-patterns.html#cb70-12" tabindex="-1"></a>smas</span></code></pre></div>
+<pre><code>## # A tsibble: 38 x 5 [1Y]
+##     year Value `3-MA` `5-MA` `7-MA`
+##    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1  1983  253.    NA     NA     NA 
+##  2  1984  323.   296.    NA     NA 
+##  3  1985  312.   288.   266.    NA 
+##  4  1986  228.   252.   283.   287.
+##  5  1987  215.   260.   287.   289.
+##  6  1988  337.   298.   278.   286.
+##  7  1989  343.   316.   292.   287.
+##  8  1990  267.   302.   314.   303.
+##  9  1991  297.   296.   313.   327.
+## 10  1992  325.   319.   321.   333.
+## # ℹ 28 more rows</code></pre>
+<p>It is not coincidental that all the orders used here are odd. If we use an even number (say the case of working with quarterly data), we are required to do double smoothing. We leave this as an exercise for the interested reader.</p>
+<p>Visualizing the full model results</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="time-series-patterns.html#cb72-1" tabindex="-1"></a>smas <span class="sc">%&gt;%</span> </span>
+<span id="cb72-2"><a href="time-series-patterns.html#cb72-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span><span class="fu">c</span>(year,Value), </span>
+<span id="cb72-3"><a href="time-series-patterns.html#cb72-3" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;Series&quot;</span>,</span>
+<span id="cb72-4"><a href="time-series-patterns.html#cb72-4" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;mean&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb72-5"><a href="time-series-patterns.html#cb72-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> mean, <span class="at">color =</span> Series)) <span class="sc">+</span></span>
+<span id="cb72-6"><a href="time-series-patterns.html#cb72-6" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb72-7"><a href="time-series-patterns.html#cb72-7" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> Value), <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb72-8"><a href="time-series-patterns.html#cb72-8" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Series, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb72-9"><a href="time-series-patterns.html#cb72-9" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb72-10"><a href="time-series-patterns.html#cb72-10" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+</div>
+<div id="model-deviation-error" class="section level2 unnumbered hasAnchor">
+<h2>Model Deviation (Error)<a href="time-series-patterns.html#model-deviation-error" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If we were interested in visualizing how often our actual data deviates from the trend cycle, we could calculate the difference between the two.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="time-series-patterns.html#cb73-1" tabindex="-1"></a>sma3 <span class="sc">%&gt;%</span></span>
+<span id="cb73-2"><a href="time-series-patterns.html#cb73-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">error =</span> Value <span class="sc">-</span> <span class="st">`</span><span class="at">3-MA</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-3"><a href="time-series-patterns.html#cb73-3" tabindex="-1"></a>  <span class="fu">autoplot</span>(error) <span class="sc">+</span></span>
+<span id="cb73-4"><a href="time-series-patterns.html#cb73-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb73-5"><a href="time-series-patterns.html#cb73-5" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="st">&quot;dashed&quot;</span>, </span>
+<span id="cb73-6"><a href="time-series-patterns.html#cb73-6" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb73-7"><a href="time-series-patterns.html#cb73-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Forecast Errors - MA(3)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb73-8"><a href="time-series-patterns.html#cb73-8" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<pre><code>## Warning: Removed 2 rows containing missing values
+## (`geom_line()`).</code></pre>
+<pre><code>## Warning: Removed 2 rows containing missing values
+## (`geom_point()`).</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+</div>
+<div id="final-words-moving-averages" class="section level2 unnumbered hasAnchor">
+<h2>Final Words: Moving Averages<a href="time-series-patterns.html#final-words-moving-averages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>The forecast will lag turning points, if it captures them at all. There is a tendency to oversmooth at high orders.</p></li>
+<li><p>In general, MAs can be used for forecasting only in series that lack seasonality and trend. There are a few popular methods for removing trends (de-trending) and removing seasonality (deseasonalizing) from a series:</p>
+<ul>
+<li>Advanced exponential smoothing methods,</li>
+<li>Regression models, and</li>
+<li>Differencing.</li>
+</ul></li>
+<li><p>In the case of the moving averages, we assigned equal weights to the most recent observations as well as those far into the past. We can quickly see how this becomes problematic when forecasting data with structural breaks (changes drastically over time) etc.</p></li>
+</ul>
+</div>
+<div id="simple-exponential-smoothing-again" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Simple Exponential Smoothing (Again)<a href="time-series-patterns.html#simple-exponential-smoothing-again" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>So far, we learned that <strong>this method is suitable for forecasting data with no clear trend or seasonal pattern.</strong></p>
+<p>Since the simple exponential smoothing model does not account for a potential trend nor seasonality, we saw that the out of sample forecast will be a flat line. Thankfully, there are other exponential smoothing models that account for either, and both, patterns.</p>
+<div id="exponential-smoothing-adjusted-for-trend" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Exponential Smoothing Adjusted for Trend<a href="time-series-patterns.html#exponential-smoothing-adjusted-for-trend" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Holt’s Method</strong></p>
+<ul>
+<li>allows for evolving local linear trends in a time series</li>
+<li>can be used to generate forecasts</li>
+<li>Advantage: flexible to track changing in level and trend</li>
+</ul>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="time-series-patterns.html#cb76-1" tabindex="-1"></a>pork.annual <span class="sc">%&gt;%</span>  </span>
+<span id="cb76-2"><a href="time-series-patterns.html#cb76-2" tabindex="-1"></a>  <span class="fu">model</span>(<span class="at">holt =</span> <span class="fu">ETS</span>(Value <span class="sc">~</span> <span class="fu">error</span>(<span class="st">&quot;A&quot;</span>) <span class="sc">+</span> <span class="fu">trend</span>(<span class="st">&quot;A&quot;</span>) <span class="sc">+</span> <span class="fu">season</span>(<span class="st">&quot;N&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb76-3"><a href="time-series-patterns.html#cb76-3" tabindex="-1"></a>  <span class="fu">forecast</span>(<span class="at">h =</span> <span class="st">&quot;15years&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb76-4"><a href="time-series-patterns.html#cb76-4" tabindex="-1"></a>  <span class="fu">autoplot</span>(pork.annual) <span class="sc">+</span> </span>
+<span id="cb76-5"><a href="time-series-patterns.html#cb76-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Pork Cold Storage (Annual)&quot;</span>,</span>
+<span id="cb76-6"><a href="time-series-patterns.html#cb76-6" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Holt&#39;s Model&quot;</span>) <span class="sc">+</span></span>
+<span id="cb76-7"><a href="time-series-patterns.html#cb76-7" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<div class="rmdnote">
+<p>
+Our choice of 15 years is strictly for illustration purposes. This is
+intended to help with understanding the disadvantages of a standard Holt
+model and for comparison with the damped trend, below.
+</p>
+</div>
+<p><strong>Holt’s Linear Trend Method with a Damped Trend</strong></p>
+<ul>
+<li>The forecasts generated by Holt’s linear method display a constant trend (increasing or decreasing) indefinitely into the future.</li>
+<li>Empirical evidence indicates that these methods tend to over-forecast, especially for longer forecast horizons.</li>
+</ul>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="time-series-patterns.html#cb77-1" tabindex="-1"></a>pork.annual <span class="sc">%&gt;%</span>  </span>
+<span id="cb77-2"><a href="time-series-patterns.html#cb77-2" tabindex="-1"></a>  <span class="fu">model</span>(<span class="at">holt_damped =</span> <span class="fu">ETS</span>(Value <span class="sc">~</span> <span class="fu">error</span>(<span class="st">&quot;A&quot;</span>) <span class="sc">+</span> <span class="fu">trend</span>(<span class="st">&quot;Ad&quot;</span>) <span class="sc">+</span> <span class="fu">season</span>(<span class="st">&quot;N&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb77-3"><a href="time-series-patterns.html#cb77-3" tabindex="-1"></a>  <span class="fu">forecast</span>(<span class="at">h =</span> <span class="st">&quot;15years&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb77-4"><a href="time-series-patterns.html#cb77-4" tabindex="-1"></a>  <span class="fu">autoplot</span>(pork.annual) <span class="sc">+</span></span>
+<span id="cb77-5"><a href="time-series-patterns.html#cb77-5" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Pork Cold Storage (Annual)&quot;</span>,</span>
+<span id="cb77-6"><a href="time-series-patterns.html#cb77-6" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Holt&#39;s Model with Damped Trend&quot;</span>) <span class="sc">+</span></span>
+<span id="cb77-7"><a href="time-series-patterns.html#cb77-7" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+</div>
+</div>
+<div id="exponential-smoothing-adjusted-for-trend-seasonality" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Exponential Smoothing Adjusted for Trend &amp; Seasonality<a href="time-series-patterns.html#exponential-smoothing-adjusted-for-trend-seasonality" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Holt-Winter’s Exponential Smoothing Methods</strong></p>
+<ul>
+<li>Holt-Winter’s method provides an easy way to account for seasonality when data have a seasonal pattern.</li>
+</ul>
+<p>We can now shift focus to the monthly cold storage data stored earlier, <code>pork.ts</code>.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="time-series-patterns.html#cb78-1" tabindex="-1"></a>pork.ts <span class="sc">%&gt;%</span>  </span>
+<span id="cb78-2"><a href="time-series-patterns.html#cb78-2" tabindex="-1"></a>  <span class="fu">model</span>(<span class="at">holtwinters =</span> <span class="fu">ETS</span>(Value <span class="sc">~</span> <span class="fu">error</span>(<span class="st">&quot;A&quot;</span>) <span class="sc">+</span> <span class="fu">trend</span>(<span class="st">&quot;A&quot;</span>) <span class="sc">+</span> <span class="fu">season</span>(<span class="st">&quot;A&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb78-3"><a href="time-series-patterns.html#cb78-3" tabindex="-1"></a>  <span class="fu">forecast</span>(<span class="at">h =</span> <span class="st">&quot;2years&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb78-4"><a href="time-series-patterns.html#cb78-4" tabindex="-1"></a>  <span class="fu">autoplot</span>(pork.ts, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb78-5"><a href="time-series-patterns.html#cb78-5" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Pork Cold Storage (Monthly)&quot;</span>,</span>
+<span id="cb78-6"><a href="time-series-patterns.html#cb78-6" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Holt-Winter&#39;s Model&quot;</span>) <span class="sc">+</span></span>
+<span id="cb78-7"><a href="time-series-patterns.html#cb78-7" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
+</div>
+<div id="time-series-regression-analysis" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Time Series Regression Analysis<a href="time-series-patterns.html#time-series-regression-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For this section, we will maintain our focus on the monthly pork cold storage series. Declaring our series as a <code>tsbibble</code> object earlier has a number of advantages. For example, it removes the need to manually create some of the variables we will need in this section. In particular, we can estimate regresssions using trends and seasonal dummies using the <code>trend</code> and <code>seasons</code> command in the <code>tslm</code> function.</p>
+<div id="accounting-for-linear-trends" class="section level3 hasAnchor" number="4.5.1">
+<h3><span class="header-section-number">4.5.1</span> Accounting for (Linear) Trends<a href="time-series-patterns.html#accounting-for-linear-trends" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can introduce a trend by including <span class="math inline">\(x_t = t\)</span> as a regressor</p>
+<p><span class="math display">\[\begin{equation}\tag{1}
+y_t = \beta_0 + \beta_1 t + \varepsilon_t
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(t = 1, 2, \ldots, T\)</span>. Here <span class="math inline">\(T\)</span> is the total number of years in the dataset.</p>
+<p>We can estimate the linear trend model as follows:</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="time-series-patterns.html#cb79-1" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> pork.ts <span class="sc">%&gt;%</span> </span>
+<span id="cb79-2"><a href="time-series-patterns.html#cb79-2" tabindex="-1"></a>  <span class="fu">model</span>(<span class="fu">TSLM</span>(Value <span class="sc">~</span> <span class="fu">trend</span>()))</span>
+<span id="cb79-3"><a href="time-series-patterns.html#cb79-3" tabindex="-1"></a></span>
+<span id="cb79-4"><a href="time-series-patterns.html#cb79-4" tabindex="-1"></a><span class="co">#View estimated parameters</span></span>
+<span id="cb79-5"><a href="time-series-patterns.html#cb79-5" tabindex="-1"></a>model1 <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 6
+##   .model      term  estimate std.error statistic   p.value
+##   &lt;chr&gt;       &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+## 1 TSLM(Value… (Int…  255.       5.88        43.3 2.16e-163
+## 2 TSLM(Value… tren…    0.811    0.0223      36.4 1.31e-136</code></pre>
+<p>In the codes above, we estimate the regression implied by Equation (1) and store it as <code>model1</code>. Next, we used the <code>tidy()</code> function to extract the stored regression results.</p>
+<p>The value on the trend term implies that, on average, pork cold storage increases by 0.811 million pounds per month.</p>
+<div class="rmdtip">
+<p>
+<strong>Digression: How would we account for a potential quadratic
+trend trend model?</strong>
+</p>
+<p>
+Our model would look like
+</p>
+<p>
+<span class="math display"><span class="math display">\[y_t = \beta_0 + \beta_1 t + \beta_2 t^2
++ \varepsilon_t\]</span></span> We can perform mathematical manipulations in
+the time series linear model (<code>TSLM</code>) function using
+<code>I()</code> . Alternatively, we could create a squared trend
+variable manually.
+</p>
+<p>
+The former can be coded quickly as:
+</p>
+</div>
+<p>model.sqr &lt;- pork.ts %&gt;%
+model(TSLM(Value ~ trend() + I(trend()^2)))</p>
+<p>model.sqr %&gt;% tidy()</p>
+<pre><code></code></pre>
+</div>
+<div id="accounting-for-seasonality" class="section level3 hasAnchor" number="4.5.2">
+<h3><span class="header-section-number">4.5.2</span> Accounting for Seasonality<a href="time-series-patterns.html#accounting-for-seasonality" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can test/account for seasonality in the monthly series by including monthly dummies using the <code>season()</code> argument in the <code>TSLM</code> command.</p>
+<hr />
+<p><strong>What is a Dummy?</strong></p>
+<p>If a categorical variable takes only two values (e.g., ‘Yes’ or ‘No’), then we can construct a numerical variable taking value 1 if yes and 0 if no, for example. This is called a <strong>dummy variable</strong>.</p>
+<p>Suppose we have quarterly retail sales data and suspect that there might be seasonality in our data (e.g. Q4 might have unusually high sales figures since we have Thanksgiving, Black Friday, Cyber Monday, and Christmas in Nov. &amp; Dec.)</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center"><span class="math inline">\(Q_{1,t}\)</span></th>
+<th align="center"><span class="math inline">\(Q_{2,t}\)</span></th>
+<th align="center"><span class="math inline">\(Q_{3,t}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2000 Q1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>2000 Q2</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>2000 Q3</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td>2000 Q4</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>2001 Q1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td>2001 Q2</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td>2001 Q3</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td>2001 Q4</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Caution:</strong> When estimating our regressions, we must leave out one of the dummy variables. The omitted dummy is referred to as the <strong>base/reference</strong> group.</p>
+<p>For example, in our monthly series, we will omit <code>season()year1</code> or January. <strong>The value on the remaining monthly dummies are all relative to January</strong>.</p>
+<hr />
+<p>The seasonal model is estimated as</p>
+<p><span class="math display">\[\begin{equation}\tag{2}
+y_t = \beta_0 + \beta_1 \underset{season()year2}{Feb} + \beta_2 \underset{season()year3}{March} + \ldots + \beta_{11} \underset{season()year4}{Dec} +  \varepsilon_t
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(\text{Feb}, \text{March}, \ldots, \text{Dec}\)</span> are monthly dummies that take a value of 1 if the observation corresponds to that month and <span class="math inline">\(0\)</span> otherwise.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="time-series-patterns.html#cb82-1" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> pork.ts <span class="sc">%&gt;%</span> </span>
+<span id="cb82-2"><a href="time-series-patterns.html#cb82-2" tabindex="-1"></a>  <span class="fu">model</span>(<span class="fu">TSLM</span>(Value <span class="sc">~</span> <span class="fu">season</span>()))</span>
+<span id="cb82-3"><a href="time-series-patterns.html#cb82-3" tabindex="-1"></a></span>
+<span id="cb82-4"><a href="time-series-patterns.html#cb82-4" tabindex="-1"></a>model2 <span class="sc">%&gt;%</span> <span class="fu">report</span>()</span></code></pre></div>
+<pre><code>## Series: Value 
+## Model: TSLM 
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -273.96  -96.92   14.53   95.63  248.37 
+## 
+## Coefficients:
+##                Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)     449.011     19.766  22.716   &lt;2e-16 ***
+## season()year2    20.362     27.954   0.728    0.467    
+## season()year3    20.293     27.954   0.726    0.468    
+## season()year4    42.715     27.954   1.528    0.127    
+## season()year5    25.960     27.954   0.929    0.354    
+## season()year6    -7.338     27.954  -0.263    0.793    
+## season()year7   -28.863     27.954  -1.033    0.302    
+## season()year8   -43.625     27.954  -1.561    0.119    
+## season()year9   -33.663     27.954  -1.204    0.229    
+## season()year10  -27.294     27.954  -0.976    0.329    
+## season()year11  -39.000     27.954  -1.395    0.164    
+## season()year12  -39.311     27.954  -1.406    0.160    
+## ---
+## Signif. codes:  
+## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 121.8 on 444 degrees of freedom
+## Multiple R-squared: 0.05479, Adjusted R-squared: 0.03137
+## F-statistic:  2.34 on 11 and 444 DF, p-value: 0.0083218</code></pre>
+<p>Our regression results suggest that, on average, pork cold storage for February is 20.362 million pounds <em>higher</em> than January. However, June to December are persistently lower than January (looking at the sign here).</p>
+<p>The mean value for January is represented by the intercept. The average cold storage for January is 449.011 million pounds.</p>
+<p>If we would like to determine the mean values for the remaining months, we need only add the intercept to the value of estimate for that month. For example, the mean pork cold storage for August would be 405.386 million pounds.</p>
+</div>
+</div>
+<div id="accounting-for-seasonality-and-trend" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Accounting for Seasonality and Trend<a href="time-series-patterns.html#accounting-for-seasonality-and-trend" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><span class="math display">\[\begin{equation}\tag{3}
+y_t = \beta_0 + \beta_1 Feb + \beta_2 March + \ldots + \beta_{11} Dec + \beta_{12} t + \varepsilon_t
+\end{equation}\]</span></p>
+<p>We estimate Equation (3) by combining the 2 code chunks earlier.</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="time-series-patterns.html#cb84-1" tabindex="-1"></a>model3 <span class="ot">&lt;-</span> pork.ts <span class="sc">%&gt;%</span> </span>
+<span id="cb84-2"><a href="time-series-patterns.html#cb84-2" tabindex="-1"></a>  <span class="fu">model</span>(<span class="fu">TSLM</span>(Value <span class="sc">~</span> <span class="fu">season</span>() <span class="sc">+</span> <span class="fu">trend</span>()))</span>
+<span id="cb84-3"><a href="time-series-patterns.html#cb84-3" tabindex="-1"></a></span>
+<span id="cb84-4"><a href="time-series-patterns.html#cb84-4" tabindex="-1"></a>model3 <span class="sc">%&gt;%</span> <span class="fu">report</span>()</span></code></pre></div>
+<pre><code>## Series: Value 
+## Model: TSLM 
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -188.146  -34.757    1.315   37.754  134.854 
+## 
+## Coefficients:
+##                 Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)    267.09181    9.92159  26.920  &lt; 2e-16 ***
+## season()year2   19.54583   12.60390   1.551 0.121670    
+## season()year3   18.66149   12.60395   1.481 0.139422    
+## season()year4   40.26716   12.60402   3.195 0.001499 ** 
+## season()year5   22.69638   12.60413   1.801 0.072429 .  
+## season()year6  -11.41700   12.60427  -0.906 0.365532    
+## season()year7  -33.75747   12.60443  -2.678 0.007677 ** 
+## season()year8  -49.33543   12.60463  -3.914 0.000105 ***
+## season()year9  -40.18887   12.60486  -3.188 0.001532 ** 
+## season()year10 -34.63588   12.60512  -2.748 0.006245 ** 
+## season()year11 -47.15766   12.60540  -3.741 0.000207 ***
+## season()year12 -48.28471   12.60572  -3.830 0.000146 ***
+## trend()          0.81578    0.01955  41.725  &lt; 2e-16 ***
+## ---
+## Signif. codes:  
+## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 54.94 on 443 degrees of freedom
+## Multiple R-squared: 0.8083,  Adjusted R-squared: 0.8031
+## F-statistic: 155.6 on 12 and 443 DF, p-value: &lt; 2.22e-16</code></pre>
+</div>
+<div id="visualizing-the-model-fits" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> Visualizing the model fits<a href="time-series-patterns.html#visualizing-the-model-fits" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We can use the <code>augment</code> command to see all the elements stored in our model fits earlier.</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="time-series-patterns.html#cb86-1" tabindex="-1"></a>model1 <span class="sc">%&gt;%</span> <span class="fu">augment</span>()</span></code></pre></div>
+<pre><code>## # A tsibble: 456 x 6 [1M]
+## # Key:       .model [1]
+##    .model                 date Value .fitted .resid .innov
+##    &lt;chr&gt;                 &lt;mth&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1 TSLM(Value ~ tren… 1983 Jan  224.    255. -31.3  -31.3 
+##  2 TSLM(Value ~ tren… 1983 Feb  216.    256. -40.4  -40.4 
+##  3 TSLM(Value ~ tren… 1983 Mar  235.    257. -22.3  -22.3 
+##  4 TSLM(Value ~ tren… 1983 Apr  273.    258.  14.8   14.8 
+##  5 TSLM(Value ~ tren… 1983 May  293.    259.  34.3   34.3 
+##  6 TSLM(Value ~ tren… 1983 Jun  280.    260.  20.9   20.9 
+##  7 TSLM(Value ~ tren… 1983 Jul  253.    260.  -7.33  -7.33
+##  8 TSLM(Value ~ tren… 1983 Aug  214.    261. -47.1  -47.1 
+##  9 TSLM(Value ~ tren… 1983 Sep  210.    262. -52.0  -52.0 
+## 10 TSLM(Value ~ tren… 1983 Oct  240.    263. -22.7  -22.7 
+## # ℹ 446 more rows</code></pre>
+<p>It might prove helpful to visualize a plot of the actual data against the fitted values. We can therefore return to our select function from earlier.</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="time-series-patterns.html#cb88-1" tabindex="-1"></a>model1 <span class="sc">%&gt;%</span> <span class="fu">augment</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb88-2"><a href="time-series-patterns.html#cb88-2" tabindex="-1"></a><span class="co">#plot the actual series</span></span>
+<span id="cb88-3"><a href="time-series-patterns.html#cb88-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> Value)) <span class="sc">+</span></span>
+<span id="cb88-4"><a href="time-series-patterns.html#cb88-4" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb88-5"><a href="time-series-patterns.html#cb88-5" tabindex="-1"></a><span class="co"># Add fitted values column</span></span>
+<span id="cb88-6"><a href="time-series-patterns.html#cb88-6" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> .fitted),<span class="at">color =</span> <span class="st">&quot;darkblue&quot;</span>,</span>
+<span id="cb88-7"><a href="time-series-patterns.html#cb88-7" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb88-8"><a href="time-series-patterns.html#cb88-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Forecasts - Trend Model&quot;</span>) <span class="sc">+</span></span>
+<span id="cb88-9"><a href="time-series-patterns.html#cb88-9" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
+<p>Let us merge all the codes above to extract the fitted values of our three models and produce a single plot that allows us to visualize the data and the fits of all the models.</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="time-series-patterns.html#cb89-1" tabindex="-1"></a>full.mod <span class="ot">&lt;-</span> pork.ts <span class="sc">%&gt;%</span> </span>
+<span id="cb89-2"><a href="time-series-patterns.html#cb89-2" tabindex="-1"></a>  <span class="fu">model</span>(<span class="at">trend =</span> <span class="fu">TSLM</span>(Value <span class="sc">~</span> <span class="fu">trend</span>()),</span>
+<span id="cb89-3"><a href="time-series-patterns.html#cb89-3" tabindex="-1"></a>        <span class="at">season =</span> <span class="fu">TSLM</span>(Value <span class="sc">~</span> <span class="fu">season</span>()),</span>
+<span id="cb89-4"><a href="time-series-patterns.html#cb89-4" tabindex="-1"></a>        <span class="at">trend_season =</span> <span class="fu">TSLM</span>(Value <span class="sc">~</span> <span class="fu">trend</span>() <span class="sc">+</span> <span class="fu">season</span>())) </span>
+<span id="cb89-5"><a href="time-series-patterns.html#cb89-5" tabindex="-1"></a></span>
+<span id="cb89-6"><a href="time-series-patterns.html#cb89-6" tabindex="-1"></a>full.mod <span class="sc">%&gt;%</span> <span class="fu">augment</span>()</span></code></pre></div>
+<pre><code>## # A tsibble: 1,368 x 6 [1M]
+## # Key:       .model [3]
+##    .model     date Value .fitted .resid .innov
+##    &lt;chr&gt;     &lt;mth&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1 trend  1983 Jan  224.    255. -31.3  -31.3 
+##  2 trend  1983 Feb  216.    256. -40.4  -40.4 
+##  3 trend  1983 Mar  235.    257. -22.3  -22.3 
+##  4 trend  1983 Apr  273.    258.  14.8   14.8 
+##  5 trend  1983 May  293.    259.  34.3   34.3 
+##  6 trend  1983 Jun  280.    260.  20.9   20.9 
+##  7 trend  1983 Jul  253.    260.  -7.33  -7.33
+##  8 trend  1983 Aug  214.    261. -47.1  -47.1 
+##  9 trend  1983 Sep  210.    262. -52.0  -52.0 
+## 10 trend  1983 Oct  240.    263. -22.7  -22.7 
+## # ℹ 1,358 more rows</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="time-series-patterns.html#cb91-1" tabindex="-1"></a>full.mod <span class="sc">%&gt;%</span> <span class="fu">augment</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb91-2"><a href="time-series-patterns.html#cb91-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> Value)) <span class="sc">+</span></span>
+<span id="cb91-3"><a href="time-series-patterns.html#cb91-3" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb91-4"><a href="time-series-patterns.html#cb91-4" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> .fitted, <span class="at">color =</span> .model),</span>
+<span id="cb91-5"><a href="time-series-patterns.html#cb91-5" tabindex="-1"></a>                <span class="at">size =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb91-6"><a href="time-series-patterns.html#cb91-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Model Fits&quot;</span>,</span>
+<span id="cb91-7"><a href="time-series-patterns.html#cb91-7" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Pork Cold Storage&quot;</span>) <span class="sc">+</span></span>
+<span id="cb91-8"><a href="time-series-patterns.html#cb91-8" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
+<p>Without formal testing (just from eyeballing the graph), it appears that the Trend+seasonal dummies model does the best job of forecasting the monthly series. We will cover formal testing in a later module.</p>
+<p>We can use the <code>forecast</code> function to create out-of-sample forecasts of our 3 models.</p>
+<div class="rmdnote">
+<p>
+It is worthwhile to note that the trend value and dummies are always
+known into the future so we will not have a problem with unknown data at
+the time of forecasting.
+</p>
+<p>
+Our forecast will become a lot more complicated when we have other
+economic variables on the right hand side. We will also need forecasts
+of their future values, before we are able to forecast our true variable
+of interest.
+</p>
+</div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="time-series-patterns.html#cb92-1" tabindex="-1"></a>pork.forecast <span class="ot">&lt;-</span> full.mod <span class="sc">%&gt;%</span> <span class="fu">forecast</span>(<span class="at">h =</span> <span class="st">&quot;2 year&quot;</span>)</span>
+<span id="cb92-2"><a href="time-series-patterns.html#cb92-2" tabindex="-1"></a>pork.forecast </span></code></pre></div>
+<pre><code>## # A fable: 72 x 4 [1M]
+## # Key:     .model [3]
+##    .model     date        Value .mean
+##    &lt;chr&gt;     &lt;mth&gt;       &lt;dist&gt; &lt;dbl&gt;
+##  1 trend  2021 Jan N(625, 3959)  625.
+##  2 trend  2021 Feb N(626, 3960)  626.
+##  3 trend  2021 Mar N(627, 3960)  627.
+##  4 trend  2021 Apr N(628, 3960)  628.
+##  5 trend  2021 May N(628, 3960)  628.
+##  6 trend  2021 Jun N(629, 3961)  629.
+##  7 trend  2021 Jul N(630, 3961)  630.
+##  8 trend  2021 Aug N(631, 3961)  631.
+##  9 trend  2021 Sep N(632, 3961)  632.
+## 10 trend  2021 Oct N(632, 3961)  632.
+## # ℹ 62 more rows</code></pre>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="time-series-patterns.html#cb94-1" tabindex="-1"></a>pork.forecast <span class="sc">%&gt;%</span> </span>
+<span id="cb94-2"><a href="time-series-patterns.html#cb94-2" tabindex="-1"></a>  <span class="fu">autoplot</span>(pork.ts, <span class="at">level =</span> <span class="cn">NULL</span>,</span>
+<span id="cb94-3"><a href="time-series-patterns.html#cb94-3" tabindex="-1"></a>           <span class="at">size =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb94-4"><a href="time-series-patterns.html#cb94-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Forecasted Pork cold Storage&quot;</span>, </span>
+<span id="cb94-5"><a href="time-series-patterns.html#cb94-5" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Next 24 Months&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb94-6"><a href="time-series-patterns.html#cb94-6" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_legend</span>(<span class="at">title =</span> <span class="st">&quot;Forecast&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb94-7"><a href="time-series-patterns.html#cb94-7" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
+</div>
+<div id="autoregressive-models" class="section level2 hasAnchor" number="4.8">
+<h2><span class="header-section-number">4.8</span> Autoregressive Models<a href="time-series-patterns.html#autoregressive-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ar1-model" class="section level3 hasAnchor" number="4.8.1">
+<h3><span class="header-section-number">4.8.1</span> AR(1) model<a href="time-series-patterns.html#ar1-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sometimes it might be useful to use past values of <span class="math inline">\(y\)</span> to help in predicting the <span class="math inline">\(y\)</span>’s future values. Such models are referred to as Auto-regressive lag models.</p>
+<p>For example:</p>
+<p>The price in the next period might be a function of the price observed today.</p>
+<p><span class="math display">\[p_t = \alpha + \beta p_{t-1} + \varepsilon_t\]</span>
+where <span class="math inline">\(p_t\)</span> could refer to prices (value) of our frozen pork stock.</p>
+<p>Since this model includes only 1 lag of the <span class="math inline">\(y\)</span> variable, this is referred to as an AR(1) model.</p>
+<p>We will use the <code>lag</code> function to quickly create our lagged variables.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="time-series-patterns.html#cb95-1" tabindex="-1"></a>pork.l1 <span class="ot">&lt;-</span> pork.ts <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">l.pork =</span> <span class="fu">lag</span>(Value,<span class="dv">1</span>))</span>
+<span id="cb95-2"><a href="time-series-patterns.html#cb95-2" tabindex="-1"></a>pork.l1</span></code></pre></div>
+<pre><code>## # A tsibble: 456 x 3 [1M]
+##        date Value l.pork
+##       &lt;mth&gt; &lt;dbl&gt;  &lt;dbl&gt;
+##  1 1983 Jan  224.    NA 
+##  2 1983 Feb  216.   224.
+##  3 1983 Mar  235.   216.
+##  4 1983 Apr  273.   235.
+##  5 1983 May  293.   273.
+##  6 1983 Jun  280.   293.
+##  7 1983 Jul  253.   280.
+##  8 1983 Aug  214.   253.
+##  9 1983 Sep  210.   214.
+## 10 1983 Oct  240.   210.
+## # ℹ 446 more rows</code></pre>
+<p>Now to estimate the equation above</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="time-series-patterns.html#cb97-1" tabindex="-1"></a>mod.ar1 <span class="ot">&lt;-</span> pork.l1 <span class="sc">%&gt;%</span> </span>
+<span id="cb97-2"><a href="time-series-patterns.html#cb97-2" tabindex="-1"></a>  <span class="fu">model</span>(<span class="at">ar1 =</span> <span class="fu">TSLM</span>(Value <span class="sc">~</span> l.pork))</span>
+<span id="cb97-3"><a href="time-series-patterns.html#cb97-3" tabindex="-1"></a></span>
+<span id="cb97-4"><a href="time-series-patterns.html#cb97-4" tabindex="-1"></a>mod.ar1 <span class="sc">%&gt;%</span> <span class="fu">report</span>()</span></code></pre></div>
+<pre><code>## Series: Value 
+## Model: TSLM 
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -137.352  -19.121   -2.019   18.490  116.539 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  16.7666     5.5298   3.032  0.00257 ** 
+## l.pork        0.9628     0.0121  79.573  &lt; 2e-16 ***
+## ---
+## Signif. codes:  
+## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 31.95 on 453 degrees of freedom
+## Multiple R-squared: 0.9332,  Adjusted R-squared: 0.9331
+## F-statistic:  6332 on 1 and 453 DF, p-value: &lt; 2.22e-16</code></pre>
+</div>
+<div id="visualizing-the-ar1-model-fit" class="section level3 unnumbered hasAnchor">
+<h3>Visualizing the AR(1) model fit<a href="time-series-patterns.html#visualizing-the-ar1-model-fit" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can use the <code>autoplot</code> to visualize the fit of the AR(1) model.</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="time-series-patterns.html#cb99-1" tabindex="-1"></a>mod.ar1 <span class="sc">%&gt;%</span> <span class="fu">augment</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb99-2"><a href="time-series-patterns.html#cb99-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> date, <span class="at">y =</span> Value)) <span class="sc">+</span></span>
+<span id="cb99-3"><a href="time-series-patterns.html#cb99-3" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb99-4"><a href="time-series-patterns.html#cb99-4" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> .fitted), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb99-5"><a href="time-series-patterns.html#cb99-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;AR(1) Model Fit&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb99-6"><a href="time-series-patterns.html#cb99-6" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<pre><code>## Warning: Removed 1 row containing missing values
+## (`geom_line()`).</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
+<div class="rmdnote">
+<ul>
+<li>
+<p>
+At the end of your sample, you will be able to estimate a 1-step
+ahead out-of-sample forecast as all values are known.
+</p>
+</li>
+<li>
+<p>
+As you move beyond that single period, you will not be able to
+forecast without telling <code>R</code> what your guess of the new data
+will be.
+</p>
+</li>
+<li>
+<p>
+You could circumvent this issue using scenario based forecasts.
+That is however beyond the scope of this module.
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div id="arp-model" class="section level3 hasAnchor" number="4.8.2">
+<h3><span class="header-section-number">4.8.2</span> AR(p) model<a href="time-series-patterns.html#arp-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We could generalize to an AR(p) model.</p>
+<p><span class="math display">\[\begin{align*}
+y_t &amp;= \alpha + \beta_1 y_{t-1} + \beta_2 y_{t-2} + \ldots + \beta_p y_{t-p} + \varepsilon_t\\
+\longrightarrow y_t &amp;= \alpha + \beta_i \sum_{i = 1}^{p} y_{t-p} + \varepsilon_t
+\end{align*}\]</span></p>
+<p>The choice of the optimal <span class="math inline">\(p\)</span> can be determined by a number of model selection criteria (this is the focus of a later module).</p>
+</div>
+</div>
+<div id="exercise-3" class="section level2 unnumbered hasAnchor">
+<h2>Exercise<a href="time-series-patterns.html#exercise-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Using the <code>tidyUSDA</code> package, import <em>price</em> data for a commodity of your choice from 1990 – 2020.</p>
+<p>Following the forecasting techniques in this and the previous module:</p>
+<ol style="list-style-type: decimal">
+<li>obtain the monthly series declared as a <code>tsibble</code> object with the appropriate index.</li>
+<li>present a time series plot of the data.</li>
+<li>comment on what patterns you observe from part 2.</li>
+<li>produce a forecast for the next 2 years using
+<ul>
+<li>Holt’s Method</li>
+<li>Holt-Winter’s Method</li>
+</ul></li>
+<li>present the model summaries from the following model using a regression approach
+<ul>
+<li>Trend Model</li>
+<li>Seasonal Model (using dummies)</li>
+<li>Trend and Seasonal Model</li>
+</ul></li>
+<li>present a single graph of the data against the fitted values of each of the three models from your results in 5. Which model appears to do the best job at predicting your price series?</li>
+<li>produce a forecast for the next 2 years using your preferred model in 6.</li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="balance-sheet-forecasting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/shamar-stewart/shamar-stewart.github.io/edit/main/04-module.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

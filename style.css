@@ -30,6 +30,14 @@ pre code {
   background-image: url("images/warning.png");
 }
 
+/* Sidebar formating --------------------------------------------*/
+
+div.sidebar {
+  border-left: 7px solid #ccc;
+  margin: 1em 0;
+  padding-left: 1em;
+}
+
 .book .book-body .page-wrapper .page-inner section.normal div.sidebar > :first-child {
   margin-top: 0;
 }
