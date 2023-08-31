@@ -303,24 +303,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">7.1</span> Corn Data (Revisited)<a href="accuracy.html#corn-data-revisited" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>As we did in Module <a href="stocks-use.html#stocks-use">6</a>, we can again read in the dataset with the Ending Stocks/Use. We leave it as practice for interested reader to duplicate the codes and manipulations in Sections <a href="stocks-use.html#download-data">6.1.1</a> and <a href="stocks-use.html#clean-data">6.1.2</a>.</p>
 <p>For the purpose of the exercise, we will drop the observations for 2021. To refamiliarize ourselves with the data:</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="accuracy.html#cb165-1" tabindex="-1"></a>su.data2 <span class="ot">&lt;-</span> su.data <span class="sc">%&gt;%</span> <span class="fu">filter_index</span>(.<span class="sc">~</span><span class="dv">2020</span>)</span>
-<span id="cb165-2"><a href="accuracy.html#cb165-2" tabindex="-1"></a>su.data2 <span class="sc">%&gt;%</span> </span>
-<span id="cb165-3"><a href="accuracy.html#cb165-3" tabindex="-1"></a>  <span class="fu">autoplot</span>(price, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">size =</span> <span class="fl">1.15</span>) <span class="sc">+</span></span>
-<span id="cb165-4"><a href="accuracy.html#cb165-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb165-5"><a href="accuracy.html#cb165-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Time Plot of Corn Prices&quot;</span>,</span>
-<span id="cb165-6"><a href="accuracy.html#cb165-6" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;$/bu&quot;</span>,</span>
-<span id="cb165-7"><a href="accuracy.html#cb165-7" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>) <span class="sc">+</span></span>
-<span id="cb165-8"><a href="accuracy.html#cb165-8" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/sutimeplot-1.png" width="672" />
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="accuracy.html#cb170-1" tabindex="-1"></a>su.data2 <span class="ot">&lt;-</span> su.data <span class="sc">%&gt;%</span> <span class="fu">filter_index</span>(.<span class="sc">~</span><span class="dv">2020</span>)</span>
+<span id="cb170-2"><a href="accuracy.html#cb170-2" tabindex="-1"></a>su.data2 <span class="sc">%&gt;%</span> </span>
+<span id="cb170-3"><a href="accuracy.html#cb170-3" tabindex="-1"></a>  <span class="fu">autoplot</span>(price, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">size =</span> <span class="fl">1.15</span>) <span class="sc">+</span></span>
+<span id="cb170-4"><a href="accuracy.html#cb170-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb170-5"><a href="accuracy.html#cb170-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Time Plot of Corn Prices&quot;</span>,</span>
+<span id="cb170-6"><a href="accuracy.html#cb170-6" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;$/bu&quot;</span>,</span>
+<span id="cb170-7"><a href="accuracy.html#cb170-7" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>) <span class="sc">+</span></span>
+<span id="cb170-8"><a href="accuracy.html#cb170-8" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="Agricultural-Outlook---Forecasting_files/figure-html/sutimeplot-1.png" width="672" />
 From the plot, the price series appears to be increasing over time. From this pattern, a trend model could conceivably be a viable candidate for our forecasting.</p>
 </div>
 <div id="exploring-the-forecasting-models-in-sample" class="section level2 hasAnchor" number="7.2">
 <h2><span class="header-section-number">7.2</span> Exploring the Forecasting models In-sample<a href="accuracy.html#exploring-the-forecasting-models-in-sample" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To begin, we will subset our data into a <code>training</code> and <code>test</code> period. The <code>test</code> period will serve as our data validation window. That is, we will use it to understand how well our model performs “out of sample”.</p>
 <p>We will use the last 5 years of data as the <code>test</code> period.</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="accuracy.html#cb166-1" tabindex="-1"></a><span class="co"># Create the training set</span></span>
-<span id="cb166-2"><a href="accuracy.html#cb166-2" tabindex="-1"></a>train <span class="ot">&lt;-</span> su.data2 <span class="sc">%&gt;%</span> <span class="fu">filter_index</span>(.<span class="sc">~</span><span class="dv">2015</span>)</span>
-<span id="cb166-3"><a href="accuracy.html#cb166-3" tabindex="-1"></a>train <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="accuracy.html#cb171-1" tabindex="-1"></a><span class="co"># Create the training set</span></span>
+<span id="cb171-2"><a href="accuracy.html#cb171-2" tabindex="-1"></a>train <span class="ot">&lt;-</span> su.data2 <span class="sc">%&gt;%</span> <span class="fu">filter_index</span>(.<span class="sc">~</span><span class="dv">2015</span>)</span>
+<span id="cb171-3"><a href="accuracy.html#cb171-3" tabindex="-1"></a>train <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>## # A tsibble: 6 x 4 [1Y]
 ##    Year     su price  ratio
 ##   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
@@ -330,10 +330,10 @@ From the plot, the price series appears to be increasing over time. From this pa
 ## 4  1993 0.112   2.5  0.0896
 ## 5  1994 0.166   2.26 0.0603
 ## 6  1995 0.0500  3.24 0.200</code></pre>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="accuracy.html#cb168-1" tabindex="-1"></a><span class="co"># Reserve the last 5 years for the test set</span></span>
-<span id="cb168-2"><a href="accuracy.html#cb168-2" tabindex="-1"></a></span>
-<span id="cb168-3"><a href="accuracy.html#cb168-3" tabindex="-1"></a>test <span class="ot">&lt;-</span> su.data2 <span class="sc">%&gt;%</span> <span class="fu">filter_index</span>(<span class="dv">2016</span><span class="sc">~</span>.)</span>
-<span id="cb168-4"><a href="accuracy.html#cb168-4" tabindex="-1"></a>test <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="accuracy.html#cb173-1" tabindex="-1"></a><span class="co"># Reserve the last 5 years for the test set</span></span>
+<span id="cb173-2"><a href="accuracy.html#cb173-2" tabindex="-1"></a></span>
+<span id="cb173-3"><a href="accuracy.html#cb173-3" tabindex="-1"></a>test <span class="ot">&lt;-</span> su.data2 <span class="sc">%&gt;%</span> <span class="fu">filter_index</span>(<span class="dv">2016</span><span class="sc">~</span>.)</span>
+<span id="cb173-4"><a href="accuracy.html#cb173-4" tabindex="-1"></a>test <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>## # A tsibble: 5 x 4 [1Y]
 ##    Year     su price  ratio
 ##   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
@@ -345,8 +345,8 @@ From the plot, the price series appears to be increasing over time. From this pa
 <div id="method-1-linear-trend" class="section level3 hasAnchor" number="7.2.1">
 <h3><span class="header-section-number">7.2.1</span> Method 1: Linear Trend<a href="accuracy.html#method-1-linear-trend" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let us first explore the forecasting method using a simple trend. Recall that we can achieve this using a time series linear model (OLS) and the <code>TSLM</code> function.</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="accuracy.html#cb170-1" tabindex="-1"></a>mod1.trend <span class="ot">&lt;-</span> train <span class="sc">%&gt;%</span> <span class="fu">model</span>(<span class="at">trend =</span> <span class="fu">TSLM</span>(price <span class="sc">~</span> <span class="fu">trend</span>()))</span>
-<span id="cb170-2"><a href="accuracy.html#cb170-2" tabindex="-1"></a>mod1.trend <span class="sc">%&gt;%</span> <span class="fu">report</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="accuracy.html#cb175-1" tabindex="-1"></a>mod1.trend <span class="ot">&lt;-</span> train <span class="sc">%&gt;%</span> <span class="fu">model</span>(<span class="at">trend =</span> <span class="fu">TSLM</span>(price <span class="sc">~</span> <span class="fu">trend</span>()))</span>
+<span id="cb175-2"><a href="accuracy.html#cb175-2" tabindex="-1"></a>mod1.trend <span class="sc">%&gt;%</span> <span class="fu">report</span>()</span></code></pre></div>
 <pre><code>## Series: price 
 ## Model: TSLM 
 ## 
@@ -359,65 +359,63 @@ From the plot, the price series appears to be increasing over time. From this pa
 ## (Intercept)  1.49302    0.41302   3.615 0.001385 ** 
 ## trend()      0.12066    0.02674   4.512 0.000144 ***
 ## ---
-## Signif. codes:  
-## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 1.023 on 24 degrees of freedom
 ## Multiple R-squared: 0.4589,  Adjusted R-squared: 0.4364
 ## F-statistic: 20.36 on 1 and 24 DF, p-value: 0.00014377</code></pre>
 <p>From the regression results, the linear trend appears to be statistically significant in explaining the observed prices. At this point, it would also prove useful to produce the plot of the fitted and actual values.</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="accuracy.html#cb172-1" tabindex="-1"></a> mod1.trend <span class="sc">%&gt;%</span> <span class="fu">augment</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb172-2"><a href="accuracy.html#cb172-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> price, <span class="at">x =</span> Year,</span>
-<span id="cb172-3"><a href="accuracy.html#cb172-3" tabindex="-1"></a>             <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb172-4"><a href="accuracy.html#cb172-4" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb172-5"><a href="accuracy.html#cb172-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb172-6"><a href="accuracy.html#cb172-6" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> .fitted,</span>
-<span id="cb172-7"><a href="accuracy.html#cb172-7" tabindex="-1"></a>                <span class="at">colour =</span> <span class="st">&quot;Trend&quot;</span>),</span>
-<span id="cb172-8"><a href="accuracy.html#cb172-8" tabindex="-1"></a>                <span class="at">size =</span> <span class="fl">1.2</span>,</span>
-<span id="cb172-9"><a href="accuracy.html#cb172-9" tabindex="-1"></a>                <span class="at">lty =</span> <span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span></span>
-<span id="cb172-10"><a href="accuracy.html#cb172-10" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Trend Model Fit&quot;</span>,</span>
-<span id="cb172-11"><a href="accuracy.html#cb172-11" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;In-Sample&quot;</span>) <span class="sc">+</span></span>
-<span id="cb172-12"><a href="accuracy.html#cb172-12" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="accuracy.html#cb177-1" tabindex="-1"></a> mod1.trend <span class="sc">%&gt;%</span> <span class="fu">augment</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb177-2"><a href="accuracy.html#cb177-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> price, <span class="at">x =</span> Year,</span>
+<span id="cb177-3"><a href="accuracy.html#cb177-3" tabindex="-1"></a>             <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb177-4"><a href="accuracy.html#cb177-4" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb177-5"><a href="accuracy.html#cb177-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb177-6"><a href="accuracy.html#cb177-6" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> .fitted,</span>
+<span id="cb177-7"><a href="accuracy.html#cb177-7" tabindex="-1"></a>                <span class="at">colour =</span> <span class="st">&quot;Trend&quot;</span>),</span>
+<span id="cb177-8"><a href="accuracy.html#cb177-8" tabindex="-1"></a>                <span class="at">size =</span> <span class="fl">1.2</span>,</span>
+<span id="cb177-9"><a href="accuracy.html#cb177-9" tabindex="-1"></a>                <span class="at">lty =</span> <span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span></span>
+<span id="cb177-10"><a href="accuracy.html#cb177-10" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Trend Model Fit&quot;</span>,</span>
+<span id="cb177-11"><a href="accuracy.html#cb177-11" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;In-Sample&quot;</span>) <span class="sc">+</span></span>
+<span id="cb177-12"><a href="accuracy.html#cb177-12" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="Agricultural-Outlook---Forecasting_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
 </div>
 <div id="method-2-naive-model-with-drift" class="section level3 hasAnchor" number="7.2.2">
 <h3><span class="header-section-number">7.2.2</span> Method 2: Naive Model (with drift)<a href="accuracy.html#method-2-naive-model-with-drift" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let us assume that we have no idea of where the prices might go next. Under that condition, we could explore a <strong>naive</strong> forecasting approach. Additionally, since we noticed a pronounced trend in the series, we will account for that by including a <strong>drift</strong> term.</p>
 <p>We will use the code chunks below to accomplish this.</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="accuracy.html#cb173-1" tabindex="-1"></a>mod2.drift <span class="ot">&lt;-</span> train <span class="sc">%&gt;%</span> </span>
-<span id="cb173-2"><a href="accuracy.html#cb173-2" tabindex="-1"></a>  <span class="fu">model</span>(<span class="at">drift =</span> <span class="fu">RW</span>(price <span class="sc">~</span> <span class="fu">drift</span>()))</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="accuracy.html#cb178-1" tabindex="-1"></a>mod2.drift <span class="ot">&lt;-</span> train <span class="sc">%&gt;%</span> </span>
+<span id="cb178-2"><a href="accuracy.html#cb178-2" tabindex="-1"></a>  <span class="fu">model</span>(<span class="at">drift =</span> <span class="fu">RW</span>(price <span class="sc">~</span> <span class="fu">drift</span>()))</span></code></pre></div>
 <p>Here is a plot of the in sample fit.</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="accuracy.html#cb174-1" tabindex="-1"></a> mod2.drift <span class="sc">%&gt;%</span> <span class="fu">augment</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb174-2"><a href="accuracy.html#cb174-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> price, <span class="at">x =</span> Year,</span>
-<span id="cb174-3"><a href="accuracy.html#cb174-3" tabindex="-1"></a>             <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb174-4"><a href="accuracy.html#cb174-4" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb174-5"><a href="accuracy.html#cb174-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb174-6"><a href="accuracy.html#cb174-6" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> .fitted,</span>
-<span id="cb174-7"><a href="accuracy.html#cb174-7" tabindex="-1"></a>                <span class="at">colour =</span> <span class="st">&quot;Trend&quot;</span>),</span>
-<span id="cb174-8"><a href="accuracy.html#cb174-8" tabindex="-1"></a>                <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
-<span id="cb174-9"><a href="accuracy.html#cb174-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;RW + Drift Model Fit&quot;</span>,</span>
-<span id="cb174-10"><a href="accuracy.html#cb174-10" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;In-Sample&quot;</span>) <span class="sc">+</span></span>
-<span id="cb174-11"><a href="accuracy.html#cb174-11" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<pre><code>## Warning: Removed 1 row containing missing values
-## (`geom_line()`).</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="accuracy.html#cb179-1" tabindex="-1"></a> mod2.drift <span class="sc">%&gt;%</span> <span class="fu">augment</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb179-2"><a href="accuracy.html#cb179-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> price, <span class="at">x =</span> Year,</span>
+<span id="cb179-3"><a href="accuracy.html#cb179-3" tabindex="-1"></a>             <span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb179-4"><a href="accuracy.html#cb179-4" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb179-5"><a href="accuracy.html#cb179-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb179-6"><a href="accuracy.html#cb179-6" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> .fitted,</span>
+<span id="cb179-7"><a href="accuracy.html#cb179-7" tabindex="-1"></a>                <span class="at">colour =</span> <span class="st">&quot;Trend&quot;</span>),</span>
+<span id="cb179-8"><a href="accuracy.html#cb179-8" tabindex="-1"></a>                <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb179-9"><a href="accuracy.html#cb179-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;RW + Drift Model Fit&quot;</span>,</span>
+<span id="cb179-10"><a href="accuracy.html#cb179-10" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;In-Sample&quot;</span>) <span class="sc">+</span></span>
+<span id="cb179-11"><a href="accuracy.html#cb179-11" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<pre><code>## Warning: Removed 1 row containing missing values (`geom_line()`).</code></pre>
+<p><img src="Agricultural-Outlook---Forecasting_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
 </div>
 <div id="method-3-using-stocks-to-use-approach" class="section level3 hasAnchor" number="7.2.3">
 <h3><span class="header-section-number">7.2.3</span> Method 3: Using Stocks-to-Use Approach<a href="accuracy.html#method-3-using-stocks-to-use-approach" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In the last module, we explored the concept of accounting for structural breaks in the data. In particular, we split the data into different regimes and forecasted prices accordingly. We will utilize the same approach and use OLS regressions to help in the forecasting process.</p>
 <p>Our first step requires that we create market conditions dummy variables. The process is detailed in Module 6.</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="accuracy.html#cb176-1" tabindex="-1"></a>weak <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2009</span>, <span class="dv">2014</span><span class="sc">:</span><span class="dv">2015</span>)</span>
-<span id="cb176-2"><a href="accuracy.html#cb176-2" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2007</span><span class="sc">:</span><span class="dv">2008</span>, <span class="dv">2013</span>)</span>
-<span id="cb176-3"><a href="accuracy.html#cb176-3" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="dv">2010</span></span>
-<span id="cb176-4"><a href="accuracy.html#cb176-4" tabindex="-1"></a>strong <span class="ot">&lt;-</span> <span class="dv">2011</span><span class="sc">:</span><span class="dv">2012</span></span>
-<span id="cb176-5"><a href="accuracy.html#cb176-5" tabindex="-1"></a></span>
-<span id="cb176-6"><a href="accuracy.html#cb176-6" tabindex="-1"></a><span class="co">#Drop 2006, and all years after 2015.</span></span>
-<span id="cb176-7"><a href="accuracy.html#cb176-7" tabindex="-1"></a>subdata <span class="ot">&lt;-</span> su.data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Year <span class="sc">%in%</span> </span>
-<span id="cb176-8"><a href="accuracy.html#cb176-8" tabindex="-1"></a>                                <span class="fu">c</span>(<span class="dv">1990</span><span class="sc">:</span><span class="dv">2005</span>, <span class="dv">2007</span><span class="sc">:</span><span class="dv">2015</span>)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">weak =</span> <span class="fu">ifelse</span>(Year <span class="sc">%in%</span> weak, <span class="dv">1</span>,<span class="dv">0</span>),</span>
-<span id="cb176-9"><a href="accuracy.html#cb176-9" tabindex="-1"></a>         <span class="at">mod2 =</span> <span class="fu">ifelse</span>(Year <span class="sc">%in%</span> mod2, <span class="dv">1</span>,<span class="dv">0</span>),</span>
-<span id="cb176-10"><a href="accuracy.html#cb176-10" tabindex="-1"></a>         <span class="at">mod1 =</span> <span class="fu">ifelse</span>(Year <span class="sc">%in%</span> mod1, <span class="dv">1</span>,<span class="dv">0</span>),</span>
-<span id="cb176-11"><a href="accuracy.html#cb176-11" tabindex="-1"></a>         <span class="at">strong =</span> <span class="fu">ifelse</span>(Year <span class="sc">%in%</span> strong, <span class="dv">1</span>,<span class="dv">0</span>))</span>
-<span id="cb176-12"><a href="accuracy.html#cb176-12" tabindex="-1"></a>subdata <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="accuracy.html#cb181-1" tabindex="-1"></a>weak <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2009</span>, <span class="dv">2014</span><span class="sc">:</span><span class="dv">2015</span>)</span>
+<span id="cb181-2"><a href="accuracy.html#cb181-2" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2007</span><span class="sc">:</span><span class="dv">2008</span>, <span class="dv">2013</span>)</span>
+<span id="cb181-3"><a href="accuracy.html#cb181-3" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="dv">2010</span></span>
+<span id="cb181-4"><a href="accuracy.html#cb181-4" tabindex="-1"></a>strong <span class="ot">&lt;-</span> <span class="dv">2011</span><span class="sc">:</span><span class="dv">2012</span></span>
+<span id="cb181-5"><a href="accuracy.html#cb181-5" tabindex="-1"></a></span>
+<span id="cb181-6"><a href="accuracy.html#cb181-6" tabindex="-1"></a><span class="co">#Drop 2006, and all years after 2015.</span></span>
+<span id="cb181-7"><a href="accuracy.html#cb181-7" tabindex="-1"></a>subdata <span class="ot">&lt;-</span> su.data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Year <span class="sc">%in%</span> </span>
+<span id="cb181-8"><a href="accuracy.html#cb181-8" tabindex="-1"></a>                                <span class="fu">c</span>(<span class="dv">1990</span><span class="sc">:</span><span class="dv">2005</span>, <span class="dv">2007</span><span class="sc">:</span><span class="dv">2015</span>)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">weak =</span> <span class="fu">ifelse</span>(Year <span class="sc">%in%</span> weak, <span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb181-9"><a href="accuracy.html#cb181-9" tabindex="-1"></a>         <span class="at">mod2 =</span> <span class="fu">ifelse</span>(Year <span class="sc">%in%</span> mod2, <span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb181-10"><a href="accuracy.html#cb181-10" tabindex="-1"></a>         <span class="at">mod1 =</span> <span class="fu">ifelse</span>(Year <span class="sc">%in%</span> mod1, <span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb181-11"><a href="accuracy.html#cb181-11" tabindex="-1"></a>         <span class="at">strong =</span> <span class="fu">ifelse</span>(Year <span class="sc">%in%</span> strong, <span class="dv">1</span>,<span class="dv">0</span>))</span>
+<span id="cb181-12"><a href="accuracy.html#cb181-12" tabindex="-1"></a>subdata <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>## # A tsibble: 6 x 8 [1Y]
 ##    Year     su price  ratio  weak  mod2  mod1 strong
 ##   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
@@ -428,10 +426,10 @@ From the plot, the price series appears to be increasing over time. From this pa
 ## 5  1994 0.166   2.26 0.0603     0     0     0      0
 ## 6  1995 0.0500  3.24 0.200      0     0     0      0</code></pre>
 <p>Now to perform the relevant regressions:</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="accuracy.html#cb178-1" tabindex="-1"></a>mod3.stock <span class="ot">&lt;-</span> subdata <span class="sc">%&gt;%</span> <span class="fu">model</span>(</span>
-<span id="cb178-2"><a href="accuracy.html#cb178-2" tabindex="-1"></a>  <span class="fu">TSLM</span>(price <span class="sc">~</span> ratio <span class="sc">+</span> weak <span class="sc">+</span> mod2 <span class="sc">+</span> mod1 <span class="sc">+</span> strong)</span>
-<span id="cb178-3"><a href="accuracy.html#cb178-3" tabindex="-1"></a>)</span>
-<span id="cb178-4"><a href="accuracy.html#cb178-4" tabindex="-1"></a>mod3.stock <span class="sc">%&gt;%</span> <span class="fu">report</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="accuracy.html#cb183-1" tabindex="-1"></a>mod3.stock <span class="ot">&lt;-</span> subdata <span class="sc">%&gt;%</span> <span class="fu">model</span>(</span>
+<span id="cb183-2"><a href="accuracy.html#cb183-2" tabindex="-1"></a>  <span class="fu">TSLM</span>(price <span class="sc">~</span> ratio <span class="sc">+</span> weak <span class="sc">+</span> mod2 <span class="sc">+</span> mod1 <span class="sc">+</span> strong)</span>
+<span id="cb183-3"><a href="accuracy.html#cb183-3" tabindex="-1"></a>)</span>
+<span id="cb183-4"><a href="accuracy.html#cb183-4" tabindex="-1"></a>mod3.stock <span class="sc">%&gt;%</span> <span class="fu">report</span>()</span></code></pre></div>
 <pre><code>## Series: price 
 ## Model: TSLM 
 ## 
@@ -448,25 +446,24 @@ From the plot, the price series appears to be increasing over time. From this pa
 ## mod1         2.56885    0.19122   13.43 3.77e-11 ***
 ## strong       3.81502    0.14990   25.45 3.83e-16 ***
 ## ---
-## Signif. codes:  
-## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 0.1796 on 19 degrees of freedom
 ## Multiple R-squared: 0.9868,  Adjusted R-squared: 0.9833
 ## F-statistic: 283.9 on 5 and 19 DF, p-value: &lt; 2.22e-16</code></pre>
 <p>Likewise, we can produce a plot of the actual and fitted values from the <code>mod3.stock</code> regression above</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="accuracy.html#cb180-1" tabindex="-1"></a>mod3.stock <span class="sc">%&gt;%</span> <span class="fu">augment</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb180-2"><a href="accuracy.html#cb180-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> price,</span>
-<span id="cb180-3"><a href="accuracy.html#cb180-3" tabindex="-1"></a>                       <span class="at">colour =</span> <span class="st">&quot;Actual&quot;</span>)) <span class="sc">+</span> </span>
-<span id="cb180-4"><a href="accuracy.html#cb180-4" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb180-5"><a href="accuracy.html#cb180-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb180-6"><a href="accuracy.html#cb180-6" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> .fitted,</span>
-<span id="cb180-7"><a href="accuracy.html#cb180-7" tabindex="-1"></a>                <span class="at">colour =</span> <span class="st">&quot;Stocks/Use&quot;</span>),</span>
-<span id="cb180-8"><a href="accuracy.html#cb180-8" tabindex="-1"></a>            <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
-<span id="cb180-9"><a href="accuracy.html#cb180-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Stocks-to-Use Model Fit&quot;</span>,</span>
-<span id="cb180-10"><a href="accuracy.html#cb180-10" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;In-Sample&quot;</span>) <span class="sc">+</span></span>
-<span id="cb180-11"><a href="accuracy.html#cb180-11" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="accuracy.html#cb185-1" tabindex="-1"></a>mod3.stock <span class="sc">%&gt;%</span> <span class="fu">augment</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb185-2"><a href="accuracy.html#cb185-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> price,</span>
+<span id="cb185-3"><a href="accuracy.html#cb185-3" tabindex="-1"></a>                       <span class="at">colour =</span> <span class="st">&quot;Actual&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb185-4"><a href="accuracy.html#cb185-4" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb185-5"><a href="accuracy.html#cb185-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb185-6"><a href="accuracy.html#cb185-6" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> .fitted,</span>
+<span id="cb185-7"><a href="accuracy.html#cb185-7" tabindex="-1"></a>                <span class="at">colour =</span> <span class="st">&quot;Stocks/Use&quot;</span>),</span>
+<span id="cb185-8"><a href="accuracy.html#cb185-8" tabindex="-1"></a>            <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb185-9"><a href="accuracy.html#cb185-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Stocks-to-Use Model Fit&quot;</span>,</span>
+<span id="cb185-10"><a href="accuracy.html#cb185-10" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;In-Sample&quot;</span>) <span class="sc">+</span></span>
+<span id="cb185-11"><a href="accuracy.html#cb185-11" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="Agricultural-Outlook---Forecasting_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
 </div>
 </div>
 <div id="out-of-sample-forecasts" class="section level2 hasAnchor" number="7.3">
@@ -475,8 +472,8 @@ From the plot, the price series appears to be increasing over time. From this pa
 <div id="method-1-trend" class="section level3 hasAnchor" number="7.3.1">
 <h3><span class="header-section-number">7.3.1</span> Method 1: Trend<a href="accuracy.html#method-1-trend" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We can use the <code>forecast</code> option with the appropriate horizon (<code>h = 5</code>).</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="accuracy.html#cb181-1" tabindex="-1"></a>f.mod1 <span class="ot">&lt;-</span> mod1.trend <span class="sc">%&gt;%</span> <span class="fu">forecast</span>(<span class="at">h =</span> <span class="dv">5</span>)</span>
-<span id="cb181-2"><a href="accuracy.html#cb181-2" tabindex="-1"></a>f.mod1</span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="accuracy.html#cb186-1" tabindex="-1"></a>f.mod1 <span class="ot">&lt;-</span> mod1.trend <span class="sc">%&gt;%</span> <span class="fu">forecast</span>(<span class="at">h =</span> <span class="dv">5</span>)</span>
+<span id="cb186-2"><a href="accuracy.html#cb186-2" tabindex="-1"></a>f.mod1</span></code></pre></div>
 <pre><code>## # A fable: 5 x 4 [1Y]
 ## # Key:     .model [1]
 ##   .model  Year       price .mean
@@ -487,18 +484,18 @@ From the plot, the price series appears to be increasing over time. From this pa
 ## 4 trend   2019 N(5.1, 1.3)  5.11
 ## 5 trend   2020 N(5.2, 1.3)  5.23</code></pre>
 <p>In turn, the plot would be as follows:</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="accuracy.html#cb183-1" tabindex="-1"></a>f.mod1 <span class="sc">%&gt;%</span> <span class="fu">autoplot</span>(train, <span class="at">level =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb183-2"><a href="accuracy.html#cb183-2" tabindex="-1"></a>  <span class="fu">autolayer</span>(test,price, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb183-3"><a href="accuracy.html#cb183-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Linear Trend Model Forecast&quot;</span>) <span class="sc">+</span></span>
-<span id="cb183-4"><a href="accuracy.html#cb183-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-112-1.png" width="672" />
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="accuracy.html#cb188-1" tabindex="-1"></a>f.mod1 <span class="sc">%&gt;%</span> <span class="fu">autoplot</span>(train, <span class="at">level =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb188-2"><a href="accuracy.html#cb188-2" tabindex="-1"></a>  <span class="fu">autolayer</span>(test,price, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb188-3"><a href="accuracy.html#cb188-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Linear Trend Model Forecast&quot;</span>) <span class="sc">+</span></span>
+<span id="cb188-4"><a href="accuracy.html#cb188-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="Agricultural-Outlook---Forecasting_files/figure-html/unnamed-chunk-112-1.png" width="672" />
 The red line (actual values held out) are always lower than the forecasts of this model. Here, the trend model has a tendency to over predict the true values.</p>
 </div>
 <div id="method-2-random-walk-drfit-model" class="section level3 hasAnchor" number="7.3.2">
 <h3><span class="header-section-number">7.3.2</span> Method 2: Random Walk + Drfit Model<a href="accuracy.html#method-2-random-walk-drfit-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We can generate and display the forecasted values (from the <code>RW</code> function) for the 5 periods of interest.</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="accuracy.html#cb184-1" tabindex="-1"></a>f.mod2 <span class="ot">&lt;-</span> mod2.drift <span class="sc">%&gt;%</span> <span class="fu">forecast</span>(<span class="at">h =</span> <span class="dv">5</span>)</span>
-<span id="cb184-2"><a href="accuracy.html#cb184-2" tabindex="-1"></a>f.mod2</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="accuracy.html#cb189-1" tabindex="-1"></a>f.mod2 <span class="ot">&lt;-</span> mod2.drift <span class="sc">%&gt;%</span> <span class="fu">forecast</span>(<span class="at">h =</span> <span class="dv">5</span>)</span>
+<span id="cb189-2"><a href="accuracy.html#cb189-2" tabindex="-1"></a>f.mod2</span></code></pre></div>
 <pre><code>## # A fable: 5 x 4 [1Y]
 ## # Key:     .model [1]
 ##   .model  Year        price .mean
@@ -509,47 +506,47 @@ The red line (actual values held out) are always lower than the forecasts of thi
 ## 4 drift   2019    N(3.8, 3)  3.82
 ## 5 drift   2020  N(3.9, 3.9)  3.88</code></pre>
 <p>Plotting the results we have:</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="accuracy.html#cb186-1" tabindex="-1"></a>f.mod2 <span class="sc">%&gt;%</span> <span class="fu">autoplot</span>(train, <span class="at">level =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb186-2"><a href="accuracy.html#cb186-2" tabindex="-1"></a>  <span class="fu">autolayer</span>(test,price, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb186-3"><a href="accuracy.html#cb186-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Random Walk with Drift Forecast&quot;</span>) <span class="sc">+</span></span>
-<span id="cb186-4"><a href="accuracy.html#cb186-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-114-1.png" width="672" /></p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="accuracy.html#cb191-1" tabindex="-1"></a>f.mod2 <span class="sc">%&gt;%</span> <span class="fu">autoplot</span>(train, <span class="at">level =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb191-2"><a href="accuracy.html#cb191-2" tabindex="-1"></a>  <span class="fu">autolayer</span>(test,price, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb191-3"><a href="accuracy.html#cb191-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Random Walk with Drift Forecast&quot;</span>) <span class="sc">+</span></span>
+<span id="cb191-4"><a href="accuracy.html#cb191-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="Agricultural-Outlook---Forecasting_files/figure-html/unnamed-chunk-114-1.png" width="672" /></p>
 <p>In the earlier years, the random walk model with drift tends to over predict. Towards the latter years however, the trend is not step enough and therefore lags the true value (is under predicted).</p>
 </div>
 <div id="method-3-stocks-to-use-approach" class="section level3 hasAnchor" number="7.3.3">
 <h3><span class="header-section-number">7.3.3</span> Method 3: Stocks-to-Use Approach<a href="accuracy.html#method-3-stocks-to-use-approach" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The forecast for this approach is slightly more involved but not complicated. As we did in Module <a href="stocks-use.html#stocks-use">6</a>, we will assign all years in the test set (the 5 years out-of-sample) to a single regime (i.e. all to weak, or moderate2, etc.).</p>
 <p>Also, to help with your forecasting, we will assume that we have the gift of perfect foresight relating to the stocks-to-use ratio (<code>ratio</code>). Our task therefore, is simply to use this method to forecast prices.</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="accuracy.html#cb187-1" tabindex="-1"></a>scenarios5 <span class="ot">&lt;-</span> <span class="fu">scenarios</span>(</span>
-<span id="cb187-2"><a href="accuracy.html#cb187-2" tabindex="-1"></a>  <span class="at">weak =</span> <span class="fu">new_data</span>(train,<span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb187-3"><a href="accuracy.html#cb187-3" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">ratio =</span> test[[<span class="st">&quot;ratio&quot;</span>]], <span class="at">weak =</span> <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>),</span>
-<span id="cb187-4"><a href="accuracy.html#cb187-4" tabindex="-1"></a>           <span class="at">mod2 =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>), <span class="at">mod1 =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>), </span>
-<span id="cb187-5"><a href="accuracy.html#cb187-5" tabindex="-1"></a>           <span class="at">strong =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>)),</span>
-<span id="cb187-6"><a href="accuracy.html#cb187-6" tabindex="-1"></a>  <span class="at">moderate2 =</span> <span class="fu">new_data</span>(train,<span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb187-7"><a href="accuracy.html#cb187-7" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">ratio =</span> test[[<span class="st">&quot;ratio&quot;</span>]], <span class="at">weak =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>),</span>
-<span id="cb187-8"><a href="accuracy.html#cb187-8" tabindex="-1"></a>           <span class="at">mod2 =</span> <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>), <span class="at">mod1 =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>), </span>
-<span id="cb187-9"><a href="accuracy.html#cb187-9" tabindex="-1"></a>           <span class="at">strong =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>)),</span>
-<span id="cb187-10"><a href="accuracy.html#cb187-10" tabindex="-1"></a>  <span class="at">moderate1 =</span> <span class="fu">new_data</span>(train,<span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb187-11"><a href="accuracy.html#cb187-11" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">ratio =</span> test[[<span class="st">&quot;ratio&quot;</span>]], <span class="at">weak =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>),</span>
-<span id="cb187-12"><a href="accuracy.html#cb187-12" tabindex="-1"></a>           <span class="at">mod2 =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>), <span class="at">mod1 =</span> <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>),</span>
-<span id="cb187-13"><a href="accuracy.html#cb187-13" tabindex="-1"></a>           <span class="at">strong =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>)),</span>
-<span id="cb187-14"><a href="accuracy.html#cb187-14" tabindex="-1"></a>  <span class="at">strong =</span> <span class="fu">new_data</span>(train,<span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb187-15"><a href="accuracy.html#cb187-15" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">ratio =</span> test[[<span class="st">&quot;ratio&quot;</span>]], <span class="at">weak =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>),</span>
-<span id="cb187-16"><a href="accuracy.html#cb187-16" tabindex="-1"></a>           <span class="at">mod2 =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>), <span class="at">mod1 =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>),</span>
-<span id="cb187-17"><a href="accuracy.html#cb187-17" tabindex="-1"></a>           <span class="at">strong =</span> <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>)),</span>
-<span id="cb187-18"><a href="accuracy.html#cb187-18" tabindex="-1"></a>  <span class="at">names_to =</span> <span class="st">&quot;Scenario&quot;</span></span>
-<span id="cb187-19"><a href="accuracy.html#cb187-19" tabindex="-1"></a>)</span>
-<span id="cb187-20"><a href="accuracy.html#cb187-20" tabindex="-1"></a>forecast5 <span class="ot">&lt;-</span> mod3.stock <span class="sc">%&gt;%</span> </span>
-<span id="cb187-21"><a href="accuracy.html#cb187-21" tabindex="-1"></a>  <span class="fu">forecast</span>(<span class="at">new_data =</span> scenarios5)</span>
-<span id="cb187-22"><a href="accuracy.html#cb187-22" tabindex="-1"></a></span>
-<span id="cb187-23"><a href="accuracy.html#cb187-23" tabindex="-1"></a>train <span class="sc">%&gt;%</span> <span class="fu">autoplot</span>(price, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb187-24"><a href="accuracy.html#cb187-24" tabindex="-1"></a>  <span class="fu">autolayer</span>(forecast5, <span class="at">size =</span> <span class="fl">1.2</span>, </span>
-<span id="cb187-25"><a href="accuracy.html#cb187-25" tabindex="-1"></a>            <span class="at">level =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb187-26"><a href="accuracy.html#cb187-26" tabindex="-1"></a>  <span class="fu">autolayer</span>(test, price, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>,</span>
-<span id="cb187-27"><a href="accuracy.html#cb187-27" tabindex="-1"></a>            <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span> </span>
-<span id="cb187-28"><a href="accuracy.html#cb187-28" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Scenario Price Forecasts for Next 5 years&quot;</span>) <span class="sc">+</span></span>
-<span id="cb187-29"><a href="accuracy.html#cb187-29" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="accuracy.html#cb192-1" tabindex="-1"></a>scenarios5 <span class="ot">&lt;-</span> <span class="fu">scenarios</span>(</span>
+<span id="cb192-2"><a href="accuracy.html#cb192-2" tabindex="-1"></a>  <span class="at">weak =</span> <span class="fu">new_data</span>(train,<span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb192-3"><a href="accuracy.html#cb192-3" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">ratio =</span> test[[<span class="st">&quot;ratio&quot;</span>]], <span class="at">weak =</span> <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>),</span>
+<span id="cb192-4"><a href="accuracy.html#cb192-4" tabindex="-1"></a>           <span class="at">mod2 =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>), <span class="at">mod1 =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>), </span>
+<span id="cb192-5"><a href="accuracy.html#cb192-5" tabindex="-1"></a>           <span class="at">strong =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>)),</span>
+<span id="cb192-6"><a href="accuracy.html#cb192-6" tabindex="-1"></a>  <span class="at">moderate2 =</span> <span class="fu">new_data</span>(train,<span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb192-7"><a href="accuracy.html#cb192-7" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">ratio =</span> test[[<span class="st">&quot;ratio&quot;</span>]], <span class="at">weak =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>),</span>
+<span id="cb192-8"><a href="accuracy.html#cb192-8" tabindex="-1"></a>           <span class="at">mod2 =</span> <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>), <span class="at">mod1 =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>), </span>
+<span id="cb192-9"><a href="accuracy.html#cb192-9" tabindex="-1"></a>           <span class="at">strong =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>)),</span>
+<span id="cb192-10"><a href="accuracy.html#cb192-10" tabindex="-1"></a>  <span class="at">moderate1 =</span> <span class="fu">new_data</span>(train,<span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb192-11"><a href="accuracy.html#cb192-11" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">ratio =</span> test[[<span class="st">&quot;ratio&quot;</span>]], <span class="at">weak =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>),</span>
+<span id="cb192-12"><a href="accuracy.html#cb192-12" tabindex="-1"></a>           <span class="at">mod2 =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>), <span class="at">mod1 =</span> <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>),</span>
+<span id="cb192-13"><a href="accuracy.html#cb192-13" tabindex="-1"></a>           <span class="at">strong =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>)),</span>
+<span id="cb192-14"><a href="accuracy.html#cb192-14" tabindex="-1"></a>  <span class="at">strong =</span> <span class="fu">new_data</span>(train,<span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb192-15"><a href="accuracy.html#cb192-15" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">ratio =</span> test[[<span class="st">&quot;ratio&quot;</span>]], <span class="at">weak =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>),</span>
+<span id="cb192-16"><a href="accuracy.html#cb192-16" tabindex="-1"></a>           <span class="at">mod2 =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>), <span class="at">mod1 =</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>),</span>
+<span id="cb192-17"><a href="accuracy.html#cb192-17" tabindex="-1"></a>           <span class="at">strong =</span> <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>)),</span>
+<span id="cb192-18"><a href="accuracy.html#cb192-18" tabindex="-1"></a>  <span class="at">names_to =</span> <span class="st">&quot;Scenario&quot;</span></span>
+<span id="cb192-19"><a href="accuracy.html#cb192-19" tabindex="-1"></a>)</span>
+<span id="cb192-20"><a href="accuracy.html#cb192-20" tabindex="-1"></a>forecast5 <span class="ot">&lt;-</span> mod3.stock <span class="sc">%&gt;%</span> </span>
+<span id="cb192-21"><a href="accuracy.html#cb192-21" tabindex="-1"></a>  <span class="fu">forecast</span>(<span class="at">new_data =</span> scenarios5)</span>
+<span id="cb192-22"><a href="accuracy.html#cb192-22" tabindex="-1"></a></span>
+<span id="cb192-23"><a href="accuracy.html#cb192-23" tabindex="-1"></a>train <span class="sc">%&gt;%</span> <span class="fu">autoplot</span>(price, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb192-24"><a href="accuracy.html#cb192-24" tabindex="-1"></a>  <span class="fu">autolayer</span>(forecast5, <span class="at">size =</span> <span class="fl">1.2</span>, </span>
+<span id="cb192-25"><a href="accuracy.html#cb192-25" tabindex="-1"></a>            <span class="at">level =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb192-26"><a href="accuracy.html#cb192-26" tabindex="-1"></a>  <span class="fu">autolayer</span>(test, price, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>,</span>
+<span id="cb192-27"><a href="accuracy.html#cb192-27" tabindex="-1"></a>            <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span> </span>
+<span id="cb192-28"><a href="accuracy.html#cb192-28" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Scenario Price Forecasts for Next 5 years&quot;</span>) <span class="sc">+</span></span>
+<span id="cb192-29"><a href="accuracy.html#cb192-29" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="Agricultural-Outlook---Forecasting_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
 <p>The plot reveals that the weak regime more closely mirrors the prices observed in the last 5 years of the sample. Caution should be taken with interpreting these results as we used the observed (true) values for the reciprocal of the stocks-to-use ratio, <span class="math inline">\(\frac{1}{x}\)</span>, for those years in our forecasts.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> In actuality, we would have to forecast those as well, or use expert judgement to come up with future values.</p>
 </div>
 </div>
@@ -564,41 +561,41 @@ The red line (actual values held out) are always lower than the forecasts of thi
 <p><span class="math display">\[ MPE = \frac{1}{5} \sum_{t = 2016}^{2020}\bigg(\frac{e_t}{p_t}\bigg)\times 100 \]</span></p>
 <p><span class="math display">\[ MAPE = \frac{1}{5} \sum_{t = 2016}^{2020}\bigg|\frac{e_t}{p_t}\bigg|\times 100\]</span></p>
 <p>For simplicity, we will create a user defined function to achieve our calculations.</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="accuracy.html#cb188-1" tabindex="-1"></a>selection <span class="ot">&lt;-</span> <span class="cf">function</span>(actual, forecast){</span>
-<span id="cb188-2"><a href="accuracy.html#cb188-2" tabindex="-1"></a>TT <span class="ot">&lt;-</span>   <span class="fu">length</span>(actual)</span>
-<span id="cb188-3"><a href="accuracy.html#cb188-3" tabindex="-1"></a>err <span class="ot">&lt;-</span>  actual <span class="sc">-</span> forecast</span>
-<span id="cb188-4"><a href="accuracy.html#cb188-4" tabindex="-1"></a>rmse <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((<span class="dv">1</span><span class="sc">/</span>TT) <span class="sc">*</span> <span class="fu">sum</span>(err<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb188-5"><a href="accuracy.html#cb188-5" tabindex="-1"></a>mpe <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">/</span>TT)<span class="sc">*</span> <span class="fu">sum</span>(err<span class="sc">/</span>actual)<span class="sc">*</span><span class="dv">100</span></span>
-<span id="cb188-6"><a href="accuracy.html#cb188-6" tabindex="-1"></a>mape <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>TT<span class="sc">*</span><span class="fu">sum</span>(<span class="fu">abs</span>(err<span class="sc">/</span>actual))<span class="sc">*</span><span class="dv">100</span></span>
-<span id="cb188-7"><a href="accuracy.html#cb188-7" tabindex="-1"></a><span class="fu">return</span>(<span class="fu">list</span>(<span class="st">&quot;RMSE&quot;</span> <span class="ot">=</span> rmse,</span>
-<span id="cb188-8"><a href="accuracy.html#cb188-8" tabindex="-1"></a>            <span class="st">&quot;MPE&quot;</span> <span class="ot">=</span> mpe,</span>
-<span id="cb188-9"><a href="accuracy.html#cb188-9" tabindex="-1"></a>            <span class="st">&quot;MAPE&quot;</span> <span class="ot">=</span> mape))</span>
-<span id="cb188-10"><a href="accuracy.html#cb188-10" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="accuracy.html#cb193-1" tabindex="-1"></a>selection <span class="ot">&lt;-</span> <span class="cf">function</span>(actual, forecast){</span>
+<span id="cb193-2"><a href="accuracy.html#cb193-2" tabindex="-1"></a>TT <span class="ot">&lt;-</span>   <span class="fu">length</span>(actual)</span>
+<span id="cb193-3"><a href="accuracy.html#cb193-3" tabindex="-1"></a>err <span class="ot">&lt;-</span>  actual <span class="sc">-</span> forecast</span>
+<span id="cb193-4"><a href="accuracy.html#cb193-4" tabindex="-1"></a>rmse <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((<span class="dv">1</span><span class="sc">/</span>TT) <span class="sc">*</span> <span class="fu">sum</span>(err<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb193-5"><a href="accuracy.html#cb193-5" tabindex="-1"></a>mpe <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">/</span>TT)<span class="sc">*</span> <span class="fu">sum</span>(err<span class="sc">/</span>actual)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb193-6"><a href="accuracy.html#cb193-6" tabindex="-1"></a>mape <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>TT<span class="sc">*</span><span class="fu">sum</span>(<span class="fu">abs</span>(err<span class="sc">/</span>actual))<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb193-7"><a href="accuracy.html#cb193-7" tabindex="-1"></a><span class="fu">return</span>(<span class="fu">list</span>(<span class="st">&quot;RMSE&quot;</span> <span class="ot">=</span> rmse,</span>
+<span id="cb193-8"><a href="accuracy.html#cb193-8" tabindex="-1"></a>            <span class="st">&quot;MPE&quot;</span> <span class="ot">=</span> mpe,</span>
+<span id="cb193-9"><a href="accuracy.html#cb193-9" tabindex="-1"></a>            <span class="st">&quot;MAPE&quot;</span> <span class="ot">=</span> mape))</span>
+<span id="cb193-10"><a href="accuracy.html#cb193-10" tabindex="-1"></a>}</span></code></pre></div>
 <p>We can now use our function to compute the 3 statistics for each model.</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="accuracy.html#cb189-1" tabindex="-1"></a>r1 <span class="ot">&lt;-</span> <span class="fu">selection</span>(<span class="at">actual =</span> test[[<span class="st">&quot;price&quot;</span>]], </span>
-<span id="cb189-2"><a href="accuracy.html#cb189-2" tabindex="-1"></a>             <span class="at">forecast =</span> f.mod1[[<span class="st">&quot;.mean&quot;</span>]])</span>
-<span id="cb189-3"><a href="accuracy.html#cb189-3" tabindex="-1"></a>r2 <span class="ot">&lt;-</span> <span class="fu">selection</span>(<span class="at">actual =</span> test[[<span class="st">&quot;price&quot;</span>]], </span>
-<span id="cb189-4"><a href="accuracy.html#cb189-4" tabindex="-1"></a>             <span class="at">forecast =</span> f.mod2[[<span class="st">&quot;.mean&quot;</span>]])</span>
-<span id="cb189-5"><a href="accuracy.html#cb189-5" tabindex="-1"></a>r3 <span class="ot">&lt;-</span> <span class="fu">selection</span>(<span class="at">actual =</span> test[[<span class="st">&quot;price&quot;</span>]],</span>
-<span id="cb189-6"><a href="accuracy.html#cb189-6" tabindex="-1"></a>             <span class="at">forecast =</span> (forecast5 <span class="sc">%&gt;%</span> </span>
-<span id="cb189-7"><a href="accuracy.html#cb189-7" tabindex="-1"></a>               <span class="fu">filter</span>(Scenario<span class="sc">==</span> <span class="st">&quot;weak&quot;</span>))[[<span class="st">&quot;.mean&quot;</span>]])</span>
-<span id="cb189-8"><a href="accuracy.html#cb189-8" tabindex="-1"></a>r4 <span class="ot">&lt;-</span> <span class="fu">selection</span>(<span class="at">actual =</span> test[[<span class="st">&quot;price&quot;</span>]],</span>
-<span id="cb189-9"><a href="accuracy.html#cb189-9" tabindex="-1"></a>             <span class="at">forecast =</span> (forecast5 <span class="sc">%&gt;%</span> </span>
-<span id="cb189-10"><a href="accuracy.html#cb189-10" tabindex="-1"></a>               <span class="fu">filter</span>(Scenario<span class="sc">==</span> <span class="st">&quot;moderate2&quot;</span>))[[<span class="st">&quot;.mean&quot;</span>]])</span>
-<span id="cb189-11"><a href="accuracy.html#cb189-11" tabindex="-1"></a>r5 <span class="ot">&lt;-</span> <span class="fu">selection</span>(<span class="at">actual =</span> test[[<span class="st">&quot;price&quot;</span>]],</span>
-<span id="cb189-12"><a href="accuracy.html#cb189-12" tabindex="-1"></a>             <span class="at">forecast =</span> (forecast5 <span class="sc">%&gt;%</span> </span>
-<span id="cb189-13"><a href="accuracy.html#cb189-13" tabindex="-1"></a>               <span class="fu">filter</span>(Scenario<span class="sc">==</span> <span class="st">&quot;moderate1&quot;</span>))[[<span class="st">&quot;.mean&quot;</span>]])</span>
-<span id="cb189-14"><a href="accuracy.html#cb189-14" tabindex="-1"></a>r6 <span class="ot">&lt;-</span> <span class="fu">selection</span>(<span class="at">actual =</span> test[[<span class="st">&quot;price&quot;</span>]],</span>
-<span id="cb189-15"><a href="accuracy.html#cb189-15" tabindex="-1"></a>             <span class="at">forecast =</span> (forecast5 <span class="sc">%&gt;%</span> </span>
-<span id="cb189-16"><a href="accuracy.html#cb189-16" tabindex="-1"></a>               <span class="fu">filter</span>(Scenario<span class="sc">==</span> <span class="st">&quot;strong&quot;</span>))[[<span class="st">&quot;.mean&quot;</span>]]    </span>
-<span id="cb189-17"><a href="accuracy.html#cb189-17" tabindex="-1"></a>             )</span>
-<span id="cb189-18"><a href="accuracy.html#cb189-18" tabindex="-1"></a></span>
-<span id="cb189-19"><a href="accuracy.html#cb189-19" tabindex="-1"></a><span class="fu">rbind</span>(<span class="st">&quot;Trend&quot;</span> <span class="ot">=</span> r1, </span>
-<span id="cb189-20"><a href="accuracy.html#cb189-20" tabindex="-1"></a>      <span class="st">&quot;RW + Drift&quot;</span> <span class="ot">=</span> r2, </span>
-<span id="cb189-21"><a href="accuracy.html#cb189-21" tabindex="-1"></a>      <span class="st">&quot;Stocks/Use Weak&quot;</span> <span class="ot">=</span> r3,</span>
-<span id="cb189-22"><a href="accuracy.html#cb189-22" tabindex="-1"></a>      <span class="st">&quot;Stocks/Use Moderate2&quot;</span> <span class="ot">=</span> r4,</span>
-<span id="cb189-23"><a href="accuracy.html#cb189-23" tabindex="-1"></a>      <span class="st">&quot;Stocks/Use Moderate1&quot;</span> <span class="ot">=</span> r5,</span>
-<span id="cb189-24"><a href="accuracy.html#cb189-24" tabindex="-1"></a>      <span class="st">&quot;Stocks/Use Strong&quot;</span> <span class="ot">=</span> r6)</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="accuracy.html#cb194-1" tabindex="-1"></a>r1 <span class="ot">&lt;-</span> <span class="fu">selection</span>(<span class="at">actual =</span> test[[<span class="st">&quot;price&quot;</span>]], </span>
+<span id="cb194-2"><a href="accuracy.html#cb194-2" tabindex="-1"></a>             <span class="at">forecast =</span> f.mod1[[<span class="st">&quot;.mean&quot;</span>]])</span>
+<span id="cb194-3"><a href="accuracy.html#cb194-3" tabindex="-1"></a>r2 <span class="ot">&lt;-</span> <span class="fu">selection</span>(<span class="at">actual =</span> test[[<span class="st">&quot;price&quot;</span>]], </span>
+<span id="cb194-4"><a href="accuracy.html#cb194-4" tabindex="-1"></a>             <span class="at">forecast =</span> f.mod2[[<span class="st">&quot;.mean&quot;</span>]])</span>
+<span id="cb194-5"><a href="accuracy.html#cb194-5" tabindex="-1"></a>r3 <span class="ot">&lt;-</span> <span class="fu">selection</span>(<span class="at">actual =</span> test[[<span class="st">&quot;price&quot;</span>]],</span>
+<span id="cb194-6"><a href="accuracy.html#cb194-6" tabindex="-1"></a>             <span class="at">forecast =</span> (forecast5 <span class="sc">%&gt;%</span> </span>
+<span id="cb194-7"><a href="accuracy.html#cb194-7" tabindex="-1"></a>               <span class="fu">filter</span>(Scenario<span class="sc">==</span> <span class="st">&quot;weak&quot;</span>))[[<span class="st">&quot;.mean&quot;</span>]])</span>
+<span id="cb194-8"><a href="accuracy.html#cb194-8" tabindex="-1"></a>r4 <span class="ot">&lt;-</span> <span class="fu">selection</span>(<span class="at">actual =</span> test[[<span class="st">&quot;price&quot;</span>]],</span>
+<span id="cb194-9"><a href="accuracy.html#cb194-9" tabindex="-1"></a>             <span class="at">forecast =</span> (forecast5 <span class="sc">%&gt;%</span> </span>
+<span id="cb194-10"><a href="accuracy.html#cb194-10" tabindex="-1"></a>               <span class="fu">filter</span>(Scenario<span class="sc">==</span> <span class="st">&quot;moderate2&quot;</span>))[[<span class="st">&quot;.mean&quot;</span>]])</span>
+<span id="cb194-11"><a href="accuracy.html#cb194-11" tabindex="-1"></a>r5 <span class="ot">&lt;-</span> <span class="fu">selection</span>(<span class="at">actual =</span> test[[<span class="st">&quot;price&quot;</span>]],</span>
+<span id="cb194-12"><a href="accuracy.html#cb194-12" tabindex="-1"></a>             <span class="at">forecast =</span> (forecast5 <span class="sc">%&gt;%</span> </span>
+<span id="cb194-13"><a href="accuracy.html#cb194-13" tabindex="-1"></a>               <span class="fu">filter</span>(Scenario<span class="sc">==</span> <span class="st">&quot;moderate1&quot;</span>))[[<span class="st">&quot;.mean&quot;</span>]])</span>
+<span id="cb194-14"><a href="accuracy.html#cb194-14" tabindex="-1"></a>r6 <span class="ot">&lt;-</span> <span class="fu">selection</span>(<span class="at">actual =</span> test[[<span class="st">&quot;price&quot;</span>]],</span>
+<span id="cb194-15"><a href="accuracy.html#cb194-15" tabindex="-1"></a>             <span class="at">forecast =</span> (forecast5 <span class="sc">%&gt;%</span> </span>
+<span id="cb194-16"><a href="accuracy.html#cb194-16" tabindex="-1"></a>               <span class="fu">filter</span>(Scenario<span class="sc">==</span> <span class="st">&quot;strong&quot;</span>))[[<span class="st">&quot;.mean&quot;</span>]]    </span>
+<span id="cb194-17"><a href="accuracy.html#cb194-17" tabindex="-1"></a>             )</span>
+<span id="cb194-18"><a href="accuracy.html#cb194-18" tabindex="-1"></a></span>
+<span id="cb194-19"><a href="accuracy.html#cb194-19" tabindex="-1"></a><span class="fu">rbind</span>(<span class="st">&quot;Trend&quot;</span> <span class="ot">=</span> r1, </span>
+<span id="cb194-20"><a href="accuracy.html#cb194-20" tabindex="-1"></a>      <span class="st">&quot;RW + Drift&quot;</span> <span class="ot">=</span> r2, </span>
+<span id="cb194-21"><a href="accuracy.html#cb194-21" tabindex="-1"></a>      <span class="st">&quot;Stocks/Use Weak&quot;</span> <span class="ot">=</span> r3,</span>
+<span id="cb194-22"><a href="accuracy.html#cb194-22" tabindex="-1"></a>      <span class="st">&quot;Stocks/Use Moderate2&quot;</span> <span class="ot">=</span> r4,</span>
+<span id="cb194-23"><a href="accuracy.html#cb194-23" tabindex="-1"></a>      <span class="st">&quot;Stocks/Use Moderate1&quot;</span> <span class="ot">=</span> r5,</span>
+<span id="cb194-24"><a href="accuracy.html#cb194-24" tabindex="-1"></a>      <span class="st">&quot;Stocks/Use Strong&quot;</span> <span class="ot">=</span> r6)</span></code></pre></div>
 <pre><code>##                      RMSE      MPE         MAPE    
 ## Trend                1.359062  -37.44522   37.44522
 ## RW + Drift           0.342947  -3.904987   8.668624
@@ -674,7 +671,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["_main.pdf", "_main.epub"],
+"download": ["Agricultural Outlook & Forecasting.pdf", "Agricultural Outlook & Forecasting.epub"],
 "search": {
 "engine": "fuse",
 "options": null
