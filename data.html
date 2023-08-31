@@ -367,28 +367,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="data.html#cb8-1" tabindex="-1"></a><span class="fu">View</span>(corn)</span></code></pre></div>
 <p>Alternatively, we can view the head (first <code>n</code> observations). <code>R</code> will default to <code>n = 6</code>.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="data.html#cb9-1" tabindex="-1"></a><span class="fu">head</span>(corn, <span class="dv">10</span>)</span></code></pre></div>
-<pre><code>##    watershed_desc statisticcat_desc region_desc asd_code
-## 1                    PRICE RECEIVED                     
-## 2                    PRICE RECEIVED                     
-## 3                    PRICE RECEIVED                     
-## 4                    PRICE RECEIVED                     
-## 5                    PRICE RECEIVED                     
-## 6                    PRICE RECEIVED                     
-## 7                    PRICE RECEIVED                     
-## 8                    PRICE RECEIVED                     
-## 9                    PRICE RECEIVED                     
-## 10                   PRICE RECEIVED                     
-##    unit_desc CV (%) domaincat_desc
-## 1     $ / BU         NOT SPECIFIED
-## 2     $ / BU         NOT SPECIFIED
-## 3     $ / BU         NOT SPECIFIED
-## 4     $ / BU         NOT SPECIFIED
-## 5     $ / BU         NOT SPECIFIED
-## 6     $ / BU         NOT SPECIFIED
-## 7     $ / BU         NOT SPECIFIED
-## 8     $ / BU         NOT SPECIFIED
-## 9     $ / BU         NOT SPECIFIED
-## 10    $ / BU         NOT SPECIFIED
+<pre><code>##    location_desc util_practice_desc
+## 1       US TOTAL              GRAIN
+## 2       US TOTAL              GRAIN
+## 3       US TOTAL              GRAIN
+## 4       US TOTAL              GRAIN
+## 5       US TOTAL              GRAIN
+## 6       US TOTAL              GRAIN
+## 7       US TOTAL              GRAIN
+## 8       US TOTAL              GRAIN
+## 9       US TOTAL              GRAIN
+## 10      US TOTAL              GRAIN
+##                  load_time year source_desc
+## 1  2021-11-30 15:01:54.000 2019      SURVEY
+## 2  2022-07-29 15:01:54.000 2019      SURVEY
+## 3  2021-09-30 15:01:42.000 2019      SURVEY
+## 4  2021-09-30 15:01:42.000 2019      SURVEY
+## 5  2021-09-30 15:01:42.000 2019      SURVEY
+## 6  2021-09-30 15:01:42.000 2019      SURVEY
+## 7  2021-09-30 15:01:42.000 2019      SURVEY
+## 8  2021-09-30 15:01:42.000 2019      SURVEY
+## 9  2021-11-30 15:01:54.000 2019      SURVEY
+## 10 2021-11-30 15:01:54.000 2019      SURVEY
+##    watershed_code week_ending CV (%)  class_desc
+## 1        00000000                    ALL CLASSES
+## 2        00000000                    ALL CLASSES
+## 3        00000000                    ALL CLASSES
+## 4        00000000                    ALL CLASSES
+## 5        00000000                    ALL CLASSES
+## 6        00000000                    ALL CLASSES
+## 7        00000000                    ALL CLASSES
+## 8        00000000                    ALL CLASSES
+## 9        00000000                    ALL CLASSES
+## 10       00000000                    ALL CLASSES
+##    county_ansi county_code country_code  group_desc Value
+## 1                                  9000 FIELD CROPS  3.56
+## 2                                  9000 FIELD CROPS  3.75
+## 3                                  9000 FIELD CROPS  3.56
+## 4                                  9000 FIELD CROPS  3.60
+## 5                                  9000 FIELD CROPS  3.61
+## 6                                  9000 FIELD CROPS  3.53
+## 7                                  9000 FIELD CROPS  3.63
+## 8                                  9000 FIELD CROPS  3.98
+## 9                                  9000 FIELD CROPS  4.16
+## 10                                 9000 FIELD CROPS  3.93
+##    state_ansi state_name asd_code zip_5 watershed_desc
+## 1               US TOTAL                              
+## 2               US TOTAL                              
+## 3               US TOTAL                              
+## 4               US TOTAL                              
+## 5               US TOTAL                              
+## 6               US TOTAL                              
+## 7               US TOTAL                              
+## 8               US TOTAL                              
+## 9               US TOTAL                              
+## 10              US TOTAL                              
 ##                                          short_desc
 ## 1  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU
 ## 2  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU
@@ -400,105 +433,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 8  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU
 ## 9  CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU
 ## 10 CORN, GRAIN - PRICE RECEIVED, MEASURED IN $ / BU
-##    state_name  class_desc week_ending year country_code
-## 1    US TOTAL ALL CLASSES             2019         9000
-## 2    US TOTAL ALL CLASSES             2019         9000
-## 3    US TOTAL ALL CLASSES             2019         9000
-## 4    US TOTAL ALL CLASSES             2019         9000
-## 5    US TOTAL ALL CLASSES             2019         9000
-## 6    US TOTAL ALL CLASSES             2019         9000
-## 7    US TOTAL ALL CLASSES             2019         9000
-## 8    US TOTAL ALL CLASSES             2019         9000
-## 9    US TOTAL ALL CLASSES             2019         9000
-## 10   US TOTAL ALL CLASSES             2019         9000
-##    county_ansi freq_desc state_alpha
-## 1                 ANNUAL          US
-## 2                 ANNUAL          US
-## 3                MONTHLY          US
-## 4                MONTHLY          US
-## 5                MONTHLY          US
-## 6                MONTHLY          US
-## 7                MONTHLY          US
-## 8                MONTHLY          US
-## 9                MONTHLY          US
-## 10               MONTHLY          US
-##         prodn_practice_desc location_desc source_desc
-## 1  ALL PRODUCTION PRACTICES      US TOTAL      SURVEY
-## 2  ALL PRODUCTION PRACTICES      US TOTAL      SURVEY
-## 3  ALL PRODUCTION PRACTICES      US TOTAL      SURVEY
-## 4  ALL PRODUCTION PRACTICES      US TOTAL      SURVEY
-## 5  ALL PRODUCTION PRACTICES      US TOTAL      SURVEY
-## 6  ALL PRODUCTION PRACTICES      US TOTAL      SURVEY
-## 7  ALL PRODUCTION PRACTICES      US TOTAL      SURVEY
-## 8  ALL PRODUCTION PRACTICES      US TOTAL      SURVEY
-## 9  ALL PRODUCTION PRACTICES      US TOTAL      SURVEY
-## 10 ALL PRODUCTION PRACTICES      US TOTAL      SURVEY
-##    commodity_desc  country_name zip_5 sector_desc
-## 1            CORN UNITED STATES             CROPS
-## 2            CORN UNITED STATES             CROPS
-## 3            CORN UNITED STATES             CROPS
-## 4            CORN UNITED STATES             CROPS
-## 5            CORN UNITED STATES             CROPS
-## 6            CORN UNITED STATES             CROPS
-## 7            CORN UNITED STATES             CROPS
-## 8            CORN UNITED STATES             CROPS
-## 9            CORN UNITED STATES             CROPS
-## 10           CORN UNITED STATES             CROPS
-##    begin_code end_code Value agg_level_desc state_ansi
-## 1          00       00  3.56       NATIONAL           
-## 2          00       00  3.75       NATIONAL           
-## 3          01       01  3.56       NATIONAL           
-## 4          02       02  3.60       NATIONAL           
-## 5          03       03  3.61       NATIONAL           
-## 6          04       04  3.53       NATIONAL           
-## 7          05       05  3.63       NATIONAL           
-## 8          06       06  3.98       NATIONAL           
-## 9          07       07  4.16       NATIONAL           
-## 10         08       08  3.93       NATIONAL           
-##    asd_desc  group_desc domain_desc congr_district_code
-## 1           FIELD CROPS       TOTAL                    
-## 2           FIELD CROPS       TOTAL                    
-## 3           FIELD CROPS       TOTAL                    
-## 4           FIELD CROPS       TOTAL                    
-## 5           FIELD CROPS       TOTAL                    
-## 6           FIELD CROPS       TOTAL                    
-## 7           FIELD CROPS       TOTAL                    
-## 8           FIELD CROPS       TOTAL                    
-## 9           FIELD CROPS       TOTAL                    
-## 10          FIELD CROPS       TOTAL                    
-##    county_name county_code util_practice_desc
-## 1                                       GRAIN
-## 2                                       GRAIN
-## 3                                       GRAIN
-## 4                                       GRAIN
-## 5                                       GRAIN
-## 6                                       GRAIN
-## 7                                       GRAIN
-## 8                                       GRAIN
-## 9                                       GRAIN
-## 10                                      GRAIN
-##    watershed_code state_fips_code               load_time
-## 1        00000000              99 2021-11-30 15:01:54.000
-## 2        00000000              99 2022-07-29 15:01:54.000
-## 3        00000000              99 2021-09-30 15:01:42.000
-## 4        00000000              99 2021-09-30 15:01:42.000
-## 5        00000000              99 2021-09-30 15:01:42.000
-## 6        00000000              99 2021-09-30 15:01:42.000
-## 7        00000000              99 2021-09-30 15:01:42.000
-## 8        00000000              99 2021-09-30 15:01:42.000
-## 9        00000000              99 2021-11-30 15:01:54.000
-## 10       00000000              99 2021-11-30 15:01:54.000
-##    reference_period_desc
-## 1         MARKETING YEAR
-## 2                   YEAR
-## 3                    JAN
-## 4                    FEB
-## 5                    MAR
-## 6                    APR
-## 7                    MAY
-## 8                    JUN
-## 9                    JUL
-## 10                   AUG</code></pre>
+##    asd_desc domain_desc sector_desc reference_period_desc
+## 1                 TOTAL       CROPS        MARKETING YEAR
+## 2                 TOTAL       CROPS                  YEAR
+## 3                 TOTAL       CROPS                   JAN
+## 4                 TOTAL       CROPS                   FEB
+## 5                 TOTAL       CROPS                   MAR
+## 6                 TOTAL       CROPS                   APR
+## 7                 TOTAL       CROPS                   MAY
+## 8                 TOTAL       CROPS                   JUN
+## 9                 TOTAL       CROPS                   JUL
+## 10                TOTAL       CROPS                   AUG
+##    county_name end_code commodity_desc state_alpha
+## 1                    00           CORN          US
+## 2                    00           CORN          US
+## 3                    01           CORN          US
+## 4                    02           CORN          US
+## 5                    03           CORN          US
+## 6                    04           CORN          US
+## 7                    05           CORN          US
+## 8                    06           CORN          US
+## 9                    07           CORN          US
+## 10                   08           CORN          US
+##    freq_desc begin_code unit_desc
+## 1     ANNUAL         00    $ / BU
+## 2     ANNUAL         00    $ / BU
+## 3    MONTHLY         01    $ / BU
+## 4    MONTHLY         02    $ / BU
+## 5    MONTHLY         03    $ / BU
+## 6    MONTHLY         04    $ / BU
+## 7    MONTHLY         05    $ / BU
+## 8    MONTHLY         06    $ / BU
+## 9    MONTHLY         07    $ / BU
+## 10   MONTHLY         08    $ / BU
+##         prodn_practice_desc statisticcat_desc
+## 1  ALL PRODUCTION PRACTICES    PRICE RECEIVED
+## 2  ALL PRODUCTION PRACTICES    PRICE RECEIVED
+## 3  ALL PRODUCTION PRACTICES    PRICE RECEIVED
+## 4  ALL PRODUCTION PRACTICES    PRICE RECEIVED
+## 5  ALL PRODUCTION PRACTICES    PRICE RECEIVED
+## 6  ALL PRODUCTION PRACTICES    PRICE RECEIVED
+## 7  ALL PRODUCTION PRACTICES    PRICE RECEIVED
+## 8  ALL PRODUCTION PRACTICES    PRICE RECEIVED
+## 9  ALL PRODUCTION PRACTICES    PRICE RECEIVED
+## 10 ALL PRODUCTION PRACTICES    PRICE RECEIVED
+##    congr_district_code  country_name domaincat_desc
+## 1                      UNITED STATES  NOT SPECIFIED
+## 2                      UNITED STATES  NOT SPECIFIED
+## 3                      UNITED STATES  NOT SPECIFIED
+## 4                      UNITED STATES  NOT SPECIFIED
+## 5                      UNITED STATES  NOT SPECIFIED
+## 6                      UNITED STATES  NOT SPECIFIED
+## 7                      UNITED STATES  NOT SPECIFIED
+## 8                      UNITED STATES  NOT SPECIFIED
+## 9                      UNITED STATES  NOT SPECIFIED
+## 10                     UNITED STATES  NOT SPECIFIED
+##    agg_level_desc state_fips_code region_desc
+## 1        NATIONAL              99            
+## 2        NATIONAL              99            
+## 3        NATIONAL              99            
+## 4        NATIONAL              99            
+## 5        NATIONAL              99            
+## 6        NATIONAL              99            
+## 7        NATIONAL              99            
+## 8        NATIONAL              99            
+## 9        NATIONAL              99            
+## 10       NATIONAL              99</code></pre>
 </div>
 </div>
 <div id="data-manipulation" class="section level2 hasAnchor" number="3.2">
@@ -515,26 +515,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="data.html#cb12-1" tabindex="-1"></a><span class="fu">library</span>(fpp3)</span>
 <span id="cb12-2"><a href="data.html#cb12-2" tabindex="-1"></a><span class="co"># View the column names</span></span>
 <span id="cb12-3"><a href="data.html#cb12-3" tabindex="-1"></a><span class="fu">colnames</span>(corn)</span></code></pre></div>
-<pre><code>##  [1] &quot;watershed_desc&quot;        &quot;statisticcat_desc&quot;    
-##  [3] &quot;region_desc&quot;           &quot;asd_code&quot;             
-##  [5] &quot;unit_desc&quot;             &quot;CV (%)&quot;               
-##  [7] &quot;domaincat_desc&quot;        &quot;short_desc&quot;           
-##  [9] &quot;state_name&quot;            &quot;class_desc&quot;           
-## [11] &quot;week_ending&quot;           &quot;year&quot;                 
-## [13] &quot;country_code&quot;          &quot;county_ansi&quot;          
-## [15] &quot;freq_desc&quot;             &quot;state_alpha&quot;          
-## [17] &quot;prodn_practice_desc&quot;   &quot;location_desc&quot;        
-## [19] &quot;source_desc&quot;           &quot;commodity_desc&quot;       
-## [21] &quot;country_name&quot;          &quot;zip_5&quot;                
-## [23] &quot;sector_desc&quot;           &quot;begin_code&quot;           
-## [25] &quot;end_code&quot;              &quot;Value&quot;                
-## [27] &quot;agg_level_desc&quot;        &quot;state_ansi&quot;           
-## [29] &quot;asd_desc&quot;              &quot;group_desc&quot;           
-## [31] &quot;domain_desc&quot;           &quot;congr_district_code&quot;  
-## [33] &quot;county_name&quot;           &quot;county_code&quot;          
-## [35] &quot;util_practice_desc&quot;    &quot;watershed_code&quot;       
-## [37] &quot;state_fips_code&quot;       &quot;load_time&quot;            
-## [39] &quot;reference_period_desc&quot;</code></pre>
+<pre><code>##  [1] &quot;location_desc&quot;         &quot;util_practice_desc&quot;   
+##  [3] &quot;load_time&quot;             &quot;year&quot;                 
+##  [5] &quot;source_desc&quot;           &quot;watershed_code&quot;       
+##  [7] &quot;week_ending&quot;           &quot;CV (%)&quot;               
+##  [9] &quot;class_desc&quot;            &quot;county_ansi&quot;          
+## [11] &quot;county_code&quot;           &quot;country_code&quot;         
+## [13] &quot;group_desc&quot;            &quot;Value&quot;                
+## [15] &quot;state_ansi&quot;            &quot;state_name&quot;           
+## [17] &quot;asd_code&quot;              &quot;zip_5&quot;                
+## [19] &quot;watershed_desc&quot;        &quot;short_desc&quot;           
+## [21] &quot;asd_desc&quot;              &quot;domain_desc&quot;          
+## [23] &quot;sector_desc&quot;           &quot;reference_period_desc&quot;
+## [25] &quot;county_name&quot;           &quot;end_code&quot;             
+## [27] &quot;commodity_desc&quot;        &quot;state_alpha&quot;          
+## [29] &quot;freq_desc&quot;             &quot;begin_code&quot;           
+## [31] &quot;unit_desc&quot;             &quot;prodn_practice_desc&quot;  
+## [33] &quot;statisticcat_desc&quot;     &quot;congr_district_code&quot;  
+## [35] &quot;country_name&quot;          &quot;domaincat_desc&quot;       
+## [37] &quot;agg_level_desc&quot;        &quot;state_fips_code&quot;      
+## [39] &quot;region_desc&quot;</code></pre>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="data.html#cb14-1" tabindex="-1"></a><span class="co"># Keep only the yearly prices</span></span>
 <span id="cb14-2"><a href="data.html#cb14-2" tabindex="-1"></a>corn.annual <span class="ot">&lt;-</span> <span class="fu">filter</span>(corn,</span>
 <span id="cb14-3"><a href="data.html#cb14-3" tabindex="-1"></a>                      reference_period_desc <span class="sc">==</span> <span class="st">&quot;YEAR&quot;</span>)</span></code></pre></div>
